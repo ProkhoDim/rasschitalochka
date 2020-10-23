@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .header {
+    padding: 10px 0;
+    background-color: rgb(62, 85, 67);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .header {
+    padding: 26px 0;
+    box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12);
+  }
+  .headerNameBox {
+    display: flex;
+  }
+}

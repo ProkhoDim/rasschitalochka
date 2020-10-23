@@ -1,0 +1,61 @@
+.userMenuContainer {
+  display: flex;
+  align-items: center;
+}
+
+.userName {
+  text-transform: capitalize;
+  margin: 0;
+  font-size: 15px;
+}
+
+.logoutBtn {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.logoutBtn:hover {
+  cursor: pointer;
+}
+
+.logoutTitle {
+  color: rgb(107, 125, 131);
+  font-size: 15px;
+  text-transform: capitalize;
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .userName {
+    color: rgb(102, 150, 104);
+    margin-right: 20px;
+  }
+
+  .logoutTitle {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .userName {
+    color: rgb(107, 125, 131);
+    margin-right: 40px;
+  }
+
+  .userName::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 14px;
+    background-color: rgb(107, 125, 131);
+    margin-left: 20px;
+  }
+  .logoutBtn {
+    display: flex;
+    align-items: center;
+  }
+  .logoutBtnSvg {
+    margin-right: 10px;
+  }
+}
