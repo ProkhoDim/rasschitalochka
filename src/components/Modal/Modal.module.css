@@ -13,9 +13,6 @@
 .modal_content {
   background-color: #fffffe;
   width: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 0;
   padding: 0;
   box-shadow: 10px 17px 40px rgba(1, 1, 0, 0.15);
