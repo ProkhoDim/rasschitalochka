@@ -1,3 +1,10 @@
+@import '../../css/fonts.css';
+@import '../../css/helpers.css';
+
+.totalBalanceBox {
+  font-size: 15px;
+}
+
 .titleParagraph,
 .currencyParagraph,
 .balanceParagraph {
@@ -18,9 +25,9 @@
     padding: 20px 80px;
     border-radius: 5px;
     box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
-    background-color: rgb(80, 109, 86);
-    color: rgb(255, 255, 255);
-    font-size: 15px;
+    background-color: var(--darkgreen-color);
+    color: var(--main-white-color);
+    font-family: var(--bold-ff);
     text-align: center;
   }
 }
@@ -30,8 +37,8 @@
     display: flex;
     margin-bottom: 28px;
     align-items: center;
-    font-size: 15px;
-    color: rgb(107, 125, 131);
+    font-family: var(--main-ff);
+    color: var(--lightgrey-color);
   }
 
   .titleParagraph {
@@ -40,12 +47,12 @@
   }
   .currencyParagraph {
     order: 3;
-    color: rgb(102, 150, 104);
+    color: var(--lightgreen-color);
   }
   .balanceParagraph {
     order: 2;
     margin-right: 2px;
-    color: rgb(102, 150, 104);
+    color: var(--lightgreen-color);
   }
 }
 
@@ -56,9 +63,9 @@
     padding: 34px 30px;
     border-radius: 5px;
     box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
-    background-color: rgb(80, 109, 86);
-    color: rgb(255, 255, 255);
-    font-size: 15px;
+    background-color: var(--darkgreen-color);
+    color: var(--main-white-color);
+    font-family: var(--bold-ff);
     text-align: left;
   }
 

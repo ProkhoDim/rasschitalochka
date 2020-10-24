@@ -1,0 +1,16 @@
+:root {
+  --main-white-color: rgb(255, 255, 255);
+  --main-dark-color: rgb(44, 53, 62);
+  --lightgrey-color: rgb(107, 125, 131);
+  --mobile-header-darkgreen-color: rgb(62, 85, 67);
+  --darkgreen-color: rgb(80, 109, 86);
+  --middlegreen-color: rgb(97, 147, 97);
+  --lightgreen-color: rgb(102, 150, 104);
+  --bold-ff: 'Helvetica Bold', 'Arial', sans-serif;
+  --main-ff: 'Helvetica', 'Arial', sans-serif;
+  --modalbtn-hover-color: linear-gradient(
+    0deg,
+    rgb(236, 178, 42) 0%,
+    rgba(255, 108, 0, 0.70196) 100%
+  );
+}
