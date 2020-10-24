@@ -12,6 +12,49 @@ const token = {
   },
 };
 
+// const register = userData => async dispatch => {
+//   dispatch(authActions.registerRequest());
+
+//   try {
+//     const response = await axios.post('/users/signup', userData);
+//     token.set(response.data.token)
+//     dispatch(authActions.registerSuccess(response.data));
+//   } catch (error) {
+//     dispatch(authActions.registerError(error));
+//   }
+// }
+
+const login = userData => async dispatch => {
+  dispatch(authActions.loginRequest());
+
+  try {
+    const res = await axios.post('api/login', userData);
+    token.set(res.data.token);
+    dispatch(authActions.loginSuccess(res.data));
+  } catch (error) {
+    dispatch(authActions.loginError(error));
+  }
+};
+
+// const getCurrentUser = () => async (dispatch, getState) => {
+//   const { auth: { token: persistedToken } } = getState();
+
+//   if (!persistedToken) {
+//     return
+//   }
+
+//   token.set(persistedToken)
+//   dispatch(authActions.getCurrentUserRequest())
+
+//   try {
+//     const response = await axios.get('/users/current')
+
+//     dispatch(authActions.getCurrentUserSuccess(response.data))
+//   } catch (error) {
+//     dispatch(authActions.getCurrentUserError(error))
+//   }
+// }
+
 const logOut = () => dispatch => {
   dispatch(authActions.logoutRequest());
   axios
@@ -41,4 +84,12 @@ const getCurrentUser = () => (dispatch, getState) => {
 const addIncome = () => dispatch => {};
 const addCost = () => dispatch => {};
 
-export default { logOut, getCurrentUser, addIncome, addCost };
+export default {
+  logOut,
+  getCurrentUser,
+  addIncome,
+  addCost,
+  // register,
+  login,
+  // token,
+};
