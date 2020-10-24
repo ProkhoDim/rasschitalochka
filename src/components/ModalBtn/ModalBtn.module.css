@@ -41,7 +41,7 @@
     background-color: var(--darkgreen-color);
   }
 
-  .modalBtn {
+  .modalBtn:not(:last-child) {
     margin-right: 30px;
   }
 }
