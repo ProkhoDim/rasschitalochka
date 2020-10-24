@@ -4,7 +4,7 @@ import styles from './Sidebar.module.css';
 import TotalBalance from '../TotalBalance';
 
 const SideBar = () => (
-  <aside className={styles.sideBar}>
+  <aside className={styles.sideBarBox}>
     <div>Navigation</div>
     <TotalBalance />
   </aside>
