@@ -1,7 +1,14 @@
 import React from 'react';
+import AppBar from './components/AppBar';
+import ModalBtn from './components/ModalBtn';
+import SideBar from './components/Sidebar';
 
-function App() {
-  return <div className="App"></div>;
-}
+const App = () => (
+  <>
+    <AppBar />
+    <SideBar />
+    <ModalBtn />
+  </>
+);
 
 export default App;
