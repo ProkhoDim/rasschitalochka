@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styles from './Sidebar.module.css';
+import TotalBalance from '../TotalBalance';
 
 const SideBar = () => (
   <aside className={styles.sideBar}>
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
+    <div>Navigation</div>
+    <TotalBalance />
+    <div className={styles.sidebarExchengeRateBox}>exchange rate</div>
   </aside>
 );
 
