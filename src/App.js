@@ -4,6 +4,7 @@ import { Switch } from 'react-router-dom';
 import routes from './routes';
 import { ErrorPage } from './pages';
 import NavBar from './components/NavBar';
+import SvgIcons from './components/NavBar/SvgIcons';
 
 class App extends Component {
   componentDidMount = () => {
@@ -24,7 +25,7 @@ class App extends Component {
     return (
       <>
         <div className="Container">
-          <NavBar />
+          <NavBar children={null} />
           <Switch>
             {/* <PublicRoute
               path={routes.LOGIN}
