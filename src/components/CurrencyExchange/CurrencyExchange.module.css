@@ -1,0 +1,78 @@
+:root {
+  --lightGrey: #f3f6f6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+.CurrencyExchange {
+  margin: 0 auto;
+  padding-top: 30px;
+  min-height: 460px;
+  max-width: 360px;
+  background-image: url('../../images/waves-chart-bg.svg');
+  background-size: 200%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.CurrencyExchange__table {
+  min-width: 100%;
+}
+
+.CurrencyExchange__table td {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.CurrencyExchange__headerRow {
+  font-family: var(--bold-ff);
+  font-weight: bold;
+  display: flex;
+  height: 60px;
+  min-width: 320px;
+  background-color: var(--lightGrey);
+}
+
+.CurrencyExchange__headerRow td {
+  line-height: 60px;
+}
+
+.CurrencyExchange__bodyRow {
+  font-family: var(--main-ff);
+  display: flex;
+  border-bottom: 2px solid var(--lightGrey);
+  height: 40px;
+}
+.CurrencyExchange__bodyRow td {
+  line-height: 40px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1657px) {
+  .CurrencyExchange {
+    padding-top: 0;
+    background-image: none;
+    min-width: 350px;
+    min-height: 186px;
+  }
+
+  .CurrencyExchange__headerRow {
+    border-radius: 10px 10px 0 0;
+  }
+  .CurrencyExchange__bodyRow:last-child {
+    border-radius: 0 0 10px 10px;
+  }
+}
+@media screen and (min-width: 1658px) {
+  .CurrencyExchange {
+    padding-top: 0;
+    min-width: 360px;
+    min-height: 490px;
+  }
+}
