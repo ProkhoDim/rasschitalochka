@@ -7,7 +7,6 @@ const SideBar = () => (
   <aside className={styles.sideBar}>
     <div>Navigation</div>
     <TotalBalance />
-    <div className={styles.sidebarExchengeRateBox}>exchange rate</div>
   </aside>
 );
 
