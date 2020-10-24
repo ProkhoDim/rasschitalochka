@@ -1,13 +1,20 @@
 import React from 'react';
+
+
 import AppBar from './components/AppBar';
 import ModalBtn from './components/ModalBtn';
 import SideBar from './components/Sidebar';
+import './fonts/fonts.css';
+import StatisticsView from './views/StatisticsView'; //когда будет роутинг удалить
 
 const App = () => (
-  <>
+  <> 
+    <div className="App">
+    <StatisticsView />
     <AppBar />
     <SideBar />
     <ModalBtn />
+  </div>
   </>
 );
 
