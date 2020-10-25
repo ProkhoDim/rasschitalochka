@@ -14,7 +14,7 @@ const App = () => (
 export default App;
 
 // import React, { useState, useEffect } from 'react';
-// import CurrencyExchange from './Components/CurrencyExchange';
+// import CurrencyExchange from './components/CurrencyExchange';
 // import getCurrencyExchangeCourse from './services/bankAPI';
 
 // function App() {
