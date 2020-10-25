@@ -9,7 +9,7 @@ import AppBar from './components/AppBar';
 import ModalBtn from './components/ModalBtn';
 import SideBar from './components/Sidebar';
 import './fonts/fonts.css';
-import StatisticsView from './views/StatisticsView'; //когда будет роутинг удалить
+import StatisticsView from './Views/StatisticsView'; //когда будет роутинг удалить
 
 class App extends Component {
   componentDidMount = () => {
@@ -57,14 +57,16 @@ class App extends Component {
             <ErrorPage />
           </Switch>
         </div>
-    <div className="App">
-    <StatisticsView />
-    <AppBar />
-    <SideBar />
-    <ModalBtn />
-  </div>
-  </>
-);
+        <div className="App">
+          <StatisticsView />
+          <AppBar />
+          <SideBar />
+          <ModalBtn />
+        </div>
+      </>
+    );
+  }
+}
 
 export default App;
 
