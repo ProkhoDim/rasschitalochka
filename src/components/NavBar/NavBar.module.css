@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --main-white-color: rgb(255, 255, 255);
   --main-dark-color: rgb(44, 53, 62);
   --lightgrey-color: rgb(107, 125, 131);
@@ -13,7 +13,7 @@
     rgb(236, 178, 42) 0%,
     rgba(255, 108, 0, 0.70196) 100%
   );
-}
+} */
 
 * {
   margin: 0;
