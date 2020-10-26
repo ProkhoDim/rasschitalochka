@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from './routes';
 import { ErrorPage } from './pages';
+import './css/global.css';
 import './fonts/fonts.css';
 import { HomeView, StatView } from './Views';
 import {
@@ -33,28 +34,26 @@ class App extends Component {
       <>
         <div className="Container">
           <AppBar />
-          <NavBar children={<TotalBalance />} />
-          <Media children={<Sidebar />} device="mobile" />
-          <Media children={<Sidebar />} device="desktop" />
-          <Media children={<CurrencyExchange />} device="tablet" />
-          <Media children={<CurrencyExchange />} device="desktop" />
-
-          <Switch>
-            <Route exact path={routes.HOME} component={HomeView} />
-            <Route exact path={routes.STATISTICS} component={StatView} />
-
-            <Media
-              children={
-                <Route
-                  exact
-                  path={routes.CURRENCY}
-                  component={CurrencyExchange}
-                />
-              }
-              device="mobile"
-            />
-
-            {/* <PublicRoute
+          <div className="page_wrap">
+            <div className="aside_container">
+              <NavBar children={<TotalBalance />} />
+              <Media children={<Sidebar />} device="desktop" />
+              <Media children={<CurrencyExchange />} device="desktop" />
+            </div>
+            <Switch>
+              <Route exact path={routes.HOME} component={HomeView} />
+              <Route exact path={routes.STATISTICS} component={StatView} />
+              <Media
+                children={
+                  <Route
+                    exact
+                    path={routes.CURRENCY}
+                    component={CurrencyExchange}
+                  />
+                }
+                device="mobile"
+              />
+              {/* <PublicRoute
               path={routes.LOGIN}
               restricted
               redirectTo={routes.HOME}
@@ -76,7 +75,8 @@ class App extends Component {
               redirectTo={routes.LOGIN}
               component={HomePage}
             /> */}
-          </Switch>
+            </Switch>
+          </div>
         </div>
       </>
     );

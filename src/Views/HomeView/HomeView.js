@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { ModalBtn } from '../../components';
+import Media from '../../common/Media';
+import { CurrencyExchange, ModalBtn, Sidebar } from '../../components';
 
 class HomeView extends Component {
   state = {};
   render() {
     return (
       <>
-        <ModalBtn />
+        <div className="main_container">
+          <Media children={<Sidebar />} device="mobile" />
+
+          <ModalBtn />
+        </div>
+        <Media children={<CurrencyExchange />} device="tablet" />
       </>
     );
   }

@@ -19,7 +19,7 @@
   color: #6fa76f;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) and (max-width: 1339px) {
   .List {
     display: flex;
     flex-direction: column;
@@ -29,5 +29,11 @@
   .List li {
     width: 220px;
     text-transform: uppercase;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .List {
+    padding-bottom: 0;
   }
 }

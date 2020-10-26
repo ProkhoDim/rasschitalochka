@@ -60,7 +60,7 @@
   .totalBalanceBox {
     width: 360px;
     margin-bottom: 40px;
-    padding: 34px 30px;
+    padding: 30px;
     border-radius: 5px;
     box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
     background-color: var(--darkgreen-color);

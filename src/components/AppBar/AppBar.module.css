@@ -1,4 +1,4 @@
-.header {
+.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,6 +23,9 @@
 }
 
 @media (min-width: 1440px) {
+  .container {
+    width: 100%;
+  }
   .header {
     margin-bottom: 45px;
   }

@@ -3,9 +3,11 @@
 }
 
 .CurrencyExchange {
+  margin: 0 auto;
   padding-top: 30px;
-  min-height: 460px;
+  width: 100%;
   max-width: 360px;
+  min-height: 460px;
   background-image: url('../../assets/svg/waves-chart-bg.svg');
   background-size: 200%;
   background-repeat: no-repeat;
@@ -50,10 +52,12 @@
 
 @media screen and (min-width: 768px) and (max-width: 1339px) {
   .CurrencyExchange {
+    margin: 0;
     padding-top: 0;
     background-image: none;
     min-width: 350px;
     min-height: 186px;
+    box-shadow: 10px 17.321px 20px rgba(1, 1, 0, 0.15);
   }
 
   .CurrencyExchange__headerRow {
@@ -64,7 +68,12 @@
   }
 }
 @media screen and (min-width: 1440px) {
+  .sectionWrap {
+    box-shadow: 10px 17.321px 20px rgba(1, 1, 0, 0.15);
+  }
+
   .CurrencyExchange {
+    margin: 0;
     padding-top: 0;
     min-width: 360px;
     min-height: 490px;
