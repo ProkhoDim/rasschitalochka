@@ -4,6 +4,7 @@ import routes from './routes';
 import { ErrorPage } from './pages';
 import './css/global.css';
 import './fonts/fonts.css';
+
 import { HomeView, StatView } from './Views';
 import {
   AppBar,
@@ -75,8 +76,10 @@ class App extends Component {
               redirectTo={routes.LOGIN}
               component={HomePage}
             /> */}
+
             </Switch>
           </div>
+
         </div>
       </>
     );

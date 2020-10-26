@@ -1,0 +1,158 @@
+.registerBlock {
+  padding-top: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.logo {
+  background-image: url(../../assets/svg/logo.svg);
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 auto;
+  margin-bottom: 12px;
+}
+
+.projectName {
+  font-family: HelveticaNeueCyr-Bold, sans-serif;
+  font-size: 16px;
+  color: #2c353e;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 34px;
+}
+
+.emailInput {
+  background-color: rgba(185, 201, 212, 0.5);
+  border: none;
+  border-radius: 5px;
+  height: 48px;
+  width: 275px;
+  margin: 0;
+  margin-bottom: 12px;
+  padding: 0;
+  text-align: center;
+  outline: none;
+}
+
+.warningText {
+  margin: 0 0 10px 0;
+  padding: 0;
+  color: red;
+  font-size: 12px;
+}
+
+.emailInput::placeholder {
+  font-family: HelveticaNeueCyr-Roman, sans-serif;
+  font-size: 13px;
+  line-height: 48px;
+  text-align: left;
+  padding-left: 58px;
+  color: #b9c9d4;
+  background-image: url(../../assets/authForm/baseline-email-24px.svg);
+  background-position-x: 21px;
+  background-position-y: 12px;
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.passwordInput {
+  background-color: rgba(185, 201, 212, 0.5);
+  border: none;
+  border-radius: 5px;
+  height: 48px;
+  width: 275px;
+  margin: 0;
+  margin-bottom: 12px;
+  padding: 0;
+  text-align: center;
+}
+
+.passwordInput::placeholder {
+  font-family: HelveticaNeueCyr-Roman, sans-serif;
+  font-size: 13px;
+  line-height: 48px;
+  text-align: left;
+  padding-left: 58px;
+  color: #b9c9d4;
+  background-image: url(../../assets/authForm/baseline-lock-24px.svg);
+  background-position-x: 21px;
+  background-position-y: 12px;
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+.passwordProgressLine {
+  height: 6px;
+  width: 275px;
+  background-color: green;
+  border-radius: 5px;
+  margin-bottom: 12px;
+}
+
+.nameInput {
+  background-color: rgba(185, 201, 212, 0.5);
+  border: none;
+  border-radius: 5px;
+  height: 48px;
+  width: 275px;
+  margin: 0;
+  margin-bottom: 25px;
+  padding: 0;
+  text-align: center;
+}
+
+.nameInput::placeholder {
+  font-family: HelveticaNeueCyr-Roman, sans-serif;
+  font-size: 13px;
+  line-height: 48px;
+  text-align: left;
+  padding-left: 58px;
+  color: #b9c9d4;
+  background-image: url(../../assets/authForm/baseline-account_box-24px.svg);
+  background-position-x: 21px;
+  background-position-y: 12px;
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.btnRegister {
+  font-family: HelveticaNeueCyr-Bold, sans-serif;
+  font-size: 15px;
+  text-align: center;
+  height: 48px;
+  width: 275px;
+  color: white;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #619361;
+  box-shadow: 3px 3px 0px 0px rgba(92, 135, 94, 0.2);
+  margin: 0;
+  padding: 0;
+  transition: all ease-in-out 300ms;
+}
+
+.btnRegister:hover {
+  background: linear-gradient(#ecb22a, #ff6c00);
+  box-shadow: 3px 3px 0px 0px rgba(255, 108, 0, 0.2);
+}
+
+.btnRegister:disabled {
+  background: linear-gradient(#c5c5c5, #141414);
+  box-shadow: 3px 3px 0px 0px rgba(97, 97, 97, 0.2);
+}
+
+.loginLink {
+  color: rgb(107, 125, 131);
+  font-family: HelveticaNeueCyr-Roman, sans-serif;
+  font-size: 12px;
+  margin-bottom: 65px;
+}
