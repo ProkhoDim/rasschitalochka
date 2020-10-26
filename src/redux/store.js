@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import authReducer from './auth/auth-reducers';
+import { financeReducer } from './finance';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -29,6 +30,7 @@ const persistStoreConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(persistStoreConfig, authReducer),
+    finance: financeReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

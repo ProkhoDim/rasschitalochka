@@ -2,9 +2,10 @@ import axios from 'axios';
 const PB_API_URL =
   'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5';
 
-const getCurrencyExchangeCourse = async cb => {
+const getCurrencyExchangeCourse = async () => {
   try {
-    const { data } = await axios.get(PB_API_URL);
+    const response = await fetch(PB_API_URL);
+    const data = await response.json();
     const filteredData = data.filter(el => el.ccy !== 'BTC');
     return filteredData;
   } catch (e) {
