@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import Logo from '../Logo';
 import AppName from '../AppName';
 import UserMenu from '../UserMenu';
@@ -10,7 +11,9 @@ const AppBar = () => (
     <div className="page_wrap">
       <div className={styles.container}>
         <div className={styles.headerNameBox}>
-          <Logo />
+          <NavLink exact to="/">
+            <Logo />
+          </NavLink>
           <AppName />
         </div>
         <UserMenu />

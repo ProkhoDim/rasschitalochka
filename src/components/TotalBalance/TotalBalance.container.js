@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import TotalBalance from './TotalBalance';
-import { authSelectors } from '../../redux/auth';
+import { financeSelectors } from '../../redux/finance';
 
 const mapStateToProps = state => ({
-  name: authSelectors.getUserBalance(state),
+  balance: financeSelectors.getTotalBalance(state),
 });
 
 export default connect(mapStateToProps)(TotalBalance);

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const UserMenu = ({ name, logoutBtn, onLogout }) => (
   <div className={styles.userMenuContainer}>
-    <span className={styles.userName}>Name {name}</span>
+    <span className={styles.userName}>{name}</span>
 
     <button className={styles.logoutBtn} onClick={onLogout}>
       <img
@@ -17,10 +17,10 @@ const UserMenu = ({ name, logoutBtn, onLogout }) => (
   </div>
 );
 
-// UserMenu.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   onLogout: PropTypes.func.isRequired,
-//   logoutBtn: PropTypes.string.isRequired,
-// };
+UserMenu.propTypes = {
+  name: PropTypes.string.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  logoutBtn: PropTypes.string.isRequired,
+};
 
 export default UserMenu;

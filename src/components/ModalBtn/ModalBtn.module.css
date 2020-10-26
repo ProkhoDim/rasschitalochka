@@ -25,6 +25,8 @@
     justify-content: space-between;
     width: 306px;
     padding: 18px 0;
+    /* position: sticky;
+    bottom: 0; */
   }
 }
 

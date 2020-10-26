@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Modal from '../Modal/Modal';
 import AddCost from '../AddCost/AddCost';
 import AddIncome from '../AddIncome/AddIncome';
@@ -45,9 +45,4 @@ const ModalBtn = () => {
   );
 };
 
-// ModalBtn.propTypes = {
-//   onAddIncomeBtnClick: PropTypes.func.isRequired,
-//   onAddCostBtnClick: PropTypes.func.isRequired,
-// };
-
-export default ModalBtn;
+export default connect()(ModalBtn);

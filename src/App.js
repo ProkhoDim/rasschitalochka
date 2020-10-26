@@ -76,10 +76,8 @@ class App extends Component {
               redirectTo={routes.LOGIN}
               component={HomePage}
             /> */}
-
             </Switch>
           </div>
-
         </div>
       </>
     );

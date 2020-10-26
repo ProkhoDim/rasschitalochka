@@ -10,8 +10,8 @@ const TotalBalance = ({ balance }) => (
   </div>
 );
 
-// TotalBalance.propTypes = {
-//   balance: PropTypes.number.isRequired,
-// };
+TotalBalance.propTypes = {
+  balance: PropTypes.number.isRequired,
+};
 
 export default TotalBalance;

@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onLogout: authOperations.logOut,
+  onLogout: authOperations.logout,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);
