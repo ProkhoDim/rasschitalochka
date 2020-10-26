@@ -30,7 +30,7 @@ class Modal extends Component {
     this.props.onClose();
   };
   render() {
-    const { children, title } = this.props;
+    const { children, title, onClose } = this.props;
     return createPortal(
       <div
         className={s.modal_wrapper}
@@ -38,7 +38,14 @@ class Modal extends Component {
         onClick={this.handleBackdropClick}
       >
         <div className={s.modal_content}>
-          <h2 className={s.modal_title}>{title}</h2>
+          <div className={s.heading_wrapper}>
+            <button
+              className={s.button}
+              type="button"
+              onClick={onClose}
+            ></button>
+            <h2 className={s.modal_title}>{title}</h2>
+          </div>
           {children}
         </div>
       </div>,

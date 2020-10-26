@@ -17,7 +17,7 @@ const buttonsValues = [
 
 class AddCost extends Component {
   state = {
-    comment: '',
+    comments: '',
     category: '',
     amount: '',
     date: '',
@@ -36,6 +36,7 @@ class AddCost extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.onAddCostSubmit(this.state);
   };
 
   render() {
