@@ -3,7 +3,7 @@ import authActions from './auth-actions';
 
 axios.defaults.baseURL = 'https://raschitalochka.goit.co.ua/';
 
-const token = {
+export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },

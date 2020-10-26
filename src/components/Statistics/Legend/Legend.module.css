@@ -8,7 +8,7 @@
   background-color: #f3f6f6;
 }
 .Thead th {
-  padding: 20px;
+  padding: 15px;
   font: bold 15px/30px 'HelveticaNeueCyr';
 }
 .Thead th:first-child {
@@ -18,7 +18,7 @@
   text-align: right;
 }
 .Tbody td {
-  padding: 15px 20px;
+  padding: 10px 20px;
   font: 400 13px/18px 'HelveticaNeueCyr';
 }
 .Tbody tr {
@@ -40,7 +40,7 @@
   text-align: right;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) and (max-width: 1339px) {
   .Thead {
     display: none;
   }

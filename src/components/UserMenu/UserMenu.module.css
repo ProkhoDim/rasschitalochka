@@ -29,7 +29,7 @@
   color: var(--lightgrey-color);
   text-transform: capitalize;
 }
-@media screen and (min-width: 320px) and (max-width: 768px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
   .userName {
     color: var(--lightgreen-color);
     margin-right: 20px;
@@ -40,7 +40,7 @@
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .userName {
     color: var(--lightgrey-color);
     margin-right: 40px;

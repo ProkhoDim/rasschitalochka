@@ -16,6 +16,14 @@ const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
+const addCostRequest = createAction('auth/addCostRequest');
+const addCostSuccess = createAction('auth/addCostSuccess');
+const addCostError = createAction('auth/addCostError');
+
+const addIncomeRequest = createAction('auth/addIncomeRequest');
+const addIncomeSuccess = createAction('auth/addIncomeSuccess');
+const addIncomeError = createAction('auth/addIncomeError');
+
 export default {
   logoutRequest,
   logoutSuccess,
@@ -32,4 +40,12 @@ export default {
   loginRequest,
   loginSuccess,
   loginError,
+
+  addIncomeRequest,
+  addIncomeSuccess,
+  addIncomeError,
+
+  addCostRequest,
+  addCostSuccess,
+  addCostError,
 };

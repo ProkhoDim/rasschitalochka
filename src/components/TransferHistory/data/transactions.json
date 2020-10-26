@@ -1,0 +1,42 @@
+[
+  {
+    "date": "04.01.19",
+    "type": "-",
+    "category": "Other",
+    "comments": "Подарок жене",
+    "amount": "100.00",
+    "balance": "6900.00"
+  },
+  {
+    "date": "05.01.19",
+    "type": "+",
+    "category": "Regular Income",
+    "comments": "January Bonus",
+    "amount": "8000.00",
+    "balance": "14900.00"
+  },
+  {
+    "date": "07.01.19",
+    "type": "-",
+    "category": "Car",
+    "comments": "Oil",
+    "amount": "1000.00",
+    "balance": "13900.00"
+  },
+  {
+    "date": "08.01.19",
+    "type": "-",
+    "category": "Food",
+    "comments": "Coffee with Tim",
+    "amount": "30.00",
+    "balance": "13870.00"
+  },
+  {
+    "date": "09.01.19",
+    "type": "+",
+    "category": "Irregular Income",
+    "comments": "Cash",
+    "amount": "1000.00",
+    "balance": "14870.00"
+  }
+]

@@ -7,11 +7,15 @@ import styles from './AppBar.module.css';
 
 const AppBar = () => (
   <header className={styles.header}>
-    <div className={styles.headerNameBox}>
-      <Logo />
-      <AppName />
+    <div className="page_wrap">
+      <div className={styles.container}>
+        <div className={styles.headerNameBox}>
+          <Logo />
+          <AppName />
+        </div>
+        <UserMenu />
+      </div>
     </div>
-    <UserMenu />
   </header>
 );
 

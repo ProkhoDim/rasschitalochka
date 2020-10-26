@@ -1,0 +1,34 @@
+@media (min-width: 768px) {
+  .page_wrap {
+    width: 700px;
+    margin: 0 auto;
+  }
+
+  .aside_container {
+    width: 700px;
+    margin: 0 auto;
+  }
+
+  .main_container {
+    width: 700px;
+    box-shadow: 10px 17.321px 20px rgba(1, 1, 0, 0.15);
+  }
+}
+
+@media (min-width: 1440px) {
+  .page_wrap {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .aside_container {
+    width: 360px;
+    margin: 0;
+  }
+
+  .main_container {
+    width: 980px;
+  }
+}

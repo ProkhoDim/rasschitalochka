@@ -1,13 +1,14 @@
 import React, { Component, createRef } from 'react';
 
-import s from './AddIncome.module.css';
 import RadioButton from './RadioButton';
+
+import s from './AddIncome.module.css';
 
 const buttonsValues = ['Regular income', 'Irregular income'];
 
 class AddIncome extends Component {
   state = {
-    comment: '',
+    comments: '',
     category: '',
     amount: '',
     date: '',
@@ -26,6 +27,7 @@ class AddIncome extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.onAddIncomeSubmit(this.state);
   };
 
   render() {

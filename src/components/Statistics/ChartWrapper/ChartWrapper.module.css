@@ -12,7 +12,7 @@
     justify-content: space-around;
   }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
   .ChartWrapper {
     width: 410px;
     height: 410px;
