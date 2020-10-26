@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 .wrap {
   background-color: var(--darkgreen-color);
@@ -23,8 +22,9 @@
 .navLink {
   background-color: var(--mobile-header-darkgreen-color);
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.6);
-  fill: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 1);
+  fill: rgba(255, 255, 255, 1);
+  font-weight: bold;
   width: 30px;
   height: 25px;
   border-radius: 6px;
@@ -32,9 +32,10 @@
 }
 
 .navLink__active {
+  font-weight: normal;
   background-color: var(--lightgreen-color);
-  color: rgba(255, 255, 255, 1);
-  fill: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 0.6);
+  fill: rgba(255, 255, 255, 0.6);
 }
 
 .icon {

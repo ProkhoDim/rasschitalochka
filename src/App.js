@@ -3,10 +3,12 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from './routes';
 import { ErrorPage } from './pages';
 import './css/global.css';
-import './fonts/fonts.css';
+import './css/fonts.css';
 
-import { HomeView, StatView } from './Views';
+import { HomeView, LoginView, RegView, StatView } from './views';
 import {
+  AddCost,
+  AddIncome,
   AppBar,
   CurrencyExchange,
   NavBar,
@@ -14,6 +16,9 @@ import {
   TotalBalance,
 } from './components';
 import Media from './common/Media';
+import { PublicRoute, PrivateRoute } from './common';
+import { authSelectors } from './redux/auth';
+import { connect } from 'react-redux';
 
 class App extends Component {
   componentDidMount = () => {
@@ -31,62 +36,66 @@ class App extends Component {
   };
 
   render() {
+    const { isAuthenticated } = this.props;
     return (
       <>
-        <div className="Container">
-          <AppBar />
-          <div className="page_wrap">
-            <div className="aside_container">
-              <NavBar children={<TotalBalance />} />
-              <Media children={<Sidebar />} device="desktop" />
-              <Media children={<CurrencyExchange />} device="desktop" />
-            </div>
-            <Switch>
-              <Route exact path={routes.HOME} component={HomeView} />
-              <Route exact path={routes.STATISTICS} component={StatView} />
-              <Media
-                children={
-                  <Route
-                    exact
-                    path={routes.CURRENCY}
-                    component={CurrencyExchange}
+        <Switch>
+          <PublicRoute
+            path={routes.LOGIN}
+            restricted
+            redirectTo={routes.HOME}
+            component={LoginView}
+          />
+          <PublicRoute
+            path={routes.REGISTER}
+            restricted
+            redirectTo={routes.HOME}
+            component={RegView}
+          />
+
+          {isAuthenticated && (
+            <>
+              <div className="Container">
+                <AppBar />
+                <div className="page_wrap">
+                  <div className="aside_container">
+                    <NavBar children={<TotalBalance />} />
+                    <Media children={<Sidebar />} device="desktop" />
+                    <Media children={<CurrencyExchange />} device="desktop" />
+                  </div>
+                  <Route path={routes.STATISTICS} component={StatView} />
+                  <Route path={routes.HOME} exact component={HomeView} />
+                  <Media
+                    children={
+                      <Route
+                        path={routes.CURRENCY}
+                        component={CurrencyExchange}
+                      />
+                    }
+                    device="mobile"
                   />
-                }
-                device="mobile"
-              />
-              {/* <PublicRoute
-              path={routes.LOGIN}
-              restricted
-              redirectTo={routes.HOME}
-              component={LoginPage}
-            />
-            <PublicRoute
-              path={routes.REGISTER}
-              restricted
-              redirectTo={routes.HOME}
-              component={RegPage}
-            />
-            <PrivateRoute
-              path={routes.STATISTICS}
-              redirectTo={routes.LOGIN}
-              component={StatisticPage}
-            />
-            <PrivateRoute
-              path={routes.HOME}
-              redirectTo={routes.LOGIN}
-              component={HomePage}
-            /> */}
 
-            </Switch>
-          </div>
-
-        </div>
+                  <Media device="fromTablet">
+                    <Redirect to={routes.HOME} from={routes.CURRENCY} />
+                  </Media>
+                </div>
+              </div>
+            </>
+          )}
+          <PrivateRoute path={routes.STATISTICS} redirectTo={routes.LOGIN} />
+          <PrivateRoute path={routes.HOME} redirectTo={routes.LOGIN} />
+          <ErrorPage />
+        </Switch>
       </>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  isAuthenticated: authSelectors.getIsAuthenticated(state),
+});
+
+export default connect(mapStateToProps)(App);
 
 // import React, { useState, useEffect } from 'react';
 // import CurrencyExchange from './Components/CurrencyExchange';

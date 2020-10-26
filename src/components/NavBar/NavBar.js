@@ -4,6 +4,7 @@ import MediaQuery from 'react-responsive';
 import SvgIcons from './SvgIcons';
 import routes from '../../routes';
 import s from './NavBar.module.css';
+import { Media } from '../../common';
 
 const NavBar = ({ children }) => {
   return (
@@ -17,9 +18,9 @@ const NavBar = ({ children }) => {
             activeClassName={s.navLink__active}
           >
             <SvgIcons id="icon-home" />
-            <MediaQuery minDeviceWidth={426}>
+            <Media device="fromTablet">
               <span className={s.navLink_text}>Home</span>
-            </MediaQuery>
+            </Media>
           </NavLink>
           <NavLink
             exact
@@ -28,11 +29,11 @@ const NavBar = ({ children }) => {
             activeClassName={s.navLink__active}
           >
             <SvgIcons id="icon-diagram" />
-            <MediaQuery minDeviceWidth={426}>
+            <Media device="fromTablet">
               <span className={s.navLink_text}>Diagram</span>
-            </MediaQuery>
+            </Media>
           </NavLink>
-          <MediaQuery maxDeviceWidth={425}>
+          <Media device="mobile">
             <NavLink
               exact
               to={routes.CURRENCY}
@@ -41,10 +42,8 @@ const NavBar = ({ children }) => {
             >
               <SvgIcons id="icon-currency" />
             </NavLink>
-          </MediaQuery>
-          <MediaQuery minDeviceWidth={426} maxDeviceWidth={1169}>
-            {children}
-          </MediaQuery>
+          </Media>
+          <Media device="onlyTablet">{children}</Media>
         </div>
       </div>
     </>

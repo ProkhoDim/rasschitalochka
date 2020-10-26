@@ -6,8 +6,8 @@
   --darkgreen-color: rgb(80, 109, 86);
   --middlegreen-color: rgb(97, 147, 97);
   --lightgreen-color: rgb(102, 150, 104);
-  --bold-ff: 'Helvetica Bold', 'Arial', sans-serif;
-  --main-ff: 'Helvetica', 'Arial', sans-serif;
+  --bold-ff: 'HelveticaNeueCyr Bold', 'Arial', sans-serif;
+  --main-ff: 'HelveticaNeueCyr', 'Arial', sans-serif;
   --modalbtn-hover-color: linear-gradient(
     0deg,
     rgb(236, 178, 42) 0%,

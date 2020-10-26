@@ -7,10 +7,13 @@ const Media = ({ device, children }) => {
       {device === 'mobile' && (
         <MediaQuery maxDeviceWidth={767}>{children}</MediaQuery>
       )}
-      {device === 'tablet' && (
+      {device === 'onlyTablet' && (
         <MediaQuery minDeviceWidth={768} maxDeviceWidth={1339}>
           {children}
         </MediaQuery>
+      )}
+      {device === 'fromTablet' && (
+        <MediaQuery minDeviceWidth={768}>{children}</MediaQuery>
       )}
       {device === 'desktop' && (
         <MediaQuery minDeviceWidth={1440}>{children}</MediaQuery>

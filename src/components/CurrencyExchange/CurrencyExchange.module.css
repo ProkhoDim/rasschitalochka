@@ -30,6 +30,7 @@
 .CurrencyExchange__headerRow {
   font-family: var(--bold-ff);
   font-weight: bold;
+  font-size: 15px;
   display: flex;
   height: 60px;
   min-width: 320px;

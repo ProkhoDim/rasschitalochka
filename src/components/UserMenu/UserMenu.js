@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './UserMenu.module.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const UserMenu = ({ name, logoutBtn, onLogout }) => (
   <div className={styles.userMenuContainer}>

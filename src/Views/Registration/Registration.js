@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 
 import s from './Registration.module.css';
+import routes from '../../routes';
 
 const initialState = {
   user: {
@@ -72,7 +73,7 @@ class Registration extends Component {
               type="email"
               name="email"
               value={email}
-              autocomplete="off"
+              autoComplete="off"
               placeholder="E-mail as Login"
               onChange={this.onChangeHandler}
               onBlur={this.onBlurEmailHandler}
@@ -127,7 +128,7 @@ class Registration extends Component {
             Register
           </button>
         </form>
-        <NavLink className={s.loginLink} exact to="/login">
+        <NavLink className={s.loginLink} exact to={routes.LOGIN}>
           Login
         </NavLink>
       </div>

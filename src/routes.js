@@ -4,4 +4,6 @@ export default {
   LOGIN: '/login',
   REGISTER: '/registration',
   CURRENCY: '/currency-exchange',
+  ADDINCOME: '/add-income',
+  ADDCOST: '/add-cost',
 };

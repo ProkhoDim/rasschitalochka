@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { authOperations } from '../../redux/auth';
+import routes from '../../routes';
 import s from './Login.module.css';
 
 const initialState = {
@@ -26,7 +27,6 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     const isBtnNotDisabled = email.length > 0 && password.length > 0;
-    console.log(isBtnNotDisabled);
     return (
       <div className={s.loginBlock}>
         <div className={s.logo}></div>
@@ -42,7 +42,7 @@ class Login extends Component {
               type="email"
               name="email"
               placeholder="E-mail as Login"
-              autocomplete="off"
+              autoComplete="off"
               value={email}
               onChange={this.onChangeHandler}
             />
@@ -54,7 +54,7 @@ class Login extends Component {
               type="password"
               name="password"
               value={password}
-              autocomplete="off"
+              autoComplete="off"
               placeholder="Password"
               onChange={this.onChangeHandler}
             />
@@ -67,7 +67,7 @@ class Login extends Component {
             Enter
           </button>
         </form>
-        <NavLink className={s.regLink} exact to="/register">
+        <NavLink className={s.regLink} exact to={routes.REGISTER}>
           Register
         </NavLink>
       </div>

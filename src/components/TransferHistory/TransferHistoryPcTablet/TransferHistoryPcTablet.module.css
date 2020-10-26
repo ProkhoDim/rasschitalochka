@@ -13,12 +13,24 @@
   text-align: center;
   border-collapse: collapse;
   font-size: 13px;
+  font-family: 'HelveticaNeueCyr';
+  font-weight: 300;
 }
 
 .th,
 .td {
   height: 72px;
   /* padding-left: */
+}
+
+.th {
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.td:nth-child(5) {
+  font-weight: normal;
 }
 
 .tableTopRow tr {

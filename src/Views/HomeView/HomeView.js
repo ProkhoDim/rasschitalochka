@@ -21,10 +21,7 @@ class HomeView extends Component {
           <Media device="mobile">
             <TransferMobile dataBase={DB} />
           </Media>
-          <Media device="desktop">
-            <TransferPcTablet dataBase={DB} />
-          </Media>
-          <Media device="tablet">
+          <Media device="fromTablet">
             <TransferPcTablet dataBase={DB} />
           </Media>
         </div>
