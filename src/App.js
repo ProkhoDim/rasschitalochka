@@ -5,7 +5,7 @@ import { ErrorPage } from './pages';
 import './css/global.css';
 import './css/fonts.css';
 
-import { HomeView, LoginView, RegView, StatView } from './views';
+import { HomeView, LoginView, RegView, StatView } from './Views';
 import {
   AddCost,
   AddIncome,
