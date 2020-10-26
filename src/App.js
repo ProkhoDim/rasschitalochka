@@ -9,6 +9,8 @@ import AppBar from './components/AppBar';
 import ModalBtn from './components/ModalBtn';
 import SideBar from './components/Sidebar';
 import './fonts/fonts.css';
+import Login from './Views/Login';
+import Registration from './Views/Registration';
 import StatisticsView from './Views/StatisticsView'; //когда будет роутинг удалить
 
 class App extends Component {
@@ -62,6 +64,8 @@ class App extends Component {
           <AppBar />
           <SideBar />
           <ModalBtn />
+          <Login />
+          <Registration />
         </div>
       </>
     );

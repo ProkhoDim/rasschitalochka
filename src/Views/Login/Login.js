@@ -25,7 +25,8 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
-
+    const isBtnNotDisabled = email.length > 0 && password.length > 0;
+    console.log(isBtnNotDisabled);
     return (
       <div className={s.loginBlock}>
         <div className={s.logo}></div>
@@ -35,33 +36,34 @@ class Login extends Component {
           onSubmit={this.onSubmitHandler}
           autoComplete="off"
         >
-          <label
-          // className={}
-          >
+          <label>
             <input
               className={s.emailInput}
               type="email"
               name="email"
               placeholder="E-mail as Login"
+              autocomplete="off"
               value={email}
               onChange={this.onChangeHandler}
             />
           </label>
 
-          <label
-          // className={}
-          >
+          <label>
             <input
               className={s.passwordInput}
               type="password"
               name="password"
               value={password}
+              autocomplete="off"
               placeholder="Password"
               onChange={this.onChangeHandler}
             />
           </label>
-
-          <button className={s.btnLogin} type="submit">
+          <button
+            className={s.btnLogin}
+            type="submit"
+            disabled={!isBtnNotDisabled}
+          >
             Enter
           </button>
         </form>

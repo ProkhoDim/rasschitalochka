@@ -1,4 +1,5 @@
 .loginBlock {
+  padding-top: 62px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,8 +104,15 @@
   background: linear-gradient(#ecb22a, #ff6c00);
   box-shadow: 3px 3px 0px 0px rgba(255, 108, 0, 0.2);
 }
+
+.btnLogin:disabled {
+  background: linear-gradient(#c5c5c5, #141414);
+  box-shadow: 3px 3px 0px 0px rgba(97, 97, 97, 0.2);
+}
+
 .regLink {
   color: rgb(107, 125, 131);
   font-family: HelveticaNeueCyr-Roman, sans-serif;
   font-size: 12px;
+  margin-bottom: 65px;
 }

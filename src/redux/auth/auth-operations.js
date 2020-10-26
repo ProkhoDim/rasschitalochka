@@ -12,17 +12,16 @@ const token = {
   },
 };
 
-// const register = userData => async dispatch => {
-//   dispatch(authActions.registerRequest());
+const register = userData => async dispatch => {
+  dispatch(authActions.registerRequest());
 
-//   try {
-//     const response = await axios.post('/users/signup', userData);
-//     token.set(response.data.token)
-//     dispatch(authActions.registerSuccess(response.data));
-//   } catch (error) {
-//     dispatch(authActions.registerError(error));
-//   }
-// }
+  try {
+    await axios.post('api/register', userData);
+    dispatch(authActions.registerSuccess());
+  } catch (error) {
+    dispatch(authActions.registerError(error));
+  }
+};
 
 const login = userData => async dispatch => {
   dispatch(authActions.loginRequest());
@@ -36,30 +35,11 @@ const login = userData => async dispatch => {
   }
 };
 
-// const getCurrentUser = () => async (dispatch, getState) => {
-//   const { auth: { token: persistedToken } } = getState();
-
-//   if (!persistedToken) {
-//     return
-//   }
-
-//   token.set(persistedToken)
-//   dispatch(authActions.getCurrentUserRequest())
-
-//   try {
-//     const response = await axios.get('/users/current')
-
-//     dispatch(authActions.getCurrentUserSuccess(response.data))
-//   } catch (error) {
-//     dispatch(authActions.getCurrentUserError(error))
-//   }
-// }
-
 const logOut = () => dispatch => {
   dispatch(authActions.logoutRequest());
   axios
     //   review depends on route!!!
-    .post('/api/logout')
+    .get('/api/logout')
     .then(() => dispatch(authActions.logoutSuccess()), token.unset())
     .catch(error => dispatch(authActions.logoutError(error.message)));
 };
@@ -75,7 +55,7 @@ const getCurrentUser = () => (dispatch, getState) => {
   dispatch(authActions.getCurrentUserRequest());
   axios
     //   review depends on route!!!
-    .get('/users/current')
+    .get('')
     .then(({ data }) => dispatch(authActions.getCurrentUserSuccess(data)))
     .catch(error => dispatch(authActions.getCurrentUserError(error.message)));
 };
@@ -89,7 +69,7 @@ export default {
   getCurrentUser,
   addIncome,
   addCost,
-  // register,
+  register,
   login,
-  // token,
+  token,
 };
