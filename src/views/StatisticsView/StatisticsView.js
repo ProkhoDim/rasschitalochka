@@ -18,18 +18,20 @@ const data = [
 ];
 
 const StatisticsView = () => (
-  <section className={styles.Statistics}>
-    {/* добавить рендер по условию от 768px */}
-    <h2 className={styles.Title}>Cost Diagram</h2>
-    <div className={styles.Wrapper}>
-      <div className={styles.Chart}>
-        <Chart data={data} />
-        <UpdateChartBtn />
-      </div>
-      <div className={styles.Data}>
-        <ChartSelection />
-        <Legend />
-        <Total />
+  <section>
+    <div className={styles.Statistics + ' main_container'}>
+      {/* добавить рендер по условию от 768px */}
+      <h2 className={styles.Title}>Cost Diagram</h2>
+      <div className={styles.Wrapper}>
+        <div className={styles.Chart}>
+          <Chart data={data} />
+          <UpdateChartBtn />
+        </div>
+        <div className={styles.Data}>
+          <ChartSelection />
+          <Legend />
+          <Total />
+        </div>
       </div>
     </div>
   </section>

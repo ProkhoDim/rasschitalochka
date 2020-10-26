@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from './routes';
 import { ErrorPage } from './pages';
-import NavBar from './components/NavBar';
-import SvgIcons from './components/NavBar/SvgIcons';
-
-import AppBar from './components/AppBar';
-import ModalBtn from './components/ModalBtn';
-import SideBar from './components/Sidebar';
+import './css/global.css';
 import './fonts/fonts.css';
-import StatisticsView from './Views/StatisticsView'; //когда будет роутинг удалить
+import { HomeView, StatView } from './Views';
+import {
+  AppBar,
+  CurrencyExchange,
+  NavBar,
+  Sidebar,
+  TotalBalance,
+} from './components';
+import Media from './common/Media';
 
 class App extends Component {
   componentDidMount = () => {
@@ -30,9 +33,27 @@ class App extends Component {
     return (
       <>
         <div className="Container">
-          <NavBar children={null} />
-          <Switch>
-            {/* <PublicRoute
+          <AppBar />
+          <div className="page_wrap">
+            <div className="aside_container">
+              <NavBar children={<TotalBalance />} />
+              <Media children={<Sidebar />} device="desktop" />
+              <Media children={<CurrencyExchange />} device="desktop" />
+            </div>
+            <Switch>
+              <Route exact path={routes.HOME} component={HomeView} />
+              <Route exact path={routes.STATISTICS} component={StatView} />
+              <Media
+                children={
+                  <Route
+                    exact
+                    path={routes.CURRENCY}
+                    component={CurrencyExchange}
+                  />
+                }
+                device="mobile"
+              />
+              {/* <PublicRoute
               path={routes.LOGIN}
               restricted
               redirectTo={routes.HOME}
@@ -54,14 +75,8 @@ class App extends Component {
               redirectTo={routes.LOGIN}
               component={HomePage}
             /> */}
-            <ErrorPage />
-          </Switch>
-        </div>
-        <div className="App">
-          <StatisticsView />
-          <AppBar />
-          <SideBar />
-          <ModalBtn />
+            </Switch>
+          </div>
         </div>
       </>
     );

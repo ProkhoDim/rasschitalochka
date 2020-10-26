@@ -20,7 +20,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 320px) and (max-width: 768px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
   .modalBtnBox {
     justify-content: space-between;
     width: 306px;
@@ -28,26 +28,26 @@
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1657px) {
+@media screen and (min-width: 768px) and (max-width: 1339px) {
   .modalBtnBox {
     width: 700px;
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .modalBtnBox {
     justify-content: center;
     padding: 18px 0;
     background-color: var(--darkgreen-color);
   }
 
-  .modalBtn {
+  .modalBtn:nth-child(1) {
     margin-right: 30px;
   }
 }
 
-@media screen and (min-width: 1658px) {
+@media screen and (min-width: 1440px) {
   .modalBtnBox {
-    width: 1260px;
+    width: 100%;
   }
 }

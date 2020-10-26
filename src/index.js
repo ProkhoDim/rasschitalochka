@@ -10,15 +10,12 @@ import App from './App';
 import store from './redux/store';
 import 'modern-normalize/modern-normalize.css';
 
-import Login from './Views/Login';
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store.store}>
       <PersistGate loading={null} persistor={store.persistor}>
         <BrowserRouter>
           <App />
-          <Login />
         </BrowserRouter>
       </PersistGate>
     </Provider>

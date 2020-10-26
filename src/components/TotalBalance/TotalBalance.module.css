@@ -3,6 +3,7 @@
 
 .totalBalanceBox {
   font-size: 15px;
+  line-height: 20px;
 }
 
 .titleParagraph,
@@ -18,7 +19,7 @@
   margin: 0;
 }
 
-@media screen and (min-width: 320px) and (max-width: 768px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
   .totalBalanceBox {
     width: 306px;
     margin: 0 auto 20px;
@@ -32,10 +33,9 @@
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1657px) {
+@media screen and (min-width: 768px) and (max-width: 1339px) {
   .totalBalanceBox {
     display: flex;
-    margin-bottom: 28px;
     align-items: center;
     font-family: var(--main-ff);
     color: var(--lightgrey-color);
@@ -56,11 +56,11 @@
   }
 }
 
-@media screen and (min-width: 1658px) {
+@media screen and (min-width: 1440px) {
   .totalBalanceBox {
-    width: 358px;
+    width: 360px;
     margin-bottom: 40px;
-    padding: 34px 30px;
+    padding: 30px;
     border-radius: 5px;
     box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
     background-color: var(--darkgreen-color);
