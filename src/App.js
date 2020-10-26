@@ -4,6 +4,9 @@ import routes from './routes';
 import { ErrorPage } from './pages';
 import NavBar from './components/NavBar';
 import SvgIcons from './components/NavBar/SvgIcons';
+import TransferHistoryMobile from './components/TransferHistory/TransferHistoryMobile';
+import TransferHistoryPcTablet from './components/TransferHistory/TransferHistoryPcTablet';
+import transactions from './components/TransferHistory/data/transactions.json';
 
 import AppBar from './components/AppBar';
 import ModalBtn from './components/ModalBtn';
@@ -63,6 +66,8 @@ class App extends Component {
           <SideBar />
           <ModalBtn />
         </div>
+        <TransferHistoryMobile dataBase={transactions} />
+        <TransferHistoryPcTablet dataBase={transactions} />
       </>
     );
   }

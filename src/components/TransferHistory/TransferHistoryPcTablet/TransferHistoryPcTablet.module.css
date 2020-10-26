@@ -1,0 +1,44 @@
+/* @value colors "../../../styles/vars.css"; */
+/* @value primary-color, bar-color, etc.; */
+
+.tableShadow {
+  margin: 0 auto;
+  box-shadow: 10px 17px 40px rgba(1, 1, 0, 0.15);
+  background-color: #ffffff;
+  border-radius: 0 0 3px 3px;
+}
+
+.table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th,
+td {
+  height: 72px;
+  /* padding-left: */
+}
+
+.tableTopRow tr {
+  background-color: #f3f6f6;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.tableRow:nth-child(even) {
+  background-color: #f3f6f6;
+}
+
+@media screen and (min-width: 768px) {
+  .tableShadow {
+    width: 748px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tableShadow {
+    width: 1260px;
+  }
+}
