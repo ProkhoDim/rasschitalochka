@@ -31,4 +31,8 @@
   .main_container {
     width: 980px;
   }
+
+  .main_container__table {
+    box-shadow: none;
+  }
 }

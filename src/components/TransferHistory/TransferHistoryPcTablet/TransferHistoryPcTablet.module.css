@@ -15,8 +15,8 @@
   font-size: 13px;
 }
 
-th,
-td {
+.th,
+.td {
   height: 72px;
   /* padding-left: */
 }
@@ -33,12 +33,12 @@ td {
 
 @media screen and (min-width: 768px) {
   .tableShadow {
-    width: 748px;
+    width: 100%;
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
   .tableShadow {
-    width: 1260px;
+    width: 100%;
   }
 }
