@@ -10,6 +10,8 @@ import ModalBtn from './components/ModalBtn';
 import SideBar from './components/Sidebar';
 import './fonts/fonts.css';
 import StatisticsView from './Views/StatisticsView'; //когда будет роутинг удалить
+import Modal from './components/Modal/Modal';
+import AddCost from './components/AddCost/AddCost';
 
 class App extends Component {
   componentDidMount = () => {
