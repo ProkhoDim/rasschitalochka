@@ -1,13 +1,13 @@
 @import '../../css/fonts.css';
 @import '../../css/helpers.css';
 
-@media screen and (min-width: 320px) and (max-width: 768px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
   .appName {
     display: none;
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .appName {
     color: var(--main-dark-color);
     font-family: var(--bold-ff);

@@ -5,7 +5,6 @@ import TotalBalance from '../TotalBalance';
 
 const SideBar = () => (
   <aside className={styles.sideBarBox}>
-    <div>Navigation</div>
     <TotalBalance />
   </aside>
 );

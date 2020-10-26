@@ -17,10 +17,10 @@ const UserMenu = ({ name, logoutBtn, onLogout }) => (
   </div>
 );
 
-UserMenu.propTypes = {
-  name: PropTypes.string.isRequired,
-  onLogout: PropTypes.func.isRequired,
-  logoutBtn: PropTypes.string.isRequired,
-};
+// UserMenu.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   onLogout: PropTypes.func.isRequired,
+//   logoutBtn: PropTypes.string.isRequired,
+// };
 
 export default UserMenu;

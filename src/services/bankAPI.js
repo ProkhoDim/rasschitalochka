@@ -4,7 +4,9 @@ const PB_API_URL =
 
 const getCurrencyExchangeCourse = async cb => {
   try {
-    return await axios.get(PB_API_URL).then(res => res.data);
+    const { data } = await axios.get(PB_API_URL);
+    const filteredData = data.filter(el => el.ccy !== 'BTC');
+    return filteredData;
   } catch (e) {
     console.error(e);
   }
