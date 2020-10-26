@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './TransferHistoryPcTablet.module.css';
-
 const { tableShadow, table, tableRow, tableTopRow } = styles;
 
 const TransferHistoryPcTablet = ({ dataBase }) => (
