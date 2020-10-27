@@ -7,6 +7,12 @@ import {
   addTransactionSuccess,
   addTransactionError,
   setTotalBalance,
+  addCostRequest,
+  addCostSuccess,
+  addCostError,
+  addIncomeRequest,
+  addIncomeSuccess,
+  addIncomeError,
 } from './finance-action';
 
 const totalBalance = createReducer(0, {
@@ -24,6 +30,8 @@ const setError = (_, { payload }) => payload.message;
 const error = createReducer(null, {
   [getFinanceError]: setError,
   [addTransactionError]: setError,
+  [addIncomeError]: setError,
+  [addCostError]: setError,
 });
 
 const isLoading = createReducer(false, {
@@ -33,11 +41,31 @@ const isLoading = createReducer(false, {
   [addTransactionSuccess]: () => false,
   [getFinanceError]: () => false,
   [addTransactionError]: () => false,
+  [addCostRequest]: () => true,
+  [addIncomeRequest]: () => true,
+  [addIncomeError]: () => false,
+  [addCostError]: () => false,
 });
+
+const addIncome = createReducer(
+  {},
+  {
+    [addIncomeSuccess]: (_, { payload }) => payload,
+  },
+);
+
+const addCost = createReducer(
+  {},
+  {
+    [addCostSuccess]: (_, { payload }) => payload,
+  },
+);
 
 export default combineReducers({
   totalBalance,
   transactionHistory,
   isLoading,
   error,
+  addCost,
+  addIncome,
 });

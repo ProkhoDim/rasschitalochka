@@ -1,4 +1,6 @@
 import React, { Component, createRef } from 'react';
+import { connect } from 'react-redux';
+import financeOperations from '../../redux/finance/finance-operation';
 
 import s from './AddCost.module.css';
 import RadioButton from './RadioButton';
@@ -37,11 +39,12 @@ class AddCost extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onAddCostSubmit(this.state);
+    this.props.onCloseModal();
   };
 
   render() {
     return (
-      <form className={s.form}>
+      <form className={s.form} onSubmit={this.handleSubmit}>
         <div className={s.heading_wrapper}>
           <div className={s.amount_wrapper}>
             <input
@@ -93,4 +96,8 @@ class AddCost extends Component {
   }
 }
 
-export default AddCost;
+const mapDispatchToProps = dispatch => ({
+  onAddCostSubmit: userData => dispatch(financeOperations.addIncome(userData)),
+});
+
+export default connect(null, mapDispatchToProps)(AddCost);
