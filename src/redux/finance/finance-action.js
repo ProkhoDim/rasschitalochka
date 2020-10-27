@@ -10,9 +10,9 @@ export const addCostRequest = createAction('auth/addCostRequest');
 export const addCostSuccess = createAction('auth/addCostSuccess');
 export const addCostError = createAction('auth/addCostError');
 
-export const addIncomeRequest = createAction('auth/addIncomeRequest');
-export const addIncomeSuccess = createAction('auth/addIncomeSuccess');
-export const addIncomeError = createAction('auth/addIncomeError');
+export const addIncomeRequest = createAction('finance/addIncomeRequest');
+export const addIncomeSuccess = createAction('finance/addIncomeSuccess');
+export const addIncomeError = createAction('finance/addIncomeError');
 
 export const addTransactionRequest = createAction(
   'finance/addTransactionRequest',
