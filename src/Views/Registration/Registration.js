@@ -22,7 +22,12 @@ class Registration extends Component {
   confirmPassword = createRef();
 
   onChangeHandler = ({ currentTarget: { name, value } }) => {
-    this.setState({ user: { [name]: value } });
+    this.setState(prevState => ({
+      user: {
+        ...prevState.user,
+        [name]: value,
+      },
+    }));
   };
 
   onBlurEmailHandler = e => {
