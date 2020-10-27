@@ -59,8 +59,10 @@ class App extends Component {
                 <AppBar />
                 <div className="page_wrap">
                   <div className="aside_container">
-                    <NavBar children={<TotalBalance />} />
-                    <Media children={<Sidebar />} device="desktop" />
+                    <div className="aside_container">
+                      <NavBar children={<TotalBalance />} />
+                      <Media children={<Sidebar />} device="desktop" />
+                    </div>
                     <Media children={<CurrencyExchange />} device="desktop" />
                   </div>
                   <Route path={routes.STATISTICS} component={StatView} />

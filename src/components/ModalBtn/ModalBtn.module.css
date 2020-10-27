@@ -7,6 +7,7 @@
 }
 .modalBtn {
   padding: 12px 36px;
+  z-index: 2;
   font-family: var(--bold-ff);
   font-size: 15px;
   background-color: var(--middlegreen-color);
@@ -25,6 +26,10 @@
     justify-content: space-between;
     width: 306px;
     padding: 18px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }
 
