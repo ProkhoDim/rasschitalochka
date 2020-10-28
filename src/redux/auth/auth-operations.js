@@ -35,13 +35,15 @@ const login = userData => async dispatch => {
   }
 };
 
-const logOut = () => dispatch => {
+const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
-  axios
-    //   review depends on route!!!
-    .get('/api/logout')
-    .then(() => dispatch(authActions.logoutSuccess()), token.unset())
-    .catch(error => dispatch(authActions.logoutError(error.message)));
+
+  try {
+    token.unset();
+    dispatch(authActions.logoutSuccess());
+  } catch (error) {
+    dispatch(authActions.logoutError(error));
+  }
 };
 
 const getCurrentUser = () => (dispatch, getState) => {
@@ -60,15 +62,9 @@ const getCurrentUser = () => (dispatch, getState) => {
     .catch(error => dispatch(authActions.getCurrentUserError(error.message)));
 };
 
-// need to create!!!
-const addIncome = () => dispatch => {};
-const addCost = () => dispatch => {};
-
 export default {
   logOut,
   getCurrentUser,
-  addIncome,
-  addCost,
   register,
   login,
   token,

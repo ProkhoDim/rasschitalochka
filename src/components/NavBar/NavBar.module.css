@@ -46,6 +46,7 @@
 
 @media (min-width: 768px) and (max-width: 1339px) {
   .wrap {
+    margin-bottom: 0;
     background-color: rgb(255, 255, 255);
     height: 80px;
     display: flex;

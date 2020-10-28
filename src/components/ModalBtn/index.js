@@ -1,1 +1,1 @@
-export { default } from './ModalBtn.container';
+export { default } from './ModalBtn';

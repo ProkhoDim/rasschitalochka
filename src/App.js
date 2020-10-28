@@ -5,7 +5,7 @@ import { ErrorPage } from './pages';
 import './css/global.css';
 import './css/fonts.css';
 
-import { HomeView, LoginView, RegView, StatView } from './views';
+import { HomeView, LoginView, RegView, StatView } from './Views';
 import {
   AddCost,
   AddIncome,
@@ -59,8 +59,10 @@ class App extends Component {
                 <AppBar />
                 <div className="page_wrap">
                   <div className="aside_container">
-                    <NavBar children={<TotalBalance />} />
-                    <Media children={<Sidebar />} device="desktop" />
+                    <div className="aside_container">
+                      <NavBar children={<TotalBalance />} />
+                      <Media children={<Sidebar />} device="desktop" />
+                    </div>
                     <Media children={<CurrencyExchange />} device="desktop" />
                   </div>
                   <Route path={routes.STATISTICS} component={StatView} />

@@ -1,3 +1,18 @@
+/* @media screen and (min-width: 320px) and (max-width: 767px) {
+  .main_container {
+    position: relative;
+  }
+} */
+
+@media screen and (min-width: 768px) and (max-width: 1339px) {
+  .aside_box {
+    display: flex;
+    width: 480px;
+    margin: 0 auto 15px;
+    align-items: center;
+  }
+}
+
 @media (min-width: 768px) {
   .page_wrap {
     width: 700px;
