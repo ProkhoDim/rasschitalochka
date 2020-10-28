@@ -6,6 +6,7 @@ import routes from '../../routes';
 
 import phone from '../../assets/background/phone-mock-up.png';
 import s from './Login.module.css';
+import { Media } from '../../common';
 
 const initialState = {
   email: '',
@@ -31,13 +32,15 @@ class Login extends Component {
     const isBtnNotDisabled = email.length > 0 && password.length > 0;
     return (
       <div className={s.main__container}>
-        <div className={s.desktopImage__container}>
-          <img
-            src={phone}
-            alt="mobile phone"
-            className={s.desktopImage__phone}
-          />
-        </div>
+        <Media device="desktop">
+          <div className={s.desktopImage__container}>
+            <img
+              src={phone}
+              alt="mobile phone"
+              className={s.desktopImage__phone}
+            />
+          </div>
+        </Media>
         <div className={s.loginBlock__container}>
           <div className={s.loginBlock}>
             <div className={s.logo}></div>
