@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 
+import { Media } from '../../common';
+import phone from '../../assets/background/phone-mock-up.png';
+import logo from '../../assets/svg/logo.svg';
 import s from './Registration.module.css';
 import routes from '../../routes';
 
@@ -64,78 +67,99 @@ class Registration extends Component {
     const isBtnNotDisable =
       this.state.isValidEmail && this.state.isEqualPassword;
     return (
-      <div className={s.registerBlock}>
-        <div className={s.logo}></div>
-        <span className={s.projectName}>Raschitalochka</span>
-        <form
-          className={s.registerForm}
-          onSubmit={this.onSubmitHandler}
-          autoComplete="off"
-        >
-          <label>
-            <input
-              className={s.emailInput}
-              type="email"
-              name="email"
-              value={email}
+      <div className={s.main__container}>
+        <Media device="desktop">
+          <div className={s.desktopImage__container}>
+            <img
+              src={phone}
+              alt="mobile phone"
+              className={s.desktopImage__phone}
+            />
+
+            <p className={s.appDescription}>
+              <div className={s.appDescription__logo}>
+                <img alt="logo" src={logo} width="64" height="64" />
+                <span>Raschitalochka</span>
+              </div>
+              <span>Create your own</span> <span>categories of costs</span>
+            </p>
+          </div>
+        </Media>
+        <div className={s.registerBlock__container}>
+          <div className={s.registerBlock}>
+            <div className={s.logo}></div>
+            <span className={s.projectName}>Raschitalochka</span>
+            <form
+              className={s.registerForm}
+              onSubmit={this.onSubmitHandler}
               autoComplete="off"
-              placeholder="E-mail as Login"
-              onChange={this.onChangeHandler}
-              onBlur={this.onBlurEmailHandler}
-            />
-          </label>
-          {this.state.isValidEmail === false && (
-            <div className={s.warningText}>
-              <span>Please enter valid email address!</span>
-            </div>
-          )}
-          <label>
-            <input
-              className={s.passwordInput}
-              type="password"
-              name="password"
-              value={password}
-              placeholder="Password"
-              onChange={this.onChangeHandler}
-            />
-          </label>
-          <label>
-            <input
-              className={s.passwordInput}
-              type="password"
-              name="password confirmation"
-              placeholder="Password Confirmation"
-              onChange={this.onChangeConfrimPassHandler}
-              ref={this.confirmPassword}
-            />
-          </label>
-          {this.state.isEqualPassword === false && (
-            <div className={s.warningText}>
-              <span>Password doesn't match!</span>
-            </div>
-          )}
-          <div className={s.passwordProgressLine}></div>
-          <label>
-            <input
-              className={s.nameInput}
-              type="name"
-              name="name"
-              value={name}
-              placeholder="Your Name"
-              onChange={this.onChangeHandler}
-            />
-          </label>
-          <button
-            className={s.btnRegister}
-            type="submit"
-            disabled={!isBtnNotDisable}
-          >
-            Register
-          </button>
-        </form>
-        <NavLink className={s.loginLink} exact to={routes.LOGIN}>
-          Login
-        </NavLink>
+            >
+              <label>
+                <input
+                  className={s.emailInput}
+                  type="email"
+                  name="email"
+                  value={email}
+                  autoComplete="off"
+                  placeholder="E-mail as Login"
+                  onChange={this.onChangeHandler}
+                  onBlur={this.onBlurEmailHandler}
+                />
+              </label>
+              {this.state.isValidEmail === false && (
+                <div className={s.warningText}>
+                  <span>Please enter valid email address!</span>
+                </div>
+              )}
+              <label>
+                <input
+                  className={s.passwordInput}
+                  type="password"
+                  name="password"
+                  value={password}
+                  placeholder="Password"
+                  onChange={this.onChangeHandler}
+                />
+              </label>
+              <label>
+                <input
+                  className={s.passwordInput}
+                  type="password"
+                  name="password confirmation"
+                  placeholder="Password Confirmation"
+                  onChange={this.onChangeConfrimPassHandler}
+                  ref={this.confirmPassword}
+                />
+              </label>
+              {this.state.isEqualPassword === false && (
+                <div className={s.warningText}>
+                  <span>Password doesn't match!</span>
+                </div>
+              )}
+              <div className={s.passwordProgressLine}></div>
+              <label>
+                <input
+                  className={s.nameInput}
+                  type="name"
+                  name="name"
+                  value={name}
+                  placeholder="Your Name"
+                  onChange={this.onChangeHandler}
+                />
+              </label>
+              <button
+                className={s.btnRegister}
+                type="submit"
+                disabled={!isBtnNotDisable}
+              >
+                Register
+              </button>
+            </form>
+            <NavLink className={s.loginLink} exact to={routes.LOGIN}>
+              Login
+            </NavLink>
+          </div>
+        </div>
       </div>
     );
   }

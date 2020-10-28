@@ -10,7 +10,7 @@ import {
   RegView,
   StatisticsView,
   ErrorPage,
-} from './views';
+} from './Views';
 import {
   AppBar,
   CurrencyExchange,
