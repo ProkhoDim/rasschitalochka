@@ -1,17 +1,34 @@
 import React from 'react';
+import T from 'prop-types';
+import { connect } from 'react-redux';
+import { financeSelectors } from '../../../redux/finance';
 import styles from './Total.module.css';
 
-const Total = () => (
+const Total = ({ totalCost, totalIncome }) => (
   <ul className={styles.List}>
     <li>
       <span className={styles.Name}>Total Costs:</span>
-      <span className={(styles.Value, styles.Costs)}>22 549.24</span>
+      <span className={(styles.Value, styles.Costs)}>{totalCost}</span>
     </li>
     <li>
       <span className={styles.Name}>Total Income:</span>
-      <span className={(styles.Value, styles.Income)}>27 350.00</span>
+      <span className={(styles.Value, styles.Income)}>{totalIncome}</span>
     </li>
   </ul>
 );
 
-export default Total;
+Total.defaultProps = {
+  totalCost: 0.0,
+  totalIncome: 0.0,
+};
+
+Total.propTypes = {
+  totalCost: T.number,
+  totalIncome: T.number,
+};
+
+const mapStateToProps = state => ({
+  totalCost: financeSelectors.getTotalCost(state),
+  totalIncome: financeSelectors.getTotalIncome(state),
+});
+export default connect(mapStateToProps)(Total);
