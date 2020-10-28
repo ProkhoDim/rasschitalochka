@@ -1,6 +1,3 @@
-/* @value colors "../../../styles/vars.css"; */
-/* @value primary-color, bar-color, etc.; */
-
 .tableShadow {
   margin: 0 auto;
   box-shadow: 10px 17px 40px rgba(1, 1, 0, 0.15);
@@ -41,6 +38,12 @@
 
 .tableRow:nth-child(even) {
   background-color: #f3f6f6;
+}
+
+.alert {
+  padding-top: 30px;
+  text-align: center;
+  color: #363636;
 }
 
 @media screen and (min-width: 768px) {

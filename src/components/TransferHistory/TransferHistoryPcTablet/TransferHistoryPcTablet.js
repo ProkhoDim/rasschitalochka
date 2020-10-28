@@ -1,6 +1,7 @@
 import React from 'react';
+import { toISOString } from '../addons/formatFixer';
 import styles from './TransferHistoryPcTablet.module.css';
-const { tableShadow, table, tableRow, tableTopRow, th, td } = styles;
+const { tableShadow, table, tableRow, tableTopRow, th, td, alert } = styles;
 
 const TransferHistoryPcTablet = ({ dataBase }) => (
   <section className={tableShadow}>
@@ -17,9 +18,9 @@ const TransferHistoryPcTablet = ({ dataBase }) => (
       </thead>
       <tbody>
         {dataBase.map(
-          ({ date, type, category, comments, amount, balance }, index) => (
-            <tr key={index} className={tableRow}>
-              <td className={td}>{date}</td>
+          ({ id, date, type, category, comments, amount, balanceAfter }) => (
+            <tr key={id} className={tableRow}>
+              <td className={td}>{toISOString(date)}</td>
               <td className={td}>{type}</td>
               <td className={td}>{category}</td>
               <td className={td}>{comments}</td>
@@ -29,12 +30,13 @@ const TransferHistoryPcTablet = ({ dataBase }) => (
               >
                 {amount}
               </td>
-              <td className={td}>{balance}</td>
+              <td className={td}>{balanceAfter}</td>
             </tr>
           ),
         )}
       </tbody>
     </table>
+    {!dataBase.length && <h2 className={alert}>No new transactions yet</h2>}
   </section>
 );
 

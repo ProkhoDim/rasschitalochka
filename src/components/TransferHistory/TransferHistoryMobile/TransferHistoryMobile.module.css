@@ -1,6 +1,3 @@
-/* @value colors "../../../styles/vars.css"; */
-/* @value primary-color, bar-color, etc.; */
-
 .list {
   list-style: none;
   margin: 0 auto;
@@ -45,6 +42,12 @@
   /* OR */
   display: flex;
   margin: auto;
+}
+
+.alert {
+  padding-top: 15px;
+  text-align: center;
+  color: #363636;
 }
 
 @media screen and (min-width: 320px) {
