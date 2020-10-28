@@ -7,8 +7,6 @@ import './css/fonts.css';
 
 import { HomeView, LoginView, RegView, StatView } from './Views';
 import {
-  AddCost,
-  AddIncome,
   AppBar,
   CurrencyExchange,
   NavBar,
@@ -19,6 +17,8 @@ import Media from './common/Media';
 import { PublicRoute, PrivateRoute } from './common';
 import { authSelectors } from './redux/auth';
 import { connect } from 'react-redux';
+import IncomeMobile from './components/AddIncome/IncomeMobile';
+import CostMobile from './components/AddCost/CostMobile';
 
 class App extends Component {
   componentDidMount = () => {
@@ -67,6 +67,12 @@ class App extends Component {
                   </div>
                   <Route path={routes.STATISTICS} component={StatView} />
                   <Route path={routes.HOME} exact component={HomeView} />
+                  <Route
+                    path={routes.ADDINCOME}
+                    exact
+                    component={IncomeMobile}
+                  />
+                  <Route path={routes.ADDCOST} exact component={CostMobile} />
                   <Media
                     children={
                       <Route
