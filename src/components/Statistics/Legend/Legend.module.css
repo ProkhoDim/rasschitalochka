@@ -40,7 +40,7 @@
   text-align: right;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1339px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .Thead {
     display: none;
   }

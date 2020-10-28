@@ -7,12 +7,12 @@
 }
 
 .listItem {
-  border-left: 8px solid #75c16e;
+  /* border-left: 8px solid rgb(225, 255, 3); */
   box-shadow: 5px 5px 5px 0px rgba(235, 235, 235, 1);
   margin-bottom: 15px;
 }
 
-.listItem:nth-child(2) {
+/* .listItem:nth-child(2) {
   border-left: 8px solid #e28b20;
 }
 .listItem:nth-child(3) {
@@ -24,7 +24,7 @@
 .listItem:nth-child(5) {
   border-left: 8px solid #507c3a;
   margin-bottom: 18px;
-}
+} */
 
 .listItemRow {
   display: flex;

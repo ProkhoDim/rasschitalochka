@@ -25,20 +25,16 @@ const year = [
 
 const ChartSelection = () => (
   <section className={styles.Section}>
-    <select name="month" className={styles.Select}>
-      <option value disabled selected>
-        Month
-      </option>
+    <select name="month" className={styles.Select} defaultValue="Month">
+      <option disabled>Month</option>
       {month.map(({ value, name }) => (
         <option key={value + name} value={value}>
           {name}
         </option>
       ))}
     </select>
-    <select name="year" className={styles.Select}>
-      <option value disabled selected>
-        Year
-      </option>
+    <select name="year" className={styles.Select} defaultValue="Year">
+      <option disabled>Year</option>
       {year.map(({ name }) => (
         <option key={name} value={name}>
           {name}

@@ -15,7 +15,6 @@ class HomeView extends Component {
   componentDidMount() {
     const { transactionHistory } = this.props;
     const isTransactionHistoryExist = transactionHistory.length > 0;
-    console.log(isTransactionHistoryExist);
     if (!isTransactionHistoryExist) {
       this.props.getFinance();
     }

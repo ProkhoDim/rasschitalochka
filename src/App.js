@@ -4,7 +4,13 @@ import routes from './routes';
 import './css/global.css';
 import './css/fonts.css';
 
-import { HomeView, LoginView, RegView, StatView, ErrorPage } from './views';
+import {
+  HomeView,
+  LoginView,
+  RegView,
+  StatisticsView,
+  ErrorPage,
+} from './views';
 import {
   AppBar,
   CurrencyExchange,
@@ -53,7 +59,11 @@ class App extends Component {
 
                     <Media children={<CurrencyExchange />} device="desktop" />
                   </div>
-                  <Route path={routes.STATISTICS} component={StatView} />
+                  <Route
+                    path={routes.STATISTICS}
+                    exact
+                    component={StatisticsView}
+                  />
                   <Route path={routes.HOME} exact component={HomeView} />
                   <Route
                     path={routes.ADDINCOME}
