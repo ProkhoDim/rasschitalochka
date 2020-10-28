@@ -47,8 +47,8 @@ class Registration extends Component {
   };
 
   onSubmitHandler = e => {
-    const { onRegister } = this.props;
     e.preventDefault();
+    const { onRegister } = this.props;
     if (
       this.state.isValidEmail === true &&
       this.state.isEqualPassword === true

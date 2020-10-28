@@ -5,14 +5,6 @@ import styles from './TransferHistoryMobile.module.css';
 const { list, listItem, listItemRow } = styles;
 
 const randomColor = index => {
-  // return Math.floor(Math.random() * 16777215).toString(16);
-  // if (index % 2 === 0) {
-  //   console.log(index);
-  //   return `rgb(255, ${index * 10},  ${index * 5})`;
-  // }
-
-  // console.log(index);
-  // return `rgb(255,  ${index * 3}, ${index * 10})`;
   return `#${(index * 123 + 500).toString(16)}`;
 };
 

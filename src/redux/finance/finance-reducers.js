@@ -14,18 +14,21 @@ import {
   addIncomeSuccess,
   addIncomeError,
 } from './finance-action';
+import { authActions } from '../auth';
 
 const totalBalance = createReducer(0, {
   [getFinanceSuccess]: (_, { payload }) => payload.totalBalance,
   [setTotalBalance]: (_, { payload }) => payload,
   [addIncomeSuccess]: (_, { payload }) => payload.balance,
   [addCostSuccess]: (_, { payload }) => payload.balance,
+  [authActions.logoutSuccess]: () => null,
 });
 
 const transactionHistory = createReducer([], {
   [getFinanceSuccess]: (_, { payload }) => [...payload.data],
   [addIncomeSuccess]: (_, { payload }) => [...payload.data],
   [addCostSuccess]: (_, { payload }) => [...payload.data],
+  [authActions.logoutSuccess]: () => [],
 });
 
 const setError = (_, { payload }) => payload.message;

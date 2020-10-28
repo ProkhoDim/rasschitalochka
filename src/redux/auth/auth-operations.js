@@ -16,8 +16,14 @@ const register = userData => async dispatch => {
   dispatch(authActions.registerRequest());
 
   try {
-    await axios.post('api/register', userData);
+    const {
+      data: { success },
+    } = await axios.post('api/register', userData);
     dispatch(authActions.registerSuccess());
+    console.log(success);
+    if (success) {
+      window.location.assign(window.location.origin + '/login');
+    }
   } catch (error) {
     dispatch(authActions.registerError(error));
   }
