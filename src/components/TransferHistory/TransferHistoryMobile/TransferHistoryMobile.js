@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { financeSelectors } from '../../../redux/finance';
 import styles from './TransferHistoryMobile.module.css';
 const { list, listItem, listItemRow } = styles;
 
@@ -6,11 +8,11 @@ const TransferHistoryMobile = ({ dataBase }) => (
   <section>
     <ul className={list}>
       {dataBase.map(
-        ({ date, type, category, comments, amount, balance }, index) => (
+        ({ date, type, category, comments, amount, balanceAfter }, index) => (
           <li key={index} className={listItem}>
             <div className={listItemRow}>
               <p>Date</p>
-              <p>{date}</p>
+              <p>{new Date(date).toLocaleDateString()}</p>
             </div>
             <div className={listItemRow}>
               <p>Type</p>
@@ -32,7 +34,7 @@ const TransferHistoryMobile = ({ dataBase }) => (
             </div>
             <div className={listItemRow}>
               <p>Balance After</p>
-              <p>{balance}</p>
+              <p>{balanceAfter}</p>
             </div>
           </li>
         ),
@@ -41,4 +43,8 @@ const TransferHistoryMobile = ({ dataBase }) => (
   </section>
 );
 
-export default TransferHistoryMobile;
+const mapStateToProps = state => ({
+  dataBase: financeSelectors.getTransactionHistory(state),
+});
+
+export default connect(mapStateToProps)(TransferHistoryMobile);

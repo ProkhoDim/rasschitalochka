@@ -97,7 +97,7 @@ class AddCost extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onAddCostSubmit: userData => dispatch(financeOperations.addIncome(userData)),
+  onAddCostSubmit: userData => dispatch(financeOperations.addCost(userData)),
 });
 
 export default connect(null, mapDispatchToProps)(AddCost);

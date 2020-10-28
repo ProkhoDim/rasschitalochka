@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Media from '../../common/Media';
 import {
   CurrencyExchange,
@@ -7,10 +8,18 @@ import {
   TransferMobile,
   TransferPcTablet,
 } from '../../components';
-import DB from '../../components/TransferHistory/data/transactions.json';
+import { financeOperation, financeSelectors } from '../../redux/finance';
 
 class HomeView extends Component {
   state = {};
+  componentDidMount() {
+    const { transactionHistory } = this.props;
+    const isTransactionHistoryExist = transactionHistory.length > 0;
+    console.log(isTransactionHistoryExist);
+    if (!isTransactionHistoryExist) {
+      this.props.getFinance();
+    }
+  }
   render() {
     return (
       <>
@@ -19,16 +28,24 @@ class HomeView extends Component {
 
           <ModalBtn />
           <Media device="mobile">
-            <TransferMobile dataBase={DB} />
+            <TransferMobile />
           </Media>
           <Media device="fromTablet">
-            <TransferPcTablet dataBase={DB} />
+            <TransferPcTablet />
           </Media>
         </div>
-        <Media children={<CurrencyExchange />} device="tablet" />
+        <Media children={<CurrencyExchange />} device="onlyTablet" />
       </>
     );
   }
 }
 
-export default HomeView;
+const mapStateToProps = state => ({
+  transactionHistory: financeSelectors.getTransactionHistory(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  getFinance: () => dispatch(financeOperation.getFinance()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView);

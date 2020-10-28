@@ -15,6 +15,7 @@
   font-size: 13px;
   font-family: 'HelveticaNeueCyr';
   font-weight: 300;
+  margin-bottom: 30px;
 }
 
 .th,
@@ -41,16 +42,4 @@
 
 .tableRow:nth-child(even) {
   background-color: #f3f6f6;
-}
-
-@media screen and (min-width: 768px) {
-  .tableShadow {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .tableShadow {
-    width: 100%;
-  }
 }

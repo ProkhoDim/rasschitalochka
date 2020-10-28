@@ -24,8 +24,9 @@
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .modalBtnBox {
-    justify-content: space-between;
-    width: 306px;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: var(--main-white-color);
     padding: 18px 0;
     position: fixed;
     bottom: 0;

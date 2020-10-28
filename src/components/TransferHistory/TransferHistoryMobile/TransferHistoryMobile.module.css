@@ -3,7 +3,7 @@
 
 .list {
   list-style: none;
-  margin: 0 auto;
+  margin: 0 auto 85px;
 }
 
 .listItem {
@@ -45,15 +45,4 @@
   /* OR */
   display: flex;
   margin: auto;
-}
-
-@media screen and (min-width: 320px) {
-  .list {
-    width: 320px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .list {
-    display: none;
-  }
 }
