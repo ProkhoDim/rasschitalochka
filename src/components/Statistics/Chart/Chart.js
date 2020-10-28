@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import ChartWrapper from '../ChartWrapper';
 import { VictoryPie } from 'victory';
 
@@ -29,6 +30,10 @@ const Chart = ({ data }) => {
       />
     </ChartWrapper>
   );
+};
+
+Chart.propTypes = {
+  data: T.array.isRequired,
 };
 
 export default Chart;

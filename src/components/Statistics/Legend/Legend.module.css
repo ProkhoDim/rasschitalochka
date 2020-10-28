@@ -48,7 +48,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 260px;
   }
   .Tbody tr {
     width: 48%;
