@@ -7,6 +7,7 @@
 }
 .modalBtn {
   padding: 12px 36px;
+  z-index: 2;
   font-family: var(--bold-ff);
   font-size: 15px;
   background-color: var(--middlegreen-color);
@@ -14,6 +15,7 @@
   color: var(--main-white-color);
   border: none;
   border-radius: 5px;
+  text-decoration: none;
 }
 .modalBtn:hover {
   background-image: var(--modalbtn-hover-color);
@@ -22,9 +24,14 @@
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .modalBtnBox {
-    justify-content: space-between;
-    width: 306px;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: var(--main-white-color);
     padding: 18px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }
 

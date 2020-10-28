@@ -31,9 +31,12 @@
     font-family: var(--bold-ff);
     text-align: center;
   }
+  .currencyParagraph {
+    margin-right: 4px;
+  }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1339px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .totalBalanceBox {
     display: flex;
     align-items: center;
@@ -56,9 +59,9 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .totalBalanceBox {
-    width: 360px;
+    width: 100%;
     margin-bottom: 40px;
     padding: 30px;
     border-radius: 5px;

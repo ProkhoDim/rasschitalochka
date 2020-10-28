@@ -65,7 +65,8 @@
   padding-left: 26px;
   color: #282828;
   font-size: 13px;
-  font-weight: 400;
+  padding-bottom: 12px;
+  font-weight: 500;
   text-transform: capitalize;
 }
 
@@ -75,9 +76,7 @@
 
 .radio_button {
   width: 0;
-}
-
-.comments_wrapper {
+  visibility: hidden;
 }
 
 .comments_heading {
@@ -98,7 +97,7 @@
   margin-bottom: 25px;
   color: #282828;
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 500;
   padding: 10px;
   resize: none;
 }
@@ -118,7 +117,9 @@
   text-transform: capitalize;
 }
 
-.button:active {
+.button:active,
+.button:hover {
+  cursor: pointer;
   background-color: #ff6c00;
   background-image: linear-gradient(
     to right,
@@ -132,7 +133,7 @@
   width: 11px;
   height: 11px;
   border-radius: 100%;
-  top: -1px;
+  top: 2px;
   left: -26px;
   position: relative;
   content: '';
@@ -146,7 +147,7 @@
   width: 11px;
   height: 11px;
   border-radius: 100%;
-  top: -1px;
+  top: 2px;
   left: -26px;
   position: relative;
   background: #ff6c00;

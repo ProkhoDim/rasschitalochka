@@ -1,16 +1,34 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { financeSelectors } from '../../../redux/finance';
 import styles from './TransferHistoryMobile.module.css';
 const { list, listItem, listItemRow } = styles;
+
+const randomColor = index => {
+  // return Math.floor(Math.random() * 16777215).toString(16);
+  // if (index % 2 === 0) {
+  //   console.log(index);
+  //   return `rgb(255, ${index * 10},  ${index * 5})`;
+  // }
+
+  // console.log(index);
+  // return `rgb(255,  ${index * 3}, ${index * 10})`;
+  return `#${(index * 123 + 500).toString(16)}`;
+};
 
 const TransferHistoryMobile = ({ dataBase }) => (
   <section>
     <ul className={list}>
       {dataBase.map(
-        ({ date, type, category, comments, amount, balance }, index) => (
-          <li key={index} className={listItem}>
+        ({ date, type, category, comments, amount, balanceAfter }, index) => (
+          <li
+            key={index}
+            className={listItem}
+            style={{ borderLeft: `8px solid ${randomColor(index)}` }}
+          >
             <div className={listItemRow}>
               <p>Date</p>
-              <p>{date}</p>
+              <p>{new Date(date).toLocaleDateString()}</p>
             </div>
             <div className={listItemRow}>
               <p>Type</p>
@@ -32,7 +50,7 @@ const TransferHistoryMobile = ({ dataBase }) => (
             </div>
             <div className={listItemRow}>
               <p>Balance After</p>
-              <p>{balance}</p>
+              <p>{balanceAfter}</p>
             </div>
           </li>
         ),
@@ -41,4 +59,8 @@ const TransferHistoryMobile = ({ dataBase }) => (
   </section>
 );
 
-export default TransferHistoryMobile;
+const mapStateToProps = state => ({
+  dataBase: financeSelectors.getTransactionHistory(state),
+});
+
+export default connect(mapStateToProps)(TransferHistoryMobile);

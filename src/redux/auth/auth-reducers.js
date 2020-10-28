@@ -8,13 +8,14 @@ const user = createReducer(initialUserState, {
   [authActions.registerSuccess]: () => initialUserState,
   [authActions.loginSuccess]: (_, { payload }) => payload.user,
   [authActions.logoutSuccess]: () => initialUserState,
-  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+  [authActions.getCurrentUserError]: () => initialUserState,
 });
 
 const token = createReducer(null, {
   [authActions.registerSuccess]: () => null,
   [authActions.loginSuccess]: (_, { payload }) => payload.token,
   [authActions.logoutSuccess]: () => null,
+  [authActions.getCurrentUserError]: () => null,
 });
 
 const setError = (_, { payload }) => payload.message;
@@ -29,6 +30,7 @@ const error = createReducer(null, {
 const isAuthenticated = createReducer(false, {
   [authActions.registerSuccess]: () => true,
   [authActions.loginSuccess]: () => true,
+  [authActions.getCurrentUserSuccess]: () => true,
   [authActions.registerError]: () => false,
   [authActions.loginError]: () => false,
   [authActions.getCurrentUserError]: () => false,

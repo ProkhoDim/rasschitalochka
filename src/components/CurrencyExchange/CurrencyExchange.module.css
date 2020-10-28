@@ -20,6 +20,7 @@
 
 .CurrencyExchange__table {
   min-width: 100%;
+  border-spacing: 0;
 }
 
 .CurrencyExchange__table td {
@@ -51,12 +52,12 @@
   line-height: 40px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1339px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .CurrencyExchange {
-    margin: 0;
+    margin: 0 0 30px;
     padding-top: 0;
     background-image: none;
-    min-width: 350px;
+    min-width: 300px;
     min-height: 186px;
     box-shadow: 10px 17.321px 20px rgba(1, 1, 0, 0.15);
   }
@@ -68,15 +69,19 @@
     border-radius: 0 0 10px 10px;
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .sectionWrap {
     box-shadow: 10px 17.321px 20px rgba(1, 1, 0, 0.15);
+  }
+
+  .CurrencyExchange__headerRow {
+    min-width: 300px;
   }
 
   .CurrencyExchange {
     margin: 0;
     padding-top: 0;
-    min-width: 360px;
+    min-width: 300px;
     min-height: 490px;
   }
 }

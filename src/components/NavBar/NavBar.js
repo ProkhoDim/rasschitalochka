@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import MediaQuery from 'react-responsive';
 import SvgIcons from './SvgIcons';
 import routes from '../../routes';
 import s from './NavBar.module.css';

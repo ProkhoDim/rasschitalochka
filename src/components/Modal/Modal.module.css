@@ -50,10 +50,11 @@
   background-image: url('../../assets/modal/arrow.png');
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .modal_content {
     background-color: #fffffe;
     max-width: 500px;
+    height: auto;
     box-shadow: 10px 17px 40px rgba(1, 1, 0, 0.15);
     border-radius: 4px;
   }

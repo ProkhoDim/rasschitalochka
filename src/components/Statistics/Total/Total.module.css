@@ -19,10 +19,11 @@
   color: #6fa76f;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1339px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .List {
     display: flex;
     flex-direction: column;
+    padding-right: 10px;
     align-items: flex-end;
     border-top: 2px solid #b9c9d4;
   }
@@ -32,7 +33,7 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .List {
     padding-bottom: 0;
   }

@@ -35,40 +35,41 @@ const login = userData => async dispatch => {
   }
 };
 
-const logOut = () => dispatch => {
+const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
-  axios
-    //   review depends on route!!!
-    .get('/api/logout')
-    .then(() => dispatch(authActions.logoutSuccess()), token.unset())
-    .catch(error => dispatch(authActions.logoutError(error.message)));
+
+  try {
+    token.unset();
+    dispatch(authActions.logoutSuccess());
+  } catch (error) {
+    dispatch(authActions.logoutError(error));
+  }
 };
 
-const getCurrentUser = () => (dispatch, getState) => {
+const getCurrentUser = () => async (dispatch, getState) => {
   const {
-    auth: { token: persistedToken },
+    auth: { token: persistedToken, id },
   } = getState();
   if (!persistedToken) {
     return;
   }
   token.set(persistedToken);
-  dispatch(authActions.getCurrentUserRequest());
-  axios
-    //   review depends on route!!!
-    .get('')
-    .then(({ data }) => dispatch(authActions.getCurrentUserSuccess(data)))
-    .catch(error => dispatch(authActions.getCurrentUserError(error.message)));
+  try {
+    dispatch(authActions.getCurrentUserRequest());
+    const {
+      data: {
+        finance: { totalBalance, data },
+      },
+    } = await axios.get(`api/finance/${id}`);
+    dispatch(authActions.getCurrentUserSuccess({ totalBalance, data }));
+  } catch (error) {
+    dispatch(authActions.getCurrentUserError(error));
+  }
 };
-
-// need to create!!!
-const addIncome = () => dispatch => {};
-const addCost = () => dispatch => {};
 
 export default {
   logOut,
   getCurrentUser,
-  addIncome,
-  addCost,
   register,
   login,
   token,

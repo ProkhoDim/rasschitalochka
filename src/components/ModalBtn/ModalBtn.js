@@ -1,9 +1,12 @@
 import React, { useCallback, useState } from 'react';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import Modal from '../Modal/Modal';
 import AddCost from '../AddCost/AddCost';
 import AddIncome from '../AddIncome/AddIncome';
 import styles from './ModalBtn.module.css';
+import routes from '../../routes';
 
 const ModalBtn = () => {
   const [showModal, setShowModal] = useState(false);
@@ -26,28 +29,43 @@ const ModalBtn = () => {
     }
   };
 
+  const isMobile = window.screen.width < 768 ? true : false;
+
   return (
     <>
       <div className={styles.modalBtnBox}>
-        <button className={styles.modalBtn} onClick={setModalContent}>
-          Add Income
-        </button>
-        <button className={styles.modalBtn} onClick={setModalContent}>
-          Add Cost
-        </button>
+        {isMobile && (
+          <>
+            <NavLink className={styles.modalBtn} exact to={routes.ADDINCOME}>
+              Add Income
+            </NavLink>
+            <NavLink className={styles.modalBtn} exact to={routes.ADDCOST}>
+              Add Cost
+            </NavLink>
+          </>
+        )}
+        {!isMobile && (
+          <>
+            <button className={styles.modalBtn} onClick={setModalContent}>
+              Add Income
+            </button>
+            <button className={styles.modalBtn} onClick={setModalContent}>
+              Add Cost
+            </button>
+          </>
+        )}
       </div>
       {showModal && (
         <Modal title={title} onClose={toggleModal}>
-          {addIncome ? <AddIncome /> : <AddCost />}
+          {addIncome ? (
+            <AddIncome onCloseModal={toggleModal} />
+          ) : (
+            <AddCost onCloseModal={toggleModal} />
+          )}
         </Modal>
       )}
     </>
   );
 };
 
-// ModalBtn.propTypes = {
-//   onAddIncomeBtnClick: PropTypes.func.isRequired,
-//   onAddCostBtnClick: PropTypes.func.isRequired,
-// };
-
-export default ModalBtn;
+export default connect()(ModalBtn);

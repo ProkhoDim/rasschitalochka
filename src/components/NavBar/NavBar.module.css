@@ -44,8 +44,9 @@
   height: 100%;
 }
 
-@media (min-width: 768px) and (max-width: 1339px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .wrap {
+    margin-bottom: 0;
     background-color: rgb(255, 255, 255);
     height: 80px;
     display: flex;
@@ -107,9 +108,9 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   .wrap {
-    width: 360px;
+    width: 100%;
     margin-bottom: 40px;
     height: 145px;
     border-radius: 4px;

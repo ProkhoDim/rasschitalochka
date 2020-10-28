@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { financeSelectors } from '../../../redux/finance';
 import styles from './TransferHistoryPcTablet.module.css';
 const { tableShadow, table, tableRow, tableTopRow, th, td } = styles;
 
@@ -17,9 +19,9 @@ const TransferHistoryPcTablet = ({ dataBase }) => (
       </thead>
       <tbody>
         {dataBase.map(
-          ({ date, type, category, comments, amount, balance }, index) => (
+          ({ date, type, category, comments, amount, balanceAfter }, index) => (
             <tr key={index} className={tableRow}>
-              <td className={td}>{date}</td>
+              <td className={td}>{new Date(date).toLocaleDateString()}</td>
               <td className={td}>{type}</td>
               <td className={td}>{category}</td>
               <td className={td}>{comments}</td>
@@ -29,7 +31,7 @@ const TransferHistoryPcTablet = ({ dataBase }) => (
               >
                 {amount}
               </td>
-              <td className={td}>{balance}</td>
+              <td className={td}>{balanceAfter}</td>
             </tr>
           ),
         )}
@@ -38,4 +40,8 @@ const TransferHistoryPcTablet = ({ dataBase }) => (
   </section>
 );
 
-export default TransferHistoryPcTablet;
+const mapStateToProps = state => ({
+  dataBase: financeSelectors.getTransactionHistory(state),
+});
+
+export default connect(mapStateToProps)(TransferHistoryPcTablet);
