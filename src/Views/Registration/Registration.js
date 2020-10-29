@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 
 import s from './Registration.module.css';
+import icon from '../../assets/svg/logo.svg';
 import routes from '../../routes';
+import { Media } from '../../common';
 
 const initialState = {
   user: {
@@ -64,78 +66,104 @@ class Registration extends Component {
     const isBtnNotDisable =
       this.state.isValidEmail && this.state.isEqualPassword;
     return (
-      <div className={s.registerBlock}>
-        <div className={s.logo}></div>
-        <span className={s.projectName}>Raschitalochka</span>
-        <form
-          className={s.registerForm}
-          onSubmit={this.onSubmitHandler}
-          autoComplete="off"
-        >
-          <label>
-            <input
-              className={s.emailInput}
-              type="email"
-              name="email"
-              value={email}
-              autoComplete="off"
-              placeholder="E-mail as Login"
-              onChange={this.onChangeHandler}
-              onBlur={this.onBlurEmailHandler}
-            />
-          </label>
-          {this.state.isValidEmail === false && (
-            <div className={s.warningText}>
-              <span>Please enter valid email address!</span>
+      <div className={s.pageWrap}>
+        <Media device="desktop">
+          <div className={s.leftSide}>
+            <div className={s.appNameContainer}>
+              <svg className={s.icon}>
+                <use href={`${icon}#logo`}></use>
+              </svg>
+              <span className={s.projectName}>Raschitalochka</span>
             </div>
-          )}
-          <label>
-            <input
-              className={s.passwordInput}
-              type="password"
-              name="password"
-              value={password}
-              placeholder="Password"
-              onChange={this.onChangeHandler}
-            />
-          </label>
-          <label>
-            <input
-              className={s.passwordInput}
-              type="password"
-              name="password confirmation"
-              placeholder="Password Confirmation"
-              onChange={this.onChangeConfrimPassHandler}
-              ref={this.confirmPassword}
-            />
-          </label>
-          {this.state.isEqualPassword === false && (
-            <div className={s.warningText}>
-              <span>Password doesn't match!</span>
+            <h2 className={s.losung}>
+              <span>Create your own</span>
+              <span>categories of costs</span>
+            </h2>
+          </div>
+        </Media>
+        <div className={s.registerWrap}>
+          <div className={s.registerBlock}>
+            <div className={s.container}>
+              <Media device="mobile">
+                <div className={s.logo}></div>
+                <span className={s.projectName}>Raschitalochka</span>
+              </Media>
+
+              <Media device="fromTablet">
+                <h2 className={s.title}>Registration</h2>
+              </Media>
+              <form
+                className={s.registerForm}
+                onSubmit={this.onSubmitHandler}
+                autoComplete="off"
+              >
+                <label>
+                  <input
+                    className={s.input + ' ' + s.emailInput}
+                    type="email"
+                    name="email"
+                    value={email}
+                    autoComplete="off"
+                    placeholder="E-mail as Login"
+                    onChange={this.onChangeHandler}
+                    onBlur={this.onBlurEmailHandler}
+                  />
+                </label>
+                {this.state.isValidEmail === false && (
+                  <div className={s.warningText}>
+                    <span>Please enter valid email address!</span>
+                  </div>
+                )}
+                <label>
+                  <input
+                    className={s.input + ' ' + s.passwordInput}
+                    type="password"
+                    name="password"
+                    value={password}
+                    placeholder="Password"
+                    onChange={this.onChangeHandler}
+                  />
+                </label>
+                <label>
+                  <input
+                    className={s.input + ' ' + s.passwordInput}
+                    type="password"
+                    name="password confirmation"
+                    placeholder="Password Confirmation"
+                    onChange={this.onChangeConfrimPassHandler}
+                    ref={this.confirmPassword}
+                  />
+                </label>
+                {this.state.isEqualPassword === false && (
+                  <div className={s.warningText}>
+                    <span>Password doesn't match!</span>
+                  </div>
+                )}
+                <div className={s.passwordProgressLine}></div>
+                <label>
+                  <input
+                    className={s.input + ' ' + s.nameInput}
+                    type="name"
+                    name="name"
+                    value={name}
+                    placeholder="Your Name"
+                    onChange={this.onChangeHandler}
+                  />
+                </label>
+                <button
+                  className={s.btnRegister}
+                  type="submit"
+                  disabled={!isBtnNotDisable}
+                >
+                  Register
+                </button>
+              </form>
+              <NavLink className={s.loginLink} exact to={routes.LOGIN}>
+                Login
+              </NavLink>
             </div>
-          )}
-          <div className={s.passwordProgressLine}></div>
-          <label>
-            <input
-              className={s.nameInput}
-              type="name"
-              name="name"
-              value={name}
-              placeholder="Your Name"
-              onChange={this.onChangeHandler}
-            />
-          </label>
-          <button
-            className={s.btnRegister}
-            type="submit"
-            disabled={!isBtnNotDisable}
-          >
-            Register
-          </button>
-        </form>
-        <NavLink className={s.loginLink} exact to={routes.LOGIN}>
-          Login
-        </NavLink>
+          </div>
+        </div>
       </div>
     );
   }

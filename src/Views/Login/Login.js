@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { authOperations } from '../../redux/auth';
+import { authOperations, authSelectors } from '../../redux/auth';
 import routes from '../../routes';
 
 import phone from '../../assets/background/phone-mock-up.png';
 import s from './Login.module.css';
 import { Media } from '../../common';
+import Loader from 'react-loader-spinner';
 
 const initialState = {
   email: '',
@@ -29,9 +30,21 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
+    const { isLoading } = this.props;
     const isBtnNotDisabled = email.length > 0 && password.length > 0;
+    console.log(isLoading);
     return (
       <div className={s.main__container}>
+        {isLoading && (
+          <div style={{ position: 'absolute', top: 30, right: 30 }}>
+            <Loader
+              type="ThreeDots"
+              color="#6d6d6d"
+              height={'2rem'}
+              width={60}
+            />
+          </div>
+        )}
         <Media device="desktop">
           <div className={s.desktopImage__container}>
             <img
@@ -95,8 +108,12 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLoading: authSelectors.getIsLoading(state),
+});
+
 const mapDispatchToProps = dispatch => ({
   onLogin: data => dispatch(authOperations.login(data)),
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

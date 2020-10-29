@@ -44,16 +44,19 @@
   .userName {
     color: var(--lightgrey-color);
     margin-right: 40px;
+    position: relative;
+    line-height: 20px;
   }
 
   .userName::after {
     content: '';
     position: absolute;
-    width: 1px;
-    height: 14px;
+    display: block;
+    width: 2px;
+    height: 20px;
     background-color: var(--lightgrey-color);
-    margin-left: 20px;
-    transform: translate(-50%, -50%);
+    top: 0;
+    right: -20px;
   }
   .logoutBtn {
     display: flex;

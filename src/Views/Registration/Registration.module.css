@@ -5,138 +5,90 @@
   align-items: center;
 }
 
-.registerForm {
+.container {
+  width: 275px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.registerForm {
   margin-bottom: 25px;
 }
 .logo {
   background-image: url(../../assets/svg/logo.svg);
-  width: 32px;
-  height: 32px;
+  width: 50px;
+  height: 50px;
   background-repeat: no-repeat;
-  background-size: contain;
-  margin: 0 auto;
-  margin-bottom: 12px;
 }
 
 .projectName {
-  font-family: HelveticaNeueCyr-Bold, sans-serif;
-  font-size: 16px;
+  font-family: 'HelveticaNeueCyr', sans-serif;
   color: #2c353e;
-  margin: 0;
-  padding: 0;
   margin-bottom: 34px;
 }
 
-.emailInput {
-  background-color: rgba(185, 201, 212, 0.5);
-  border: none;
-  border-radius: 5px;
-  height: 48px;
-  width: 275px;
-  margin: 0;
-  margin-bottom: 12px;
-  padding: 0;
-  text-align: center;
-  outline: none;
-}
-
 .warningText {
-  margin: 0 0 10px 0;
-  padding: 0;
+  margin-bottom: 10px;
   color: red;
   font-size: 12px;
 }
 
-.emailInput::placeholder {
-  font-family: HelveticaNeueCyr-Roman, sans-serif;
+.input {
+  background-color: rgba(185, 201, 212, 0.5);
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  height: 48px;
+  margin-bottom: 12px;
+  padding-left: 20px;
+}
+
+.input::placeholder {
+  font-family: 'HelveticaNeueCyr', sans-serif;
   font-size: 13px;
   line-height: 48px;
-  text-align: left;
-  padding-left: 58px;
+  padding-left: 38px;
   color: #b9c9d4;
-  background-image: url(../../assets/authForm/baseline-email-24px.svg);
-  background-position-x: 21px;
   background-position-y: 12px;
   background-repeat: no-repeat;
   background-size: 24px;
 }
 
-.passwordInput {
-  background-color: rgba(185, 201, 212, 0.5);
-  border: none;
-  border-radius: 5px;
-  height: 48px;
-  width: 275px;
-  margin: 0;
-  margin-bottom: 12px;
-  padding: 0;
-  text-align: center;
+.emailInput::placeholder {
+  background-image: url(../../assets/authForm/baseline-email-24px.svg);
 }
 
 .passwordInput::placeholder {
-  font-family: HelveticaNeueCyr-Roman, sans-serif;
-  font-size: 13px;
-  line-height: 48px;
-  text-align: left;
-  padding-left: 58px;
-  color: #b9c9d4;
   background-image: url(../../assets/authForm/baseline-lock-24px.svg);
-  background-position-x: 21px;
-  background-position-y: 12px;
-  background-repeat: no-repeat;
-  background-size: 24px;
 }
+
 .passwordProgressLine {
   height: 6px;
-  width: 275px;
   background-color: green;
   border-radius: 5px;
   margin-bottom: 12px;
 }
 
 .nameInput {
-  background-color: rgba(185, 201, 212, 0.5);
-  border: none;
-  border-radius: 5px;
-  height: 48px;
-  width: 275px;
-  margin: 0;
   margin-bottom: 25px;
-  padding: 0;
-  text-align: center;
 }
 
 .nameInput::placeholder {
-  font-family: HelveticaNeueCyr-Roman, sans-serif;
-  font-size: 13px;
-  line-height: 48px;
-  text-align: left;
-  padding-left: 58px;
-  color: #b9c9d4;
   background-image: url(../../assets/authForm/baseline-account_box-24px.svg);
-  background-position-x: 21px;
-  background-position-y: 12px;
-  background-repeat: no-repeat;
-  background-size: 24px;
 }
 
 .btnRegister {
-  font-family: HelveticaNeueCyr-Bold, sans-serif;
+  font-family: 'HelveticaNeueCyr', sans-serif;
   font-size: 15px;
-  text-align: center;
   height: 48px;
-  width: 275px;
+  width: 100%;
   color: white;
   border-radius: 5px;
   outline: none;
   border: none;
   background: #619361;
   box-shadow: 3px 3px 0px 0px rgba(92, 135, 94, 0.2);
-  margin: 0;
-  padding: 0;
   transition: all ease-in-out 300ms;
 }
 
@@ -152,7 +104,147 @@
 
 .loginLink {
   color: rgb(107, 125, 131);
-  font-family: HelveticaNeueCyr-Roman, sans-serif;
+  font-family: 'HelveticaNeueCyr', sans-serif;
   font-size: 12px;
   margin-bottom: 65px;
+}
+
+@media screen and (min-width: 768px) {
+  .registerWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../assets/background/bg-pic-for-login-.jpg);
+    background-position: right bottom;
+    background-size: 200%;
+  }
+
+  .registerBlock {
+    width: 550px;
+    background-color: #fff;
+    border-radius: 5px;
+    filter: drop-shadow(10px 17.321px 20px rgba(107, 125, 131, 0.3));
+    padding-top: 40px;
+  }
+
+  .title {
+    font-family: 'HelveticaNeueCyr';
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 30px;
+    color: #282828;
+    margin-bottom: 20px;
+  }
+
+  .loginLink {
+    margin-bottom: 45px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0 50px;
+  }
+
+  .btnRegister {
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
+    background-color: #f9fbfb;
+  }
+
+  .passwordProgressLine {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .pageWrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .registerWrap {
+    background-image: url('../../assets/background/registration-v4_02.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .registerForm {
+    width: 100%;
+  }
+
+  .leftSide {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .leftSide::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: grayscale(80%)
+      drop-shadow(-2.298px 1.928px 1.5px rgba(92, 135, 94, 0.2));
+    background-image: url('../../assets/background/black.jpg'),
+      url('../../assets/background/bg-pic-for-login-.jpg');
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .leftSide::after {
+    content: '';
+    position: absolute;
+    right: 25px;
+    width: 38%;
+    height: 100%;
+    background-image: url('../../assets/background/iphone.png');
+    background-size: 100%;
+    background-position: center right;
+    background-repeat: no-repeat;
+  }
+
+  .appNameContainer {
+    display: flex;
+    padding-left: 30px;
+  }
+
+  .logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .icon {
+    display: block;
+    width: 50px;
+    height: 50px;
+    fill: #fff;
+  }
+
+  .projectName {
+    line-height: 50px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #fbfbfb;
+    font-weight: 500;
+  }
+
+  .losung {
+    padding-left: 30px;
+    color: #ffffff;
+    font-size: 35px;
+    letter-spacing: 1px;
+    line-height: 45px;
+    font-weight: 800;
+    display: flex;
+    flex-flow: column nowrap;
+  }
 }

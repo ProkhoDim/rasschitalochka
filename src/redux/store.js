@@ -24,7 +24,7 @@ const middleware = [
 const persistStoreConfig = {
   key: 'bearer',
   storage,
-  blacklist: ['isAuthenticated', 'error'],
+  blacklist: ['isAuthenticated', 'error', 'isLoading'],
 };
 
 const store = configureStore({

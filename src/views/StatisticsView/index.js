@@ -1,1 +1,1 @@
-export { default } from './StatisticsView';
+export { default } from './StatisticsView.container';
