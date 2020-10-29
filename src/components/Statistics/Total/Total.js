@@ -4,12 +4,35 @@ import { connect } from 'react-redux';
 import { financeSelectors } from '../../../redux/finance';
 import styles from './Total.module.css';
 
-const Total = ({ totalCost, totalIncome }) => (
+const Total = ({ totalCost, totalIncome, totalCostByParameter }) => (
   <ul className={styles.List}>
-    <li>
-      <span className={styles.Name}>Total Costs:</span>
-      <span className={(styles.Value, styles.Costs)}>{totalCost}</span>
-    </li>
+    {totalCostByParameter ? (
+      <>
+        <li>
+          <span className={styles.Name}>Total Costs selected</span>
+          <span className={(styles.Value, styles.Costs)}>
+            {totalCostByParameter}
+          </span>
+        </li>
+        <li>
+          <span className={styles.Name}>Total Costs</span>
+          <span className={(styles.Value, styles.Costs)}>{totalCost}</span>
+        </li>
+      </>
+    ) : (
+      <li>
+        <span className={styles.Name}>Total Costs</span>
+        <span className={(styles.Value, styles.Costs)}>{totalCost}</span>
+      </li>
+    )}
+    {/* <li>
+      <span className={styles.Name}>
+        {totalCostByParameter ? 'Total Costs selected' : 'Total Costs'}:
+      </span>
+      <span className={(styles.Value, styles.Costs)}>
+        {totalCostByParameter ? totalCostByParameter : totalCost}
+      </span>
+    </li> */}
     <li>
       <span className={styles.Name}>Total Income:</span>
       <span className={(styles.Value, styles.Income)}>{totalIncome}</span>

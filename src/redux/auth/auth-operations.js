@@ -67,10 +67,10 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserRequest());
     const {
       data: {
-        finance: { totalBalance, data },
+        finance: { totalBalance: balance, data },
       },
     } = await axios.get(`api/finance/${id}`);
-    dispatch(authActions.getCurrentUserSuccess({ totalBalance, data }));
+    dispatch(authActions.getCurrentUserSuccess({ balance, data }));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error));
   }

@@ -32,7 +32,6 @@ class Login extends Component {
     const { email, password } = this.state;
     const { isLoading } = this.props;
     const isBtnNotDisabled = email.length > 0 && password.length > 0;
-    console.log(isLoading);
     return (
       <div className={s.main__container}>
         {isLoading && (

@@ -21,12 +21,13 @@ class StatisticsView extends Component {
     data: [],
     year: '',
     month: '',
+    totalCost: 0,
   };
   componentDidMount() {
-    this.setState({ data: this.props.data });
+    this.setState({ data: this.props.data, totalCost: 0 });
   }
 
-  getCategoriesTransactions = () => {
+  getCategoriesTransactions = totalCostReturn => {
     const {
       getDataForComponent,
       getAmountsCategory,
@@ -36,7 +37,18 @@ class StatisticsView extends Component {
     const data = getDataForComponent(state);
     const categories = getUniqueCategory(data);
     const amount = getAmountsCategory(categories, data);
+    const totalCost = amount.reduce((acc, itm) => acc + itm, 0);
+    if (totalCostReturn) {
+      return totalCost;
+    }
     return { categories, amount };
+  };
+
+  getTotalCost = transactions => {
+    if (transactions.length !== this.state.data.length) {
+      return this.getCategoriesTransactions(true);
+    }
+    return false;
   };
 
   getDataByMonth = (month, items) =>
@@ -99,10 +111,17 @@ class StatisticsView extends Component {
   };
 
   render() {
-    const data = this.getDataTransactionsForRender(
-      this.getCategoriesTransactions(),
+    const { data, year, month } = this.state;
+    const costData = this.getDataForComponent({ data, year, month });
+    return (
+      <StatComponent
+        data={this.getDataTransactionsForRender(
+          this.getCategoriesTransactions(),
+        )}
+        updateDiagram={this.updateDiagram}
+        totalCostCalculated={this.getTotalCost(costData)}
+      />
     );
-    return <StatComponent data={data} updateDiagram={this.updateDiagram} />;
   }
 }
 

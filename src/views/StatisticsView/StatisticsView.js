@@ -7,7 +7,7 @@ import ChartSelection from '../../components/Statistics/ChartSelection';
 // import UpdateChartBtn from '../../components/Statistics/UpdateChartBtn';
 import Total from '../../components/Statistics/Total';
 
-const StatComponent = ({ data, updateDiagram }) => {
+const StatComponent = ({ data, updateDiagram, totalCostCalculated }) => {
   return (
     <>
       <section>
@@ -15,12 +15,25 @@ const StatComponent = ({ data, updateDiagram }) => {
           <h2 className={styles.Title}>Cost Diagram</h2>
           <div className={styles.Wrapper}>
             <div className={styles.Chart}>
-              <Chart data={data} />
+              <Chart
+                data={
+                  data.length === 0
+                    ? [
+                        {
+                          amount: 999,
+                          category: 'No transaction',
+                          fill: 'gray',
+                          id: 'NOtransaction',
+                        },
+                      ]
+                    : data
+                }
+              />
             </div>
             <div className={styles.Data}>
               <ChartSelection updateDiagram={updateDiagram} />
               <Legend data={data} />
-              <Total />
+              <Total totalCostByParameter={totalCostCalculated} />
             </div>
           </div>
         </div>
