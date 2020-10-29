@@ -21,19 +21,19 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 
 const HomePage = lazy(() =>
-  import('./views/HomeView' /*webpackChunkName: 'home-page' */),
+  import('./views/HomeView' /* webpackChunkName: 'home-page' */),
 );
 
 const LoginPage = lazy(() =>
-  import('./views/Login' /*webpackChunkName: 'login-page' */),
+  import('./views/Login' /* webpackChunkName: 'login-page' */),
 );
 
 const RegPage = lazy(() =>
-  import('./views/Registration' /*webpackChunkName: 'reg-page' */),
+  import('./views/Registration' /* webpackChunkName: 'reg-page' */),
 );
 
 const StatPage = lazy(() =>
-  import('./views/StatisticsView' /*webpackChunkName: 'stat-page' */),
+  import('./views/StatisticsView' /* webpackChunkName: 'stat-page' */),
 );
 
 class App extends Component {
