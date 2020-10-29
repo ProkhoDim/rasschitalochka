@@ -62,7 +62,7 @@
   height: 48px;
   width: 275px;
   outline: none;
-  text-align: center;
+  padding-left: 20px;
 }
 
 .emailInput {
@@ -79,9 +79,8 @@
   font-size: 13px;
   line-height: 48px;
   text-align: left;
-  padding-left: 58px;
+  padding-left: 38px;
   color: #b9c9d4;
-  background-position-x: 21px;
   background-position-y: 12px;
   background-repeat: no-repeat;
   background-size: 24px;

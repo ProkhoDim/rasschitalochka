@@ -1,29 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from './routes';
 import './css/global.css';
 import './css/fonts.css';
 
-import {
-  HomeView,
-  LoginView,
-  RegView,
-  StatisticsView,
-  ErrorPage,
-} from './views';
+import { ErrorPage } from './views';
 import {
   AppBar,
   CurrencyExchange,
   NavBar,
   Sidebar,
   TotalBalance,
+  IncomeMobile,
+  CostMobile,
 } from './components';
 import Media from './common/Media';
 import { PublicRoute, PrivateRoute } from './common';
 import { authOperations, authSelectors } from './redux/auth';
 import { connect } from 'react-redux';
-import IncomeMobile from './components/AddIncome/IncomeMobile';
-import CostMobile from './components/AddCost/CostMobile';
+import Loader from 'react-loader-spinner';
+
+const HomePage = lazy(() =>
+  import('./views/HomeView' /*webpackChunkName: 'home-page' */),
+);
+
+const LoginPage = lazy(() =>
+  import('./views/Login' /*webpackChunkName: 'login-page' */),
+);
+
+const RegPage = lazy(() =>
+  import('./views/Registration' /*webpackChunkName: 'reg-page' */),
+);
+
+const StatPage = lazy(() =>
+  import('./views/StatisticsView' /*webpackChunkName: 'stat-page' */),
+);
 
 class App extends Component {
   componentDidMount = () => {
@@ -34,64 +45,82 @@ class App extends Component {
     const { isAuthenticated } = this.props;
     return (
       <>
-        <Switch>
-          <PublicRoute
-            path={routes.LOGIN}
-            restricted
-            redirectTo={routes.HOME}
-            component={LoginView}
-          />
-          <PublicRoute
-            path={routes.REGISTER}
-            restricted
-            redirectTo={routes.HOME}
-            component={RegView}
-          />
+        <Suspense
+          fallback={
+            <Loader type="ThreeDots" color="#6d6d6d" height={80} width={80} />
+          }
+        >
+          <Switch>
+            <PublicRoute
+              path={routes.LOGIN}
+              restricted
+              redirectTo={routes.HOME}
+              component={LoginPage}
+            />
+            <PublicRoute
+              path={routes.REGISTER}
+              restricted
+              redirectTo={routes.HOME}
+              component={RegPage}
+            />
 
-          {isAuthenticated && (
-            <>
-              <div className="Container">
+            {isAuthenticated && (
+              <>
                 <AppBar />
                 <div className="page_wrap">
-                  <div className="aside_container">
+                  <Media device="desktop">
+                    <div className="aside_container">
+                      <NavBar />
+                      <Sidebar />
+                      <CurrencyExchange />
+                    </div>
+                  </Media>
+                  <Media device="onlyTablet">
                     <NavBar children={<TotalBalance />} />
-                    <Media children={<Sidebar />} device="desktop" />
-
-                    <Media children={<CurrencyExchange />} device="desktop" />
-                  </div>
-                  <Route
-                    path={routes.STATISTICS}
-                    exact
-                    component={StatisticsView}
-                  />
-                  <Route path={routes.HOME} exact component={HomeView} />
-                  <Route
-                    path={routes.ADDINCOME}
-                    exact
-                    component={IncomeMobile}
-                  />
-                  <Route path={routes.ADDCOST} exact component={CostMobile} />
-                  <Media
-                    children={
-                      <Route
-                        path={routes.CURRENCY}
-                        component={CurrencyExchange}
-                      />
-                    }
-                    device="mobile"
-                  />
-
+                  </Media>
+                  <Media device="mobile">
+                    <Route
+                      path={[routes.HOME, routes.STATISTICS, routes.CURRENCY]}
+                      exact
+                    >
+                      <NavBar />
+                    </Route>
+                    <Route path={routes.HOME} exact component={HomePage} />
+                    <Route
+                      path={routes.STATISTICS}
+                      exact
+                      component={StatPage}
+                    />
+                    <Route
+                      path={routes.CURRENCY}
+                      exact
+                      component={CurrencyExchange}
+                    />
+                    <Route
+                      path={routes.ADDINCOME}
+                      exact
+                      component={IncomeMobile}
+                    />
+                    <Route path={routes.ADDCOST} exact component={CostMobile} />
+                  </Media>
                   <Media device="fromTablet">
-                    <Redirect to={routes.HOME} from={routes.CURRENCY} />
+                    <Route path={routes.HOME} exact component={HomePage} />
+                    <Route
+                      path={routes.STATISTICS}
+                      exact
+                      component={StatPage}
+                    />
+
+                    <Redirect to={routes.HOME} />
                   </Media>
                 </div>
-              </div>
-            </>
-          )}
-          <PrivateRoute path={routes.STATISTICS} redirectTo={routes.LOGIN} />
-          <PrivateRoute path={routes.HOME} redirectTo={routes.LOGIN} />
-          <ErrorPage />
-        </Switch>
+              </>
+            )}
+            <PrivateRoute path={routes.STATISTICS} redirectTo={routes.LOGIN} />
+            <PrivateRoute path={routes.HOME} redirectTo={routes.LOGIN} />
+            <ErrorPage />
+          </Switch>
+        </Suspense>
       </>
     );
   }
@@ -106,26 +135,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// import React, { useState, useEffect } from 'react';
-// import CurrencyExchange from './Components/CurrencyExchange';
-// import getCurrencyExchangeCourse from './services/bankAPI';
-
-// function App() {
-//   const [bankData, setBankData] = useState(null);
-
-//   useEffect(() => {
-//     const getBankData = async () => {
-//       const data = await getCurrencyExchangeCourse();
-//       const filteredData = data.filter(el => el.ccy !== 'BTC');
-//       return setBankData(filteredData);
-//     };
-//     getBankData();
-//   }, []);
-
-//   return (
-//     <div className="App">
-//       {bankData && <CurrencyExchange data={bankData} />}
-//     </div>
-//   );
-// }

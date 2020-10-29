@@ -9,6 +9,10 @@
     padding: 10px 0;
     background-color: var(--mobile-header-darkgreen-color);
   }
+
+  .container {
+    width: 310px;
+  }
 }
 
 @media (min-width: 768px) {
