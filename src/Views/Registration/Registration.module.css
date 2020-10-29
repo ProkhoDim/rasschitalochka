@@ -29,8 +29,7 @@
 }
 
 .warningText {
-  margin: 0 0 10px 0;
-  padding: 0;
+  margin-bottom: 10px;
   color: red;
   font-size: 12px;
 }
@@ -172,6 +171,10 @@
     background-image: url('../../assets/background/registration-v4_02.png');
     background-size: cover;
     background-repeat: no-repeat;
+  }
+
+  .registerForm {
+    width: 100%;
   }
 
   .leftSide {
