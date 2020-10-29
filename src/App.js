@@ -20,21 +20,13 @@ import { authOperations, authSelectors } from './redux/auth';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 
-const HomePage = lazy(() =>
-  import('./views/HomeView' /* webpackChunkName: 'home-page' */),
-);
+const HomePage = lazy(() => import('./views/HomeView'));
 
-const LoginPage = lazy(() =>
-  import('./views/Login' /* webpackChunkName: 'login-page' */),
-);
+const LoginPage = lazy(() => import('./views/Login'));
 
-const RegPage = lazy(() =>
-  import('./views/Registration' /* webpackChunkName: 'reg-page' */),
-);
+const RegPage = lazy(() => import('./views/Registration'));
 
-const StatPage = lazy(() =>
-  import('./views/StatisticsView' /* webpackChunkName: 'stat-page' */),
-);
+const StatPage = lazy(() => import('./views/StatisticsView'));
 
 class App extends Component {
   componentDidMount = () => {
@@ -45,82 +37,104 @@ class App extends Component {
     const { isAuthenticated } = this.props;
     return (
       <>
-        <Suspense
-          fallback={
-            <Loader type="ThreeDots" color="#6d6d6d" height={80} width={80} />
-          }
-        >
-          <Switch>
+        <Switch>
+          <Suspense
+            fallback={
+              <Loader type="ThreeDots" color="#6d6d6d" height={80} width={80} />
+            }
+          >
             <PublicRoute
               path={routes.LOGIN}
               restricted
               redirectTo={routes.HOME}
-              component={LoginPage}
-            />
+            >
+              <LoginPage />
+            </PublicRoute>
             <PublicRoute
               path={routes.REGISTER}
               restricted
               redirectTo={routes.HOME}
-              component={RegPage}
-            />
-
-            {isAuthenticated && (
-              <>
-                <AppBar />
-                <div className="page_wrap">
-                  <Media device="desktop">
-                    <div className="aside_container">
-                      <NavBar />
-                      <Sidebar />
-                      <CurrencyExchange />
-                    </div>
-                  </Media>
-                  <Media device="onlyTablet">
-                    <NavBar children={<TotalBalance />} />
-                  </Media>
-                  <Media device="mobile">
-                    <Route
-                      path={[routes.HOME, routes.STATISTICS, routes.CURRENCY]}
-                      exact
-                    >
-                      <NavBar />
+            >
+              <RegPage />
+            </PublicRoute>
+          </Suspense>
+          {isAuthenticated && (
+            <>
+              <AppBar />
+              <div className="page_wrap">
+                <Media device="desktop">
+                  <div className="aside_container">
+                    <NavBar />
+                    <Sidebar />
+                    <CurrencyExchange />
+                  </div>
+                </Media>
+                <Media device="onlyTablet">
+                  <NavBar children={<TotalBalance />} />
+                </Media>
+                <Media device="mobile">
+                  <Route
+                    path={[routes.HOME, routes.STATISTICS, routes.CURRENCY]}
+                    exact
+                  >
+                    <NavBar />
+                  </Route>
+                  <Suspense
+                    fallback={
+                      <Loader
+                        type="ThreeDots"
+                        color="#6d6d6d"
+                        height={80}
+                        width={80}
+                      />
+                    }
+                  >
+                    <Route path={routes.HOME} exact>
+                      <HomePage />
                     </Route>
-                    <Route path={routes.HOME} exact component={HomePage} />
-                    <Route
-                      path={routes.STATISTICS}
-                      exact
-                      component={StatPage}
-                    />
-                    <Route
-                      path={routes.CURRENCY}
-                      exact
-                      component={CurrencyExchange}
-                    />
-                    <Route
-                      path={routes.ADDINCOME}
-                      exact
-                      component={IncomeMobile}
-                    />
-                    <Route path={routes.ADDCOST} exact component={CostMobile} />
-                  </Media>
-                  <Media device="fromTablet">
-                    <Route path={routes.HOME} exact component={HomePage} />
-                    <Route
-                      path={routes.STATISTICS}
-                      exact
-                      component={StatPage}
-                    />
-
-                    <Redirect to={routes.HOME} />
-                  </Media>
-                </div>
-              </>
-            )}
-            <PrivateRoute path={routes.STATISTICS} redirectTo={routes.LOGIN} />
-            <PrivateRoute path={routes.HOME} redirectTo={routes.LOGIN} />
-            <ErrorPage />
-          </Switch>
-        </Suspense>
+                    <Route path={routes.STATISTICS} exact>
+                      <StatPage />
+                    </Route>
+                  </Suspense>
+                  <Route
+                    path={routes.CURRENCY}
+                    exact
+                    component={CurrencyExchange}
+                  />
+                  <Route
+                    path={routes.ADDINCOME}
+                    exact
+                    component={IncomeMobile}
+                  />
+                  <Route path={routes.ADDCOST} exact component={CostMobile} />
+                </Media>
+                <Media device="fromTablet">
+                  <Suspense
+                    fallback={
+                      <Loader
+                        type="ThreeDots"
+                        color="#6d6d6d"
+                        height={80}
+                        width={80}
+                      />
+                    }
+                  >
+                    <Route path={routes.HOME} exact>
+                      <HomePage />
+                    </Route>
+                    <Route path={routes.STATISTICS} exact>
+                      <StatPage />
+                    </Route>
+                  </Suspense>
+                  <Redirect to={routes.HOME} />
+                </Media>
+              </div>
+            </>
+          )}
+          <PrivateRoute path={routes.STATISTICS} redirectTo={routes.LOGIN} />
+          <PrivateRoute path={routes.HOME} redirectTo={routes.LOGIN} />
+          <ErrorPage />
+        </Switch>
       </>
     );
   }
