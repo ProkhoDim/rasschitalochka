@@ -63,37 +63,6 @@
   background-image: url(../../assets/authForm/baseline-lock-24px.svg);
 }
 
-/* .passwordProgressLine {
-  height: 6px;
-  background-color: lightgrey;
-  border-radius: 5px;
-  margin-bottom: 12px;
-}
-
-.weak {
-  background-color: red;
-  width: 20%;
-}
-
-.soft {
-  background-color: orange;
-  width: 40%;
-}
-
-.good {
-  background-color: yellow;
-  width: 60%;
-}
-.veryGood {
-  background-color: green;
-  width: 80%;
-}
-
-.strong {
-  widows: 100%;
-  background-color: green;
-} */
-
 .nameInput {
   margin-bottom: 25px;
 }

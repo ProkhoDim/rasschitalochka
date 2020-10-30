@@ -74,7 +74,6 @@ class Registration extends Component {
     const { isValidEmail, isEqualPassword, isPasswordStrong } = this.state;
     const isBtnNotDisable =
       isValidEmail && isEqualPassword && name && isPasswordStrong;
-    console.log(isPasswordStrong);
     return (
       <div className={s.pageWrap}>
         <Media device="desktop">
@@ -132,6 +131,7 @@ class Registration extends Component {
                     value={password}
                     placeholder="Password"
                     onChange={this.onChangeHandler}
+                    onBlur={this.onChangeConfrimPassHandler}
                   />
                 </label>
                 <label>
@@ -141,6 +141,7 @@ class Registration extends Component {
                     name="password confirmation"
                     placeholder="Password Confirmation"
                     onChange={this.onChangeConfrimPassHandler}
+                    onBlur={this.onChangeConfrimPassHandler}
                     ref={this.confirmPassword}
                   />
                 </label>
