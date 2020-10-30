@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react';
+import PasswordStrengthBar from 'react-password-strength-bar';
 import * as EmailValidator from 'email-validator';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -17,6 +18,7 @@ const initialState = {
   },
   isValidEmail: '',
   isEqualPassword: '',
+  isPasswordStrong: false,
 };
 
 class Registration extends Component {
@@ -61,10 +63,18 @@ class Registration extends Component {
     }
   };
 
+  CheckStrenthPass = score => {
+    if (score > 0) {
+      this.setState({ isPasswordStrong: true });
+    } else this.setState({ isPasswordStrong: false });
+  };
+
   render() {
     const { name, email, password } = this.state.user;
+    const { isValidEmail, isEqualPassword, isPasswordStrong } = this.state;
     const isBtnNotDisable =
-      this.state.isValidEmail && this.state.isEqualPassword;
+      isValidEmail && isEqualPassword && name && isPasswordStrong;
+    console.log(isPasswordStrong);
     return (
       <div className={s.pageWrap}>
         <Media device="desktop">
@@ -139,7 +149,11 @@ class Registration extends Component {
                     <span>Password doesn't match!</span>
                   </div>
                 )}
-                <div className={s.passwordProgressLine}></div>
+                <PasswordStrengthBar
+                  password={password}
+                  minLength="5"
+                  onChangeScore={score => this.CheckStrenthPass(score)}
+                />
                 <label>
                   <input
                     className={s.input + ' ' + s.nameInput}
