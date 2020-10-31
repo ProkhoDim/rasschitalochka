@@ -21,7 +21,7 @@ const totalBalance = createReducer(0, {
   [setTotalBalance]: (_, { payload }) => payload,
   [addIncomeSuccess]: (_, { payload }) => payload.balance,
   [addCostSuccess]: (_, { payload }) => payload.balance,
-  [authActions.logoutSuccess]: () => null,
+  [authActions.logoutSuccess]: () => 0,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.balance,
 });
 

@@ -3,11 +3,13 @@ import * as EmailValidator from 'email-validator';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { authOperations, authSelectors } from '../../redux/auth';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import routes from '../../routes';
 
 import phone from '../../assets/background/phone-mock-up.png';
 import s from './Login.module.css';
-import { Media } from '../../common';
+import { Media, Notification } from '../../common';
 import Loader from 'react-loader-spinner';
 
 const initialState = {
@@ -20,6 +22,10 @@ const initialState = {
 
 class Login extends Component {
   state = initialState;
+
+  componentWillUnmount() {
+    this.setState(initialState);
+  }
 
   onChangeHandler = ({ currentTarget: { name, value } }) => {
     this.setState(prevState => ({
@@ -38,11 +44,17 @@ class Login extends Component {
     }
   };
 
-  onSubmitHandler = e => {
+  onSubmitHandler = async e => {
     const { onLogin } = this.props;
     e.preventDefault();
-    onLogin(this.state.user);
-    this.setState(initialState);
+    const { email, password } = this.state.user;
+    await onLogin({
+      email: email.toLowerCase(),
+      password,
+    });
+    const { error } = this.props;
+    if (error) return Notification('error', error, 2000);
+    return;
   };
 
   render() {
@@ -124,6 +136,7 @@ class Login extends Component {
         <p className={s.appDescription}>
           <span>Manage your budget</span> <span>with finance app</span>
         </p>
+        <ToastContainer />
       </div>
     );
   }
@@ -131,6 +144,7 @@ class Login extends Component {
 
 const mapStateToProps = state => ({
   isLoading: authSelectors.getIsLoading(state),
+  error: authSelectors.getError(state),
 });
 
 const mapDispatchToProps = dispatch => ({

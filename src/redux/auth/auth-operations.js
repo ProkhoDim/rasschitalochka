@@ -20,12 +20,12 @@ const register = userData => async dispatch => {
       data: { success },
     } = await axios.post('api/register', userData);
     dispatch(authActions.registerSuccess());
-    console.log(success);
     if (success) {
       window.location.assign(window.location.origin + '/login');
     }
+    return true;
   } catch (error) {
-    dispatch(authActions.registerError(error));
+    dispatch(authActions.registerError(error.response.data));
   }
 };
 
@@ -37,7 +37,7 @@ const login = userData => async dispatch => {
     token.set(res.data.token);
     dispatch(authActions.loginSuccess(res.data));
   } catch (error) {
-    dispatch(authActions.loginError(error));
+    dispatch(authActions.loginError(error.response.data));
   }
 };
 
@@ -72,7 +72,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
     } = await axios.get(`api/finance/${id}`);
     dispatch(authActions.getCurrentUserSuccess({ balance, data }));
   } catch (error) {
-    dispatch(authActions.getCurrentUserError(error));
+    dispatch(authActions.getCurrentUserError(error.response.data));
   }
 };
 

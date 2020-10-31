@@ -6,7 +6,7 @@ const TotalBalance = ({ balance }) => (
   <div className={styles.totalBalanceBox}>
     <p className={styles.titleParagraph}>Total Balance, </p>
     <span className={styles.currencyParagraph}> UAH </span>
-    <p className={styles.balanceParagraph}> {balance} </p>
+    <p className={styles.balanceParagraph}> {Math.round(balance, -2)} </p>
   </div>
 );
 

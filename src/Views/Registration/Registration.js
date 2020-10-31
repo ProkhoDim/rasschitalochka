@@ -3,12 +3,14 @@ import PasswordStrengthBar from 'react-password-strength-bar';
 import * as EmailValidator from 'email-validator';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authOperations } from '../../redux/auth';
+import { authOperations, authSelectors } from '../../redux/auth';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import s from './Registration.module.css';
 import icon from '../../assets/svg/logo.svg';
 import routes from '../../routes';
-import { Media } from '../../common';
+import { Media, Notification } from '../../common';
 
 const initialState = {
   user: {
@@ -50,14 +52,18 @@ class Registration extends Component {
     }
   };
 
-  onSubmitHandler = e => {
+  onSubmitHandler = async e => {
     e.preventDefault();
     const { onRegister } = this.props;
     if (
       this.state.isValidEmail === true &&
       this.state.isEqualPassword === true
     ) {
-      onRegister(this.state.user);
+      const response = await onRegister(this.state.user);
+      if (response)
+        return Notification('success', 'Registration successful!', 2000);
+      const { error } = this.props;
+      if (error) return Notification('error', error, 2000);
       this.setState(initialState);
       this.confirmPassword.current.value = '';
     }
@@ -179,13 +185,18 @@ class Registration extends Component {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  error: authSelectors.getError(state),
+});
+
 const mapDispatchToProps = dispatch => ({
   onRegister: data => dispatch(authOperations.register(data)),
 });
 
-export default connect(null, mapDispatchToProps)(Registration);
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);

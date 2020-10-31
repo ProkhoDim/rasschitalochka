@@ -42,7 +42,12 @@ const TransferHistoryMobile = ({ dataBase }) => (
             </div>
             <div className={listItemRow}>
               <p>Balance After</p>
-              <p>{balanceAfter}</p>
+              <p>
+                {Math.round(
+                  Number.parseFloat(balanceAfter ? balanceAfter : 0),
+                  -2,
+                )}
+              </p>
             </div>
           </li>
         ),
