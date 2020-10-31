@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as EmailValidator from 'email-validator';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { authOperations, authSelectors } from '../../redux/auth';
@@ -10,28 +11,44 @@ import { Media } from '../../common';
 import Loader from 'react-loader-spinner';
 
 const initialState = {
-  email: '',
-  password: '',
+  user: {
+    email: '',
+    password: '',
+  },
+  isValidEmail: '',
 };
 
 class Login extends Component {
   state = initialState;
 
   onChangeHandler = ({ currentTarget: { name, value } }) => {
-    this.setState({ [name]: value });
+    this.setState(prevState => ({
+      user: {
+        ...prevState.user,
+        [name]: value,
+      },
+    }));
+  };
+
+  onBlurEmailHandler = e => {
+    if (EmailValidator.validate(this.state.user.email) === true) {
+      this.setState({ isValidEmail: true });
+    } else {
+      this.setState({ isValidEmail: false });
+    }
   };
 
   onSubmitHandler = e => {
     const { onLogin } = this.props;
     e.preventDefault();
-    onLogin(this.state);
+    onLogin(this.state.user);
     this.setState(initialState);
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password } = this.state.user;
     const { isLoading } = this.props;
-    const isBtnNotDisabled = email.length > 0 && password.length > 0;
+    const isBtnNotDisabled = this.state.isValidEmail && password.length > 4;
     return (
       <div className={s.main__container}>
         {isLoading && (
@@ -71,9 +88,14 @@ class Login extends Component {
                   autoComplete="off"
                   value={email}
                   onChange={this.onChangeHandler}
+                  onBlur={this.onBlurEmailHandler}
                 />
               </label>
-
+              {this.state.isValidEmail === false && (
+                <div className={s.warningText}>
+                  <span>Please enter valid email address!</span>
+                </div>
+              )}
               <label>
                 <input
                   className={s.passwordInput}

@@ -89,6 +89,12 @@
   background-image: url(../../assets/authForm/baseline-email-24px.svg);
 }
 
+.warningText {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 12px;
+}
+
 .passwordInput::placeholder {
   background-image: url(../../assets/authForm/baseline-lock-24px.svg);
 }
