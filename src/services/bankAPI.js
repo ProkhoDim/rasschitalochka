@@ -6,10 +6,13 @@ const AXIOS_BANK_INSTANCE = axios.create({
   baseURL: PB_API_URL,
   headers: {},
 });
-const getCurrencyExchangeCourse = async () => {
+const getCurrencyExchangeRate = async () => {
   try {
     const response = await AXIOS_BANK_INSTANCE.get(PB_API_URL);
     const data = response.data;
+    if (typeof data === 'string') {
+      return null;
+    }
     const filteredData = data.filter(el => el.ccy !== 'BTC');
     return filteredData;
   } catch (e) {
@@ -18,4 +21,4 @@ const getCurrencyExchangeCourse = async () => {
   }
 };
 
-export default getCurrencyExchangeCourse;
+export default getCurrencyExchangeRate;
