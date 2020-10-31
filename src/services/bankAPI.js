@@ -14,6 +14,7 @@ const getCurrencyExchangeCourse = async () => {
     return filteredData;
   } catch (e) {
     console.error(e);
+    return [];
   }
 };
 
