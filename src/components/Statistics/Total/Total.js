@@ -9,19 +9,19 @@ const Total = ({ totalCost, totalIncome, totalCostByParameter }) => (
     {totalCostByParameter ? (
       <>
         <li>
-          <span className={styles.Name}>Total Costs selected</span>
+          <span className={styles.Name}>Total Costs selected:</span>
           <span className={(styles.Value, styles.Costs)}>
             {totalCostByParameter}
           </span>
         </li>
         <li>
-          <span className={styles.Name}>Total Costs</span>
+          <span className={styles.Name}>Total Costs:</span>
           <span className={(styles.Value, styles.Costs)}>{totalCost}</span>
         </li>
       </>
     ) : (
       <li>
-        <span className={styles.Name}>Total Costs</span>
+        <span className={styles.Name}>Total Costs:</span>
         <span className={(styles.Value, styles.Costs)}>{totalCost}</span>
       </li>
     )}
