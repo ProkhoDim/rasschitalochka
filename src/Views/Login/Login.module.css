@@ -1,6 +1,3 @@
-@import '../../css/fonts.css';
-@import '../../css/helpers.css';
-
 .desktopImage__container {
   display: none;
 }
@@ -223,7 +220,7 @@
   }
 
   .desktopImage__container {
-    background-image: url(../../assets/background/bg-pic-for-login-.jpg);
+    background-image: url(../../assets/background/bg-pic-for-login--min.jpg);
     background-size: cover;
   }
 

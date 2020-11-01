@@ -19,7 +19,7 @@
 }
 
 .amount {
-  font-family: 'HelveticaNeueCyr';
+  font-family: var(--bold-ff);
   width: 130px;
   height: 35px;
   color: #ff6c00;
@@ -35,7 +35,7 @@
 }
 
 .date {
-  font-family: 'HelveticaNeueCyr';
+  font-family: var(--bold-ff);
   width: 130px;
   height: 35px;
   color: #2c353e;
@@ -54,7 +54,7 @@
 }
 
 .categories_title {
-  font-family: 'HelveticaNeueCyr';
+  font-family: var(--bold-ff);
   color: #282828;
   font-size: 15px;
   font-weight: 700;
@@ -62,7 +62,7 @@
 }
 
 .label {
-  font-family: 'HelveticaNeueCyr';
+  font-family: var(--main-ff);
   padding-left: 26px;
   padding-bottom: 12px;
   color: #282828;
@@ -81,7 +81,7 @@
 }
 
 .comments_heading {
-  font-family: 'HelveticaNeueCyr';
+  font-family: var(--bold-ff);
   margin: 0 0 15px;
   padding: 0;
   color: #282828;
@@ -90,7 +90,7 @@
 }
 
 .comments {
-  font-family: 'HelveticaNeueCyr';
+  font-family: var(--main-ff);
   border: 2px solid #b9c9d4;
   border-radius: 3px;
   min-height: 54px;
@@ -104,7 +104,7 @@
 }
 
 .button {
-  font-family: 'HelveticaNeueCyr';
+  font-family: var(--bold-ff);
   background-color: #619361;
   width: 100%;
   min-height: 39px;

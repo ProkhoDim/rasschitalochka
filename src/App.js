@@ -1,8 +1,9 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { Switch } from 'react-router-dom';
 import routes from './routes';
-import './css/global.css';
 import './css/fonts.css';
+import './css/helpers.css';
+import './css/global.css';
 
 import { ErrorPage } from './Views';
 import { PublicRoute, PrivateRoute } from './common';

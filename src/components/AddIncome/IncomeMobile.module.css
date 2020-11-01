@@ -29,7 +29,7 @@
 }
 
 .mobile_heading {
-  font-family: 'HelveticaNeueCyr';
+  font-family: var(--bold-ff);
   color: #fff;
   font-size: 12px;
   font-weight: 700;

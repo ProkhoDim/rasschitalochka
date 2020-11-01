@@ -14,78 +14,6 @@
 
 @font-face {
   font-family: 'HelveticaNeueCyr';
-  src: url('../fonts/HelveticaNeueCyr-Heavy.eot');
-  src: local('../fonts/HelveticaNeueCyr-Heavy'),
-    url('../fonts/HelveticaNeueCyr-Heavy.eot?#iefix')
-      format('embedded-opentype'),
-    url('../fonts/HelveticaNeueCyr-Heavy.woff') format('woff'),
-    url('../fonts/HelveticaNeueCyr-Heavy.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueCyr';
-  src: url('../fonts/HelveticaNeueCyr-HeavyItalic.eot');
-  src: local('../fonts/HelveticaNeueCyr-HeavyItalic'),
-    url('../fonts/HelveticaNeueCyr-HeavyItalic.eot?#iefix')
-      format('embedded-opentype'),
-    url('../fonts/HelveticaNeueCyr-HeavyItalic.woff') format('woff'),
-    url('../fonts/HelveticaNeueCyr-HeavyItalic.ttf') format('truetype');
-  font-weight: 900;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueCyr';
-  src: url('../fonts/HelveticaNeueCyr-Black.eot');
-  src: local('../fonts/HelveticaNeueCyr-Black'),
-    url('../fonts/HelveticaNeueCyr-Black.eot?#iefix')
-      format('embedded-opentype'),
-    url('../fonts/HelveticaNeueCyr-Black.woff') format('woff'),
-    url('../fonts/HelveticaNeueCyr-Black.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueCyr';
-  src: url('../fonts/HelveticaNeueCyr-UltraLightItalic.eot');
-  src: local('../fonts/HelveticaNeueCyr-UltraLightItalic'),
-    url('../fonts/HelveticaNeueCyr-UltraLightItalic.eot?#iefix')
-      format('embedded-opentype'),
-    url('../fonts/HelveticaNeueCyr-UltraLightItalic.woff') format('woff'),
-    url('../fonts/HelveticaNeueCyr-UltraLightItalic.ttf') format('truetype');
-  font-weight: 200;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueCyr';
-  src: url('../fonts/HelveticaNeueCyr-BlackItalic.eot');
-  src: local('../fonts/HelveticaNeueCyr-BlackItalic'),
-    url('../fonts/HelveticaNeueCyr-BlackItalic.eot?#iefix')
-      format('embedded-opentype'),
-    url('../fonts/HelveticaNeueCyr-BlackItalic.woff') format('woff'),
-    url('../fonts/HelveticaNeueCyr-BlackItalic.ttf') format('truetype');
-  font-weight: 900;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueCyr';
-  src: url('../fonts/HelveticaNeueCyr-ThinItalic.eot');
-  src: local('../fonts/HelveticaNeueCyr-ThinItalic'),
-    url('../fonts/HelveticaNeueCyr-ThinItalic.eot?#iefix')
-      format('embedded-opentype'),
-    url('../fonts/HelveticaNeueCyr-ThinItalic.woff') format('woff'),
-    url('../fonts/HelveticaNeueCyr-ThinItalic.ttf') format('truetype');
-  font-weight: 100;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueCyr';
   src: url('../fonts/HelveticaNeueCyr-MediumItalic.eot');
   src: local('../fonts/HelveticaNeueCyr-MediumItalic'),
     url('../fonts/HelveticaNeueCyr-MediumItalic.eot?#iefix')
@@ -106,18 +34,6 @@
     url('../fonts/HelveticaNeueCyr-LightItalic.ttf') format('truetype');
   font-weight: 300;
   font-style: italic;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueCyr';
-  src: url('../fonts/HelveticaNeueCyr-UltraLight.eot');
-  src: local('../fonts/HelveticaNeueCyr-UltraLight'),
-    url('../fonts/HelveticaNeueCyr-UltraLight.eot?#iefix')
-      format('embedded-opentype'),
-    url('../fonts/HelveticaNeueCyr-UltraLight.woff') format('woff'),
-    url('../fonts/HelveticaNeueCyr-UltraLight.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
 }
 
 @font-face {
@@ -176,16 +92,5 @@
     url('../fonts/HelveticaNeueCyr-Light.woff') format('woff'),
     url('../fonts/HelveticaNeueCyr-Light.ttf') format('truetype');
   font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueCyr';
-  src: url('../fonts/HelveticaNeueCyr-Thin.eot');
-  src: local('../fonts/HelveticaNeueCyr-Thin'),
-    url('../fonts/HelveticaNeueCyr-Thin.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/HelveticaNeueCyr-Thin.woff') format('woff'),
-    url('../fonts/HelveticaNeueCyr-Thin.ttf') format('truetype');
-  font-weight: 100;
   font-style: normal;
 }
