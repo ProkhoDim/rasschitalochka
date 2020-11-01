@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styles from './Sidebar.module.css';
 import TotalBalance from '../TotalBalance';
 
@@ -9,4 +8,4 @@ const SideBar = () => (
   </aside>
 );
 
-export default connect()(SideBar);
+export default SideBar;

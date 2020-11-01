@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './UserMenu.module.css';
 import PropTypes from 'prop-types';
+import logoutBtn from './logoutBtn.svg';
 
-const UserMenu = ({ name, logoutBtn, onLogout }) => (
+const UserMenu = ({ name, onLogout }) => (
   <div className={styles.userMenuContainer}>
     <span className={styles.userName}> {name}</span>
 

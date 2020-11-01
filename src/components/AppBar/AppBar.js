@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Logo from '../Logo';
 import AppName from '../AppName';
 import UserMenu from '../UserMenu';
@@ -23,4 +22,4 @@ const AppBar = () => (
   </header>
 );
 
-export default connect()(AppBar);
+export default AppBar;

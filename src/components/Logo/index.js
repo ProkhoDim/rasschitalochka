@@ -1,1 +1,1 @@
-export { default } from './Logo.container';
+export { default } from './Logo';
