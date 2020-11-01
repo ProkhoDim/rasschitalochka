@@ -27,6 +27,7 @@
     align-items: center;
     justify-content: space-around;
     padding: 80px 0;
+    min-height: 715px;
   }
   .Title {
     margin-bottom: 0;
