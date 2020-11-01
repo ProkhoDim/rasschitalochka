@@ -21,9 +21,9 @@ const StatComponent = ({ data, updateDiagram, totalCostCalculated }) => {
                     ? [
                         {
                           amount: 999,
-                          category: 'No transaction',
+                          category: 'No Costs in this period',
                           fill: 'gray',
-                          id: 'NOtransaction',
+                          id: 'NOcosts',
                         },
                       ]
                     : data
