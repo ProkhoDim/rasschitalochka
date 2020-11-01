@@ -1,0 +1,68 @@
+@import '../../css/fonts.css';
+@import '../../css/helpers.css';
+
+.userMenuContainer {
+  display: flex;
+  font-family: var(--main-ff);
+  font-size: 15px;
+  align-items: center;
+}
+
+.userName {
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.logoutBtn {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.logoutBtn:hover {
+  cursor: pointer;
+}
+
+.logoutTitle {
+  color: var(--lightgrey-color);
+  text-transform: capitalize;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .userName {
+    color: var(--lightgreen-color);
+    margin-right: 20px;
+  }
+
+  .logoutTitle {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .userName {
+    color: var(--lightgrey-color);
+    margin-right: 40px;
+    position: relative;
+    line-height: 20px;
+  }
+
+  .userName::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 20px;
+    background-color: var(--lightgrey-color);
+    top: 0;
+    right: -20px;
+  }
+  .logoutBtn {
+    display: flex;
+    align-items: center;
+  }
+  .logoutBtnSvg {
+    margin-right: 10px;
+  }
+}

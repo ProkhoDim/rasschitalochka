@@ -1,0 +1,40 @@
+.List {
+  list-style-type: none;
+  padding: 15px 0 40px;
+  margin: 0;
+}
+
+.List li {
+  display: flex;
+  justify-content: space-between;
+  font: bold 15px/30px 'HelveticaNeueCyr';
+  color: #282828;
+}
+
+.Costs {
+  color: #ff6c00;
+}
+
+.Income {
+  color: #6fa76f;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .List {
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    align-items: flex-end;
+    border-top: 2px solid #b9c9d4;
+  }
+  .List li {
+    width: 250px;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .List {
+    padding-bottom: 0;
+  }
+}

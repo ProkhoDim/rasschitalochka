@@ -1,0 +1,84 @@
+.modal_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.07);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_content {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow: scroll;
+}
+
+.heading_wrapper {
+  margin: 0;
+  padding: 0;
+  background-color: #516d57;
+  box-shadow: 2px 3px 3px rgba(92, 135, 94, 0.2);
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.modal_title {
+  font-family: 'HelveticaNeueCyr';
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  width: 22px;
+  height: 9px;
+  margin-right: 19px;
+  border: none;
+  background-color: transparent;
+  background-image: url('../../assets/modal/arrow.png');
+}
+
+@media screen and (min-width: 768px) {
+  .modal_content {
+    background-color: #fffffe;
+    max-width: 500px;
+    height: auto;
+    box-shadow: 10px 17px 40px rgba(1, 1, 0, 0.15);
+    border-radius: 4px;
+  }
+
+  .heading_wrapper {
+    height: 73px;
+    background-color: #fff;
+    background-image: url('../../assets/background/bg.png');
+    background-size: cover;
+    background-position: center;
+    box-shadow: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal_title {
+    color: #282828;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .button {
+    display: none;
+  }
+}

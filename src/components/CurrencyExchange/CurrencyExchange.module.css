@@ -1,0 +1,126 @@
+.CurrencyExchange__container {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  height: calc(100vh - 115.13px);
+  background-image: url('../../assets/svg/waves-chart-bg.svg');
+  background-size: 180%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.CurrencyExchange {
+  background-color: #fff;
+}
+
+.CurrencyExchange__table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.CurrencyExchange__table td {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.CurrencyExchange__headerRow {
+  font-family: var(--bold-ff);
+  font-size: 15px;
+  display: flex;
+  height: 60px;
+  background-color: var(--verylightgrey-color);
+}
+
+.CurrencyExchange__headerRow td {
+  line-height: 60px;
+}
+
+.CurrencyExchange__bodyRow {
+  font-family: var(--main-ff);
+  display: flex;
+  border-bottom: 2px solid var(--verylightgrey-color);
+  height: 42px;
+}
+.CurrencyExchange__bodyRow td {
+  line-height: 42px;
+}
+
+.CurrencyExchange__errorMessage {
+  font-family: var(--main-ff);
+  font-size: 15px;
+  min-height: 120px;
+  background-color: var(--verylightgrey-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.CurrencyExchange__errorMessage span {
+  display: block;
+}
+@media screen and (min-width: 425px) {
+  .CurrencyExchange__headerRow {
+    border-radius: 5px 5px 0 0;
+  }
+}
+@media screen and (min-width: 425px) and (max-width: 599px) {
+  .CurrencyExchange__container {
+    background-size: 150%;
+  }
+  .CurrencyExchange {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 425px) and (max-width: 1279px) {
+  .CurrencyExchange {
+    width: 350px;
+    box-shadow: 10px 17.321px 20px rgba(1, 1, 0, 0.15);
+    border-radius: 5px;
+  }
+  .CurrencyExchange__bodyRow:last-child {
+    border-radius: 0 0 5px 5px;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 767px) {
+  .CurrencyExchange__container {
+    background-size: 100%;
+  }
+  .CurrencyExchange {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .CurrencyExchange__container {
+    padding-top: 0;
+    height: auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .CurrencyExchange__container {
+    background-image: none;
+    margin-bottom: 40px;
+  }
+  .CurrencyExchange {
+    margin: 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .CurrencyExchange__container {
+    background-size: 200%;
+    height: 490px;
+    box-shadow: 10px 17.321px 20px rgba(1, 1, 0, 0.15);
+    border-radius: 5px;
+  }
+
+  .CurrencyExchange {
+    margin: 0 auto;
+    box-shadow: none;
+    min-width: 300px;
+    max-width: 360px;
+    border-radius: 5px 5px 0 0;
+  }
+  .CurrencyExchange__bodyRow:last-child {
+    border-radius: none;
+  }
+}

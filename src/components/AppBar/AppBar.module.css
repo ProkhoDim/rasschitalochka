@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .header {
+    padding: 10px 0;
+    background-color: var(--mobile-header-darkgreen-color);
+  }
+
+  .container {
+    width: 310px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 26px 0;
+    margin-bottom: 10px;
+    box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12);
+  }
+  .headerNameBox {
+    display: flex;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    width: 100%;
+  }
+  .header {
+    margin-bottom: 45px;
+  }
+}

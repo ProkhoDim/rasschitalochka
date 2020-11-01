@@ -1,0 +1,61 @@
+.Table {
+  width: 100%;
+  border-spacing: 0;
+  color: #282828;
+  border-collapse: collapse;
+}
+.Thead {
+  background-color: #f3f6f6;
+}
+.Thead th {
+  padding: 15px;
+  font: bold 15px/30px 'HelveticaNeueCyr';
+}
+.Thead th:first-child {
+  text-align: left;
+}
+.Thead th:last-child {
+  text-align: right;
+}
+.Tbody td {
+  padding: 10px 20px;
+  font: 400 13px/18px 'HelveticaNeueCyr';
+}
+.Tbody tr {
+  border-bottom: 2px solid #f3f6f6;
+}
+.Tbody tr:last-child {
+  border-bottom: 2px solid #b9c9d4;
+}
+.ColorScale {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+.Category {
+  display: flex;
+  align-items: center;
+}
+.Amount {
+  text-align: right;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .Thead {
+    display: none;
+  }
+  .Tbody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .Tbody tr {
+    width: 48%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .Tbody tr:last-child {
+    border-bottom: none;
+  }
+}

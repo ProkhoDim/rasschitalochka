@@ -1,0 +1,304 @@
+@import '../../css/fonts.css';
+@import '../../css/helpers.css';
+
+.desktopImage__container {
+  display: none;
+}
+
+.bgImage__block,
+.appDescription {
+  display: none;
+}
+
+.loginBlock__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  background-image: url('../../assets/svg/waves-chart-bg.svg');
+  background-size: 200%;
+  background-repeat: no-repeat;
+  background-position: bottom -100px left -190px;
+}
+
+.loginBlock {
+  margin-bottom: 80px;
+}
+
+.loginBlock,
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginForm {
+  margin-bottom: 25px;
+}
+
+.logo {
+  background-image: url(../../assets/svg/logo.svg);
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 auto;
+  margin-bottom: 12px;
+}
+
+.projectName {
+  font-family: var(--bold-ff);
+  font-size: 16px;
+  color: #2c353e;
+  margin-bottom: 34px;
+}
+
+.emailInput,
+.passwordInput {
+  background-color: rgba(185, 201, 212, 0.5);
+  border: none;
+  border-radius: 5px;
+  height: 48px;
+  width: 275px;
+  outline: none;
+  padding-left: 20px;
+}
+
+.emailInput {
+  margin-bottom: 12px;
+}
+
+.passwordInput {
+  margin-bottom: 25px;
+}
+
+.emailInput::placeholder,
+.passwordInput::placeholder {
+  font-family: var(--main-ff);
+  font-size: 13px;
+  line-height: 48px;
+  text-align: left;
+  padding-left: 38px;
+  color: #b9c9d4;
+  background-position-y: 12px;
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+.emailInput::placeholder {
+  background-image: url(../../assets/authForm/baseline-email-24px.svg);
+}
+
+.warningText {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 12px;
+}
+
+.passwordInput::placeholder {
+  background-image: url(../../assets/authForm/baseline-lock-24px.svg);
+}
+
+.btnLogin {
+  font-family: var(--bold-ff);
+  font-size: 15px;
+  height: 48px;
+  width: 275px;
+  color: white;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #619361;
+  box-shadow: 3px 3px 0px 0px rgba(92, 135, 94, 0.2);
+  transition: all ease-in-out 300ms;
+}
+
+.btnLogin:hover {
+  background: linear-gradient(#ecb22a, #ff6c00);
+  box-shadow: 3px 3px 0px 0px rgba(255, 108, 0, 0.2);
+}
+
+.btnLogin:disabled {
+  background: linear-gradient(#c5c5c5, #141414);
+  box-shadow: 3px 3px 0px 0px rgba(97, 97, 97, 0.2);
+}
+
+.regLink {
+  color: rgb(107, 125, 131);
+  font-family: var(--main-ff);
+  font-size: 12px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .main__container {
+    min-height: 100vh;
+    background-image: url(../../assets/background/bg.png);
+    background-size: auto;
+  }
+
+  .loginBlock__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background-image: url('../../assets/svg/waves-chart-bg.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom -100px left 0px;
+  }
+  .loginBlock {
+    margin: 0 auto 80px;
+    padding-top: 30px;
+    width: 550px;
+    height: 380px;
+    background-image: none;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .projectName {
+    font-family: var(--bold-ff);
+    font-size: 20px;
+    margin-bottom: 22px;
+  }
+
+  .emailInput,
+  .passwordInput {
+    background-color: rgba(185, 201, 212, 0.5);
+    height: 56px;
+    min-width: 430px;
+  }
+  .emailInput {
+    margin-bottom: 14px;
+  }
+
+  .passwordInput {
+    margin-bottom: 30px;
+  }
+
+  .emailInput::placeholder,
+  .passwordInput::placeholder {
+    font-size: 15px;
+    line-height: 56px;
+  }
+
+  .btnLogin {
+    font-size: 20px;
+    height: 56px;
+    width: 430px;
+  }
+
+  .regLink {
+    margin-bottom: 50px;
+  }
+  .appDescription {
+    display: block;
+    color: #282828;
+    font-family: var(--main-ff);
+    font-size: 18px;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .main__container {
+    min-height: 100vh;
+    background-image: url(../../assets/background/bg.png);
+    background-size: auto;
+  }
+  .main__container {
+    display: flex;
+  }
+  .desktopImage__container,
+  .loginBlock__container {
+    display: block;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  .desktopImage__container {
+    background-image: url(../../assets/background/bg-pic-for-login-.jpg);
+    background-size: cover;
+  }
+
+  .loginBlock__container {
+    padding-top: calc((100vh - 500px) / 2);
+    background-image: url('../../assets/svg/waves-chart-bg.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom -100px left 0px;
+  }
+  .loginBlock {
+    margin: 0 auto;
+    padding-top: 35px;
+    max-width: 550px;
+    min-height: 380px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .projectName {
+    font-family: var(--bold-ff);
+    font-size: 20px;
+    margin-bottom: 22px;
+  }
+
+  .emailInput,
+  .passwordInput {
+    background-color: rgba(185, 201, 212, 0.5);
+    height: 56px;
+    min-width: 430px;
+  }
+  .emailInput {
+    margin-bottom: 14px;
+  }
+
+  .passwordInput {
+    margin-bottom: 30px;
+  }
+
+  .emailInput::placeholder,
+  .passwordInput::placeholder {
+    font-size: 15px;
+    line-height: 56px;
+  }
+
+  .btnLogin {
+    font-size: 20px;
+    height: 56px;
+    width: 430px;
+  }
+
+  .regLink {
+    margin-bottom: 50px;
+  }
+  .appDescription {
+    display: block;
+    color: #fff;
+    font-family: var(--bold-ff);
+    font-size: 30px;
+  }
+  .appDescription span {
+    position: absolute;
+  }
+  .appDescription span:first-child {
+    top: 40%;
+    left: 28%;
+  }
+  .appDescription span:last-child {
+    top: 45%;
+    left: 30%;
+  }
+  .desktopImage__phone {
+    height: 80vh;
+    margin-top: 10vh;
+    margin-left: 3vw;
+  }
+}
