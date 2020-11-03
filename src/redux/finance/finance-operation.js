@@ -1,13 +1,12 @@
 import axios from 'axios';
 import {
+  addTransactionRequest,
+  addTransactionSuccess,
   getFinanceSuccess,
   getFinanceRequest,
-  addCostRequest,
-  addCostSuccess,
-  addIncomeRequest,
-  addIncomeSuccess,
   getError,
 } from './finance-action';
+import * as transactionTypes from '../../constants/transactionTypes';
 
 const getFinance = () => async (dispatch, getState) => {
   try {
@@ -28,8 +27,8 @@ const getFinance = () => async (dispatch, getState) => {
   }
 };
 
-const addIncome = userData => async (dispatch, getState) => {
-  dispatch(addIncomeRequest());
+const addTransaction = userData => async (dispatch, getState) => {
+  dispatch(addTransactionRequest());
   try {
     const {
       auth: {
@@ -37,11 +36,19 @@ const addIncome = userData => async (dispatch, getState) => {
       },
       finance: { totalBalance },
     } = getState();
-    const balanceAfter = Number(totalBalance) + Number(userData.amount);
+    let balanceAfter, type;
+    if (userData.type === transactionTypes.addIncome) {
+      balanceAfter = Number(totalBalance) + Number(userData.amount);
+      type = '+';
+    }
+    if (userData.type === transactionTypes.addCost) {
+      type = '-';
+      balanceAfter = Number(totalBalance) - Number(userData.amount);
+    }
     const typeBalanceAfter = totalBalance >= 0 ? '+' : '-';
     const sendData = {
       ...userData,
-      type: '+',
+      type,
       typeBalanceAfter,
       balanceAfter,
     };
@@ -50,43 +57,13 @@ const addIncome = userData => async (dispatch, getState) => {
         finance: { totalBalance: balance, data },
       },
     } = await axios.post(`api/finance/${id}`, sendData);
-    dispatch(addIncomeSuccess({ balance, data }));
-  } catch (e) {
-    dispatch(getError(e));
-  }
-};
-
-const addCost = userData => async (dispatch, getState) => {
-  dispatch(addCostRequest());
-  try {
-    const {
-      auth: {
-        user: { id },
-      },
-      finance: { totalBalance },
-    } = getState();
-    const balanceAfter = Number(totalBalance) - Number(userData.amount);
-    const typeBalanceAfter = balanceAfter >= 0 ? '+' : '-';
-    const sendData = {
-      ...userData,
-      type: '-',
-      typeBalanceAfter,
-      balanceAfter,
-    };
-
-    const {
-      data: {
-        finance: { totalBalance: balance, data },
-      },
-    } = await axios.post(`api/finance/${id}`, sendData);
-    dispatch(addCostSuccess({ balance, data }));
+    dispatch(addTransactionSuccess({ balance, data }));
   } catch (e) {
     dispatch(getError(e));
   }
 };
 
 export default {
+  addTransaction,
   getFinance,
-  addIncome,
-  addCost,
 };

@@ -1,7 +1,5 @@
 const { createAction } = require('@reduxjs/toolkit');
 
-export const setTotalBalance = createAction('finance/setTotalBalance');
-
 export const getError = createAction('finance/getError');
 
 export const getFinanceRequest = createAction('finance/getFinanceRequest');

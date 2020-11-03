@@ -1,5 +1,4 @@
-export { default as IncomeMobile } from './AddTransactionMobile/IncomeMobile';
-export { default as CostMobile } from './AddTransactionMobile/CostMobile';
+export { default as AddTransactionMobile } from './AddTransactionMobile';
 export { default as Modal } from './Modal';
 export { default as Sidebar } from './Sidebar';
 export { default as TotalBalance } from './TotalBalance';

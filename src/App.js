@@ -37,12 +37,14 @@ class App extends Component {
             <PublicRoute
               path={routes.LOGIN}
               restricted
+              exact
               redirectTo={routes.HOME}
               component={LoginPage}
             />
             <PublicRoute
               path={routes.REGISTER}
               restricted
+              exact
               redirectTo={routes.HOME}
               component={RegPage}
             />
