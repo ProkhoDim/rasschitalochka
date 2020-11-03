@@ -5,20 +5,20 @@ import './css/fonts.css';
 import './css/helpers.css';
 import './css/global.css';
 
-import { ErrorPage } from './Views';
+import { ErrorPage } from './views';
 import { PublicRoute, PrivateRoute } from './common';
 import { authOperations } from './redux/auth';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Layouts } from './layouts';
 
-const LoginPage = lazy(() => import('./Views/Login'));
+const LoginPage = lazy(() => import('./views/Login'));
 
-const RegPage = lazy(() => import('./Views/Registration'));
+const RegPage = lazy(() => import('./views/Registration'));
 
-const HomePage = lazy(() => import('./Views/HomeView'));
+const HomePage = lazy(() => import('./views/HomeView'));
 
-const StatPage = lazy(() => import('./Views/StatisticsView'));
+const StatPage = lazy(() => import('./views/StatisticsView'));
 
 class App extends Component {
   componentDidMount = () => {
