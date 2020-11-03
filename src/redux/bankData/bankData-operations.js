@@ -19,7 +19,6 @@ const getBankData = () => async dispatch => {
   dispatch(getBankDataRequest());
   try {
     const { data } = await AXIOS_BANK_INSTANCE.get(PB_API_URL);
-    console.log(data);
     if (typeof data === 'string') {
       dispatch(getBankDataSuccess(null));
       return;
