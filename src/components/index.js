@@ -1,6 +1,5 @@
 export { default as AddTransactionMobile } from './AddTransactionMobile';
 export { default as Modal } from './Modal';
-export { default as Sidebar } from './Sidebar';
 export { default as TotalBalance } from './TotalBalance';
 export { default as NavBar } from './NavBar';
 export { default as CurrencyExchange } from './CurrencyExchange';
