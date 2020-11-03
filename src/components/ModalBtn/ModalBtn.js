@@ -8,19 +8,14 @@ import { Media } from '../../common';
 import AddTransaction from '../AddTransaction';
 import { costs, income } from '../../constants/CategoryValues';
 import { financeOperation } from '../../redux/finance';
+import * as transactionTypes from '../../constants/transactionTypes';
 
 const ModalBtn = () => {
   const [componentInModal, setComponentInModal] = useState('');
   const dispatch = useDispatch();
 
-  const addIncomeName = 'Add Income';
-  const addCostName = 'Add Cost';
-
-  const addIncomeSubmit = userData =>
-    dispatch(financeOperation.addIncome(userData));
-
-  const addCostSubmit = userData =>
-    dispatch(financeOperation.addCost(userData));
+  const addTranasactionSubmit = userData =>
+    dispatch(financeOperation.addTransaction(userData));
 
   const closeModal = () => {
     setComponentInModal('');
@@ -45,32 +40,34 @@ const ModalBtn = () => {
         <Media device="fromTablet">
           <button
             className={styles.modalBtn}
-            onClick={() => setModalContent(addIncomeName)}
+            onClick={() => setModalContent(transactionTypes.addIncome)}
           >
-            {addIncomeName}
+            {transactionTypes.addIncome}
           </button>
           <button
             className={styles.modalBtn}
-            onClick={() => setModalContent(addCostName)}
+            onClick={() => setModalContent(transactionTypes.addCost)}
           >
-            {addCostName}
+            {transactionTypes.addCost}
           </button>
         </Media>
       </div>
 
       {componentInModal && (
         <Modal title={componentInModal} onClose={closeModal}>
-          {componentInModal === addIncomeName ? (
+          {componentInModal === transactionTypes.addIncome ? (
             <AddTransaction
               radioButtonData={income}
-              onSubmit={addIncomeSubmit}
+              onSubmit={addTranasactionSubmit}
               onCloseModal={closeModal}
+              type={transactionTypes.addIncome}
             />
           ) : (
             <AddTransaction
               radioButtonData={costs}
-              onSubmit={addCostSubmit}
+              onSubmit={addTranasactionSubmit}
               onCloseModal={closeModal}
+              type={transactionTypes.addCost}
             />
           )}
         </Modal>

@@ -2,14 +2,17 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { Media } from '../common';
 import {
+  AddTransactionMobile,
   AppBar,
-  CostMobile,
+  // CostMobile,
   CurrencyExchange,
-  IncomeMobile,
+  // IncomeMobile,
   NavBar,
   Sidebar,
   TotalBalance,
 } from '../components';
+import * as transactionTypes from '../constants/transactionTypes';
+import { costs, income } from '../constants/CategoryValues';
 import * as routes from '../constants/routes';
 
 const Layouts = ({ children }) => {
@@ -23,8 +26,28 @@ const Layouts = ({ children }) => {
           </Route>
           {children}
           <Route path={routes.CURRENCY} exact component={CurrencyExchange} />
-          <Route path={routes.ADDINCOME} exact component={IncomeMobile} />
-          <Route path={routes.ADDCOST} exact component={CostMobile} />
+          <Route
+            path={routes.ADDINCOME}
+            exact
+            render={props => (
+              <AddTransactionMobile
+                props={props}
+                type={transactionTypes.addIncome}
+                radioButtonData={income}
+              />
+            )}
+          />
+          <Route
+            path={routes.ADDCOST}
+            exact
+            render={props => (
+              <AddTransactionMobile
+                props={props}
+                type={transactionTypes.addCost}
+                radioButtonData={costs}
+              />
+            )}
+          />
         </div>
       </Media>
       <Media device="onlyTablet">
