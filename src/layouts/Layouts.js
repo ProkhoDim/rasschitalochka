@@ -7,7 +7,6 @@ import {
   CurrencyExchange,
   IncomeMobile,
   NavBar,
-  Sidebar,
   TotalBalance,
 } from '../components';
 import * as routes from '../constants/routes';
@@ -39,8 +38,10 @@ const Layouts = ({ children }) => {
         <AppBar />
         <div className="page_wrap">
           <div className="aside_container">
-            <NavBar />
-            <Sidebar />
+            <div className="aside_box">
+              <NavBar />
+              <TotalBalance />
+            </div>
             <CurrencyExchange />
           </div>
           {children}

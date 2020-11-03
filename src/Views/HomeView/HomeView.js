@@ -4,7 +4,7 @@ import Media from '../../common/Media';
 import {
   CurrencyExchange,
   ModalBtn,
-  Sidebar,
+  TotalBalance,
   TransferMobile,
   TransferPcTablet,
 } from '../../components';
@@ -22,7 +22,7 @@ class HomeView extends Component {
     return (
       <>
         <div className="main_container main_container__table">
-          <Media children={<Sidebar />} device="mobile" />
+          <Media children={<TotalBalance />} device="mobile" />
 
           <ModalBtn />
           <Media device="mobile">

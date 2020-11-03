@@ -1,7 +1,6 @@
 export { default as IncomeMobile } from './AddTransactionMobile/IncomeMobile';
 export { default as CostMobile } from './AddTransactionMobile/CostMobile';
 export { default as Modal } from './Modal';
-export { default as Sidebar } from './Sidebar';
 export { default as TotalBalance } from './TotalBalance';
 export { default as NavBar } from './NavBar';
 export { default as CurrencyExchange } from './CurrencyExchange';
