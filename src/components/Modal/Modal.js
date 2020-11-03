@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import s from './Modal.module.css';
+import styles from './Modal.module.css';
 
 const MODAL_ROOT = document.getElementById('modal_root');
 
@@ -33,18 +33,18 @@ class Modal extends Component {
     const { children, title, onClose } = this.props;
     return createPortal(
       <div
-        className={s.modal_wrapper}
+        className={styles.modal_wrapper}
         ref={this.modalRef}
         onClick={this.handleBackdropClick}
       >
-        <div className={s.modal_content}>
-          <div className={s.heading_wrapper}>
+        <div className={styles.modal_content}>
+          <div className={styles.heading_wrapper}>
             <button
-              className={s.button}
+              className={styles.button}
               type="button"
               onClick={onClose}
             ></button>
-            <h2 className={s.modal_title}>{title}</h2>
+            <h2 className={styles.modal_title}>{title}</h2>
           </div>
           {children}
         </div>

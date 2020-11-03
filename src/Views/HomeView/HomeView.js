@@ -11,7 +11,6 @@ import {
 import { financeOperation, financeSelectors } from '../../redux/finance';
 
 class HomeView extends Component {
-  state = {};
   componentDidMount() {
     const { transactionHistory } = this.props;
     const isTransactionHistoryExist = transactionHistory.length > 0;

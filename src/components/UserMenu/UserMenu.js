@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './UserMenu.module.css';
 import PropTypes from 'prop-types';
-import logoutBtn from './logoutBtn.svg';
+import logoutBtn from '../../assets/icons/logoutBtn.svg';
 
 const UserMenu = ({ name, onLogout }) => (
   <div className={styles.userMenuContainer}>
@@ -21,7 +21,6 @@ const UserMenu = ({ name, onLogout }) => (
 UserMenu.propTypes = {
   name: PropTypes.string.isRequired,
   onLogout: PropTypes.func.isRequired,
-  logoutBtn: PropTypes.string.isRequired,
 };
 
 export default UserMenu;

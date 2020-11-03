@@ -1,14 +1,12 @@
 import axios from 'axios';
 import {
   getFinanceSuccess,
-  getFinanceError,
   getFinanceRequest,
   addCostRequest,
   addCostSuccess,
-  addCostError,
   addIncomeRequest,
   addIncomeSuccess,
-  addIncomeError,
+  getError,
 } from './finance-action';
 
 const getFinance = () => async (dispatch, getState) => {
@@ -26,7 +24,7 @@ const getFinance = () => async (dispatch, getState) => {
     } = await axios.get(`api/finance/${id}`);
     dispatch(getFinanceSuccess({ totalBalance, data }));
   } catch (error) {
-    dispatch(getFinanceError(error));
+    dispatch(getError(error));
   }
 };
 
@@ -54,7 +52,7 @@ const addIncome = userData => async (dispatch, getState) => {
     } = await axios.post(`api/finance/${id}`, sendData);
     dispatch(addIncomeSuccess({ balance, data }));
   } catch (e) {
-    dispatch(addIncomeError(e));
+    dispatch(getError(e));
   }
 };
 
@@ -83,7 +81,7 @@ const addCost = userData => async (dispatch, getState) => {
     } = await axios.post(`api/finance/${id}`, sendData);
     dispatch(addCostSuccess({ balance, data }));
   } catch (e) {
-    dispatch(addCostError(e));
+    dispatch(getError(e));
   }
 };
 

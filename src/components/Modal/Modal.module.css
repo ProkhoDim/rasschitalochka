@@ -47,7 +47,7 @@
   margin-right: 19px;
   border: none;
   background-color: transparent;
-  background-image: url('../../assets/modal/arrow.png');
+  background-image: url('../../assets/images/arrow.png');
 }
 
 @media screen and (min-width: 768px) {
@@ -62,7 +62,7 @@
   .heading_wrapper {
     height: 73px;
     background-color: #fff;
-    background-image: url('../../assets/background/bg.png');
+    background-image: url('../../assets/images/bg.png');
     background-size: cover;
     background-position: center;
     box-shadow: none;

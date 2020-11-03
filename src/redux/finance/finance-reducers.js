@@ -2,17 +2,14 @@ import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import {
   getFinanceRequest,
   getFinanceSuccess,
-  getFinanceError,
   addTransactionRequest,
   addTransactionSuccess,
-  addTransactionError,
   setTotalBalance,
   addCostRequest,
   addCostSuccess,
-  addCostError,
   addIncomeRequest,
   addIncomeSuccess,
-  addIncomeError,
+  getError,
 } from './finance-action';
 import { authActions } from '../auth';
 
@@ -36,21 +33,17 @@ const transactionHistory = createReducer([], {
 const setError = (_, { payload }) => payload.message;
 
 const error = createReducer(null, {
-  [getFinanceError]: setError,
-  [addTransactionError]: setError,
-  [addIncomeError]: setError,
-  [addCostError]: setError,
+  [getError]: setError,
 });
 
 const isLoading = createReducer(false, {
+  [addCostRequest]: () => true,
+  [addIncomeRequest]: () => true,
   [getFinanceRequest]: () => true,
   [addTransactionRequest]: () => true,
   [getFinanceSuccess]: () => false,
   [addTransactionSuccess]: () => false,
-  [getFinanceError]: () => false,
-  [addTransactionError]: () => false,
-  [addCostRequest]: () => true,
-  [addIncomeRequest]: () => true,
+  [getError]: () => false,
   [addIncomeSuccess]: () => false,
   [addCostSuccess]: () => false,
 });

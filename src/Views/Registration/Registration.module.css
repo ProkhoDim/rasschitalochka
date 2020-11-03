@@ -16,7 +16,7 @@
   margin-bottom: 25px;
 }
 .logo {
-  background-image: url(../../assets/svg/logo.svg);
+  background-image: url(../../assets/icons/logo.svg);
   width: 50px;
   height: 50px;
   background-repeat: no-repeat;
@@ -56,11 +56,11 @@
 }
 
 .emailInput::placeholder {
-  background-image: url(../../assets/authForm/baseline-email-24px.svg);
+  background-image: url(../../assets/icons/baseline-email-24px.svg);
 }
 
 .passwordInput::placeholder {
-  background-image: url(../../assets/authForm/baseline-lock-24px.svg);
+  background-image: url(../../assets/icons/baseline-lock-24px.svg);
 }
 
 .nameInput {
@@ -68,7 +68,7 @@
 }
 
 .nameInput::placeholder {
-  background-image: url(../../assets/authForm/baseline-account_box-24px.svg);
+  background-image: url(../../assets/icons/baseline-account_box-24px.svg);
 }
 
 .btnRegister {
@@ -109,7 +109,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-image: url(../../assets/background/bg-pic-for-login--min.jpg);
+    background-image: url(../../assets/images/bg-pic-for-login--min.jpg);
     background-position: right bottom;
     background-size: 200%;
   }
@@ -169,7 +169,7 @@
     height: 100%;
     z-index: -1;
     opacity: 0.6;
-    background-image: url('../../assets/background/registration-v4_03.png');
+    background-image: url('../../assets/images/registration-v4_03.png');
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -194,8 +194,8 @@
     height: 100%;
     filter: grayscale(80%)
       drop-shadow(-2.298px 1.928px 1.5px rgba(92, 135, 94, 0.2));
-    background-image: url('../../assets/background/black.jpg'),
-      url('../../assets/background/bg-pic-for-login--min.jpg');
+    background-image: url('../../assets/images/black.jpg'),
+      url('../../assets/images/bg-pic-for-login--min.jpg');
     background-blend-mode: overlay;
     background-size: cover;
     background-repeat: no-repeat;
@@ -207,7 +207,7 @@
     right: 25px;
     width: 38%;
     height: 100%;
-    background-image: url('../../assets/background/iphone.png');
+    background-image: url('../../assets/images/iphone.png');
     background-size: 100%;
     background-position: center right;
     background-repeat: no-repeat;

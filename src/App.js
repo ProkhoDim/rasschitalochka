@@ -1,6 +1,6 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { Switch } from 'react-router-dom';
-import routes from './routes';
+import * as routes from './constants/routes';
 import './css/fonts.css';
 import './css/helpers.css';
 import './css/global.css';
@@ -15,6 +15,10 @@ import { Layouts } from './layouts';
 const LoginPage = lazy(() => import('./Views/Login'));
 
 const RegPage = lazy(() => import('./Views/Registration'));
+
+const HomePage = lazy(() => import('./Views/HomeView'));
+
+const StatPage = lazy(() => import('./Views/StatisticsView'));
 
 class App extends Component {
   componentDidMount = () => {
@@ -42,16 +46,21 @@ class App extends Component {
               redirectTo={routes.HOME}
               component={RegPage}
             />
-            <PrivateRoute
-              path={routes.STATISTICS}
-              redirectTo={routes.LOGIN}
-              component={Layouts}
-            />
-            <PrivateRoute
-              path={routes.HOME}
-              redirectTo={routes.LOGIN}
-              component={Layouts}
-            />
+            <Layouts>
+              <PrivateRoute
+                path={routes.STATISTICS}
+                redirectTo={routes.LOGIN}
+                component={StatPage}
+              />
+
+              <PrivateRoute
+                path={routes.HOME}
+                exact
+                redirectTo={routes.LOGIN}
+                component={HomePage}
+              />
+            </Layouts>
+
             <ErrorPage />
           </Switch>
         </Suspense>

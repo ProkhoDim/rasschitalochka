@@ -8,8 +8,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import s from './Registration.module.css';
-import icon from '../../assets/svg/logo.svg';
-import routes from '../../routes';
+import icon from '../../assets/icons/logo.svg';
+import * as routes from '../../constants/routes';
 import { Media, Notification } from '../../common';
 
 const initialState = {

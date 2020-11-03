@@ -41,6 +41,18 @@
   height: 100%;
 }
 
+.navLink_text {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navLink_text {
+    display: inline;
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1279px) {
   .wrap {
     margin-bottom: 0;
@@ -70,11 +82,6 @@
     background-color: rgb(255, 255, 255);
     color: var(--lightgreen-color);
     fill: var(--lightgreen-color);
-  }
-
-  .navLink_text {
-    font-size: 15px;
-    line-height: 20px;
   }
 
   .navLink_container {
@@ -130,11 +137,6 @@
     padding: 10px 30px 10px;
     display: flex;
     align-items: center;
-  }
-
-  .navLink_text {
-    font-size: 15px;
-    line-height: 20px;
   }
 
   .icon {

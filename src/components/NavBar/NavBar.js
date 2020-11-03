@@ -1,47 +1,48 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import SvgIcons from './SvgIcons';
-import routes from '../../routes';
-import s from './NavBar.module.css';
+import * as routes from '../../constants/routes';
+import styles from './NavBar.module.css';
 import { Media } from '../../common';
 
 const NavBar = ({ children }) => {
   return (
     <>
-      <div className={s.wrap}>
-        <div className={s.container}>
+      <div className={styles.wrap}>
+        <div className={styles.container}>
           <NavLink
             exact
             to={routes.HOME}
-            className={s.navLink}
-            activeClassName={s.navLink__active}
+            className={styles.navLink}
+            activeClassName={styles.navLink__active}
           >
             <SvgIcons id="icon-home" />
-            <Media device="fromTablet">
-              <span className={s.navLink_text}>Home</span>
-            </Media>
+
+            <span className={styles.navLink_text}>Home</span>
           </NavLink>
+
           <NavLink
             exact
             to={routes.STATISTICS}
-            className={s.navLink}
-            activeClassName={s.navLink__active}
+            className={styles.navLink}
+            activeClassName={styles.navLink__active}
           >
             <SvgIcons id="icon-diagram" />
-            <Media device="fromTablet">
-              <span className={s.navLink_text}>Diagram</span>
-            </Media>
+
+            <span className={styles.navLink_text}>Diagram</span>
           </NavLink>
+
           <Media device="mobile">
             <NavLink
               exact
               to={routes.CURRENCY}
-              className={s.navLink}
-              activeClassName={s.navLink__active}
+              className={styles.navLink}
+              activeClassName={styles.navLink__active}
             >
               <SvgIcons id="icon-currency" />
             </NavLink>
           </Media>
+
           <Media device="onlyTablet">{children}</Media>
         </div>
       </div>

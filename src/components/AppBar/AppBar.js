@@ -4,7 +4,7 @@ import AppName from '../AppName';
 import UserMenu from '../UserMenu';
 import styles from './AppBar.module.css';
 import { NavLink } from 'react-router-dom';
-import routes from '../../routes';
+import * as routes from '../../constants/routes';
 
 const AppBar = () => (
   <header className={styles.header}>

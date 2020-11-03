@@ -1,13 +1,13 @@
 import React from 'react';
 
-import s from './AddIncome.module.css';
+import styles from './RadioButton.module.css';
 
 const RadioButton = ({ value, onChange }) => {
   return (
-    <label className={s.label}>
+    <label className={styles.label}>
       <input
         type="radio"
-        className={s.radio_button}
+        className={styles.radio_button}
         name="category"
         value={value}
         onChange={onChange}

@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom';
 import { authOperations, authSelectors } from '../../redux/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import routes from '../../routes';
+import * as routes from '../../constants/routes';
 
-import phone from '../../assets/background/phone-mock-up.png';
+import phone from '../../assets/images/phone-mock-up.png';
 import s from './Login.module.css';
 import { Media, Notification } from '../../common';
 import Loader from 'react-loader-spinner';

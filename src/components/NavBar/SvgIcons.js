@@ -1,11 +1,11 @@
 import React from 'react';
-import svg from './navigation.svg';
-import s from './NavBar.module.css';
+import svg from '../../assets/icons/navigation.svg';
+import styles from './NavBar.module.css';
 
 const SvgIcons = ({ id }) => {
   return (
     <>
-      <svg className={s.icon}>
+      <svg className={styles.icon}>
         <use href={`${svg}#${id}`}></use>
       </svg>
     </>

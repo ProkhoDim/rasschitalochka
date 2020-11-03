@@ -1,40 +1,38 @@
-import React, { useCallback, useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Modal from '../Modal/Modal';
-import AddCost from '../AddCost/AddCost';
-import AddIncome from '../AddIncome/AddIncome';
 import styles from './ModalBtn.module.css';
-import routes from '../../routes';
+import * as routes from '../../constants/routes';
 import { Media } from '../../common';
+import AddTransaction from '../AddTransaction';
+import { costs, income } from '../../constants/CategoryValues';
+import { financeOperation } from '../../redux/finance';
 
 const ModalBtn = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [addIncome, setAddIncome] = useState(true);
-  const [title, setTitle] = useState('Add Income');
+  const [componentInModal, setComponentInModal] = useState('');
+  const dispatch = useDispatch();
 
-  const toggleModal = useCallback(() => {
-    setShowModal(prevShowModal => !prevShowModal);
-  }, []);
+  const addIncomeName = 'Add Income';
+  const addCostName = 'Add Cost';
 
-  const setModalContent = e => {
-    if (e.target.textContent === 'Add Income') {
-      setAddIncome(true);
-      setTitle('Add Income');
-      toggleModal();
-    } else {
-      setAddIncome(false);
-      setTitle('Add Cost');
-      toggleModal();
-    }
+  const addIncomeSubmit = userData =>
+    dispatch(financeOperation.addIncome(userData));
+
+  const addCostSubmit = userData =>
+    dispatch(financeOperation.addCost(userData));
+
+  const closeModal = () => {
+    setComponentInModal('');
   };
 
-  // const isMobile = window.screen.width < 768 ? true : false;
+  const setModalContent = type => {
+    setComponentInModal(type);
+  };
 
   return (
     <>
       <div className={styles.modalBtnBox}>
-        {/* {isMobile && ( */}
         <Media device="mobile">
           <NavLink className={styles.modalBtn} exact to={routes.ADDINCOME}>
             Add Income
@@ -43,24 +41,37 @@ const ModalBtn = () => {
             Add Cost
           </NavLink>
         </Media>
-        {/* )} */}
-        {/* {!isMobile && ( */}
+
         <Media device="fromTablet">
-          <button className={styles.modalBtn} onClick={setModalContent}>
-            Add Income
+          <button
+            className={styles.modalBtn}
+            onClick={() => setModalContent(addIncomeName)}
+          >
+            {addIncomeName}
           </button>
-          <button className={styles.modalBtn} onClick={setModalContent}>
-            Add Cost
+          <button
+            className={styles.modalBtn}
+            onClick={() => setModalContent(addCostName)}
+          >
+            {addCostName}
           </button>
         </Media>
-        {/* )} */}
       </div>
-      {showModal && (
-        <Modal title={title} onClose={toggleModal}>
-          {addIncome ? (
-            <AddIncome onCloseModal={toggleModal} />
+
+      {componentInModal && (
+        <Modal title={componentInModal} onClose={closeModal}>
+          {componentInModal === addIncomeName ? (
+            <AddTransaction
+              radioButtonData={income}
+              onSubmit={addIncomeSubmit}
+              onCloseModal={closeModal}
+            />
           ) : (
-            <AddCost onCloseModal={toggleModal} />
+            <AddTransaction
+              radioButtonData={costs}
+              onSubmit={addCostSubmit}
+              onCloseModal={closeModal}
+            />
           )}
         </Modal>
       )}
@@ -68,4 +79,4 @@ const ModalBtn = () => {
   );
 };
 
-export default connect()(ModalBtn);
+export default ModalBtn;
