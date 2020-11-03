@@ -6,20 +6,20 @@ import {
   addTransactionSuccess,
   getError,
 } from './finance-action';
-import { authActions } from '../auth';
+import { logoutSuccess, getCurrentUserSuccess } from '../auth/auth-actions';
 
 const totalBalance = createReducer(0, {
   [getFinanceSuccess]: (_, { payload }) => payload.totalBalance,
   [addTransactionSuccess]: (_, { payload }) => payload.balance,
-  [authActions.logoutSuccess]: () => 0,
-  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.balance,
+  [logoutSuccess]: () => 0,
+  [getCurrentUserSuccess]: (_, { payload }) => payload.balance,
 });
 
 const transactionHistory = createReducer([], {
   [getFinanceSuccess]: (_, { payload }) => [...payload.data],
   [addTransactionSuccess]: (_, { payload }) => [...payload.data],
-  [authActions.logoutSuccess]: () => [],
-  [authActions.getCurrentUserSuccess]: (_, { payload }) => [...payload.data],
+  [logoutSuccess]: () => [],
+  [getCurrentUserSuccess]: (_, { payload }) => [...payload.data],
 });
 
 const setError = (_, { payload }) => payload.message;
