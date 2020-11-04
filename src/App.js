@@ -1,9 +1,7 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
 import * as routes from './constants/routes';
-import './css/fonts.css';
-import './css/helpers.css';
-import './css/global.css';
+import './css/styles.css';
 
 import { ErrorPage } from './Views';
 import { PublicRoute, PrivateRoute } from './common';

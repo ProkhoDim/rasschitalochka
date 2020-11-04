@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import bankDataActions from './bankData-actions';
+import { logoutSuccess } from '../auth/auth-actions';
 
 const {
   getBankDataRequest,
@@ -10,6 +11,7 @@ const {
 
 const data = createReducer(null, {
   [getBankDataSuccess]: (_, { payload }) => payload,
+  [logoutSuccess]: () => null,
 });
 
 const error = createReducer(null, {

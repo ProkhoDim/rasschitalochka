@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios_bank_instance from '../../services/axios_bank_instance';
 import bankDataActions from './bankData-actions';
 
 const {
@@ -7,18 +7,11 @@ const {
   getBankDataError,
 } = bankDataActions;
 
-const PB_API_URL =
-  'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5';
-
-const AXIOS_BANK_INSTANCE = axios.create({
-  baseURL: PB_API_URL,
-  headers: {},
-});
-
 const getBankData = () => async dispatch => {
   dispatch(getBankDataRequest());
   try {
-    const { data } = await AXIOS_BANK_INSTANCE.get(PB_API_URL);
+    const { data } = await axios_bank_instance.get();
+
     if (typeof data === 'string') {
       dispatch(getBankDataSuccess(null));
       return;

@@ -7,11 +7,19 @@
   --darkgreen-color: rgb(80, 109, 86);
   --middlegreen-color: rgb(97, 147, 97);
   --lightgreen-color: rgb(102, 150, 104);
-  --bold-ff: 'HelveticaNeueCyr Bold', 'Arial', sans-serif;
-  --main-ff: 'HelveticaNeueCyr', 'Arial', sans-serif;
+
   --modalbtn-hover-color: linear-gradient(
     0deg,
     rgb(236, 178, 42) 0%,
     rgba(255, 108, 0, 0.70196) 100%
   );
+
+  --main-text-color: rgb(40, 40, 40);
+  --placeholder-text-color: rgb(185, 201, 212);
+
+  --main-ff: 'HelveticaNeueCyr', 'Arial', sans-serif;
+  --light-ff: 'HelveticaNeueCyr Light', 'Arial', sans-serif;
+  --medium-ff: 'HelveticaNeueCyr Medium', 'Arial', sans-serif;
+  --bold-ff: 'HelveticaNeueCyr Bold', 'Arial', sans-serif;
+  --black-ff: 'HelveticaNeueCyr Black', 'Arial', sans-serif;
 }

@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 
 const getTotalBalance = state => state.finance.totalBalance;
 
-const getTransactionHistory = state => state.finance.transactionHistory;
+const getTransactionHistory = state => state.finance.transactionHistory || [];
 
 const getCostTransactions = createSelector([getTransactionHistory], items => {
   return items.filter(({ type }) => type.includes('-'));

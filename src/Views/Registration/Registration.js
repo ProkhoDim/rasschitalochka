@@ -54,14 +54,18 @@ class Registration extends Component {
 
   onSubmitHandler = async e => {
     e.preventDefault();
-    const { onRegister } = this.props;
+    const { email, password } = this.state.user;
+    const { onRegister, onLogin } = this.props;
     if (
       this.state.isValidEmail === true &&
       this.state.isEqualPassword === true
     ) {
       const response = await onRegister(this.state.user);
-      if (response)
+      if (response) {
+        onLogin({ email, password });
         return Notification('success', 'Registration successful!', 2000);
+      }
+
       const { error } = this.props;
       if (error) return Notification('error', error, 2000);
       this.setState(initialState);
@@ -197,6 +201,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onRegister: data => dispatch(authOperations.register(data)),
+  onLogin: data => dispatch(authOperations.login(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Registration);

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { bankDataOperations, bankDataSelectors } from '../../redux/bankData';
+import { authSelectors } from '../../redux/auth';
 
 import Loader from 'react-loader-spinner';
 import styles from './CurrencyExchange.module.css';
@@ -10,13 +11,14 @@ const CurrencyExchange = () => {
   const dispatch = useDispatch();
   const dataFromBank = useSelector(bankDataSelectors.getFilteredData);
   const isLoading = useSelector(bankDataSelectors.isLoading);
+  const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
 
   useEffect(() => {
-    if (dataFromBank) {
+    if (dataFromBank || !isAuthenticated) {
       return;
     }
     dispatch(bankDataOperations.getBankData());
-  }, [dispatch, dataFromBank]);
+  }, [dispatch, dataFromBank, isAuthenticated]);
 
   return (
     <section className={styles.CurrencyExchange__container}>
