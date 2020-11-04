@@ -25,14 +25,6 @@ const Total = ({ totalCost, totalIncome, totalCostByParameter }) => (
         <span className={(styles.Value, styles.Costs)}>{totalCost}</span>
       </li>
     )}
-    {/* <li>
-      <span className={styles.Name}>
-        {totalCostByParameter ? 'Total Costs selected' : 'Total Costs'}:
-      </span>
-      <span className={(styles.Value, styles.Costs)}>
-        {totalCostByParameter ? totalCostByParameter : totalCost}
-      </span>
-    </li> */}
     <li>
       <span className={styles.Name}>Total Income:</span>
       <span className={(styles.Value, styles.Income)}>{totalIncome}</span>

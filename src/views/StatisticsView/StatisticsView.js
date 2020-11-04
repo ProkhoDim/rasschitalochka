@@ -4,10 +4,10 @@ import styles from './Statistics.module.css';
 import Chart from '../../components/Statistics/Chart';
 import Legend from '../../components/Statistics/Legend';
 import ChartSelection from '../../components/Statistics/ChartSelection';
-// import UpdateChartBtn from '../../components/Statistics/UpdateChartBtn';
+import UpdateChartBtn from '../../components/Statistics/UpdateChartBtn';
 import Total from '../../components/Statistics/Total';
 
-const StatComponent = ({ data, updateDiagram, totalCostCalculated }) => {
+const StatComponent = ({ data, handleChange, updateDiagram }) => {
   return (
     <>
       <section>
@@ -31,9 +31,10 @@ const StatComponent = ({ data, updateDiagram, totalCostCalculated }) => {
               />
             </div>
             <div className={styles.Data}>
-              <ChartSelection updateDiagram={updateDiagram} />
+              <ChartSelection handleChange={handleChange} />
               <Legend data={data} />
-              <Total totalCostByParameter={totalCostCalculated} />
+              <Total />
+              <UpdateChartBtn updateDiagram={updateDiagram} />
             </div>
           </div>
         </div>
@@ -44,6 +45,8 @@ const StatComponent = ({ data, updateDiagram, totalCostCalculated }) => {
 
 StatComponent.propTypes = {
   data: T.array.isRequired,
+  handleChange: T.func.isRequired,
+  updateDiagram: T.func.isRequired,
 };
 
 export default StatComponent;

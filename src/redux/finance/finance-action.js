@@ -19,3 +19,5 @@ export const addTransactionRequest = createAction(
 export const addTransactionSuccess = createAction(
   'finance/addTransactionSuccess',
 );
+
+export const changeFilter = createAction('finance/changeFilter');

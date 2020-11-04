@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
-import UpdateChartBtn from '../UpdateChartBtn';
+import React from 'react';
+import T from 'prop-types';
+import { connect } from 'react-redux';
+import { changeFilter } from '../../../redux/finance/finance-action';
 import styles from './ChartSelection.module.css';
 
 const month = [
-  { value: 0, name: 'January' },
-  { value: 1, name: 'February' },
-  { value: 2, name: 'March' },
-  { value: 3, name: 'April' },
-  { value: 4, name: 'May' },
-  { value: 5, name: 'June' },
-  { value: 6, name: 'July' },
-  { value: 7, name: 'August' },
-  { value: 8, name: 'September' },
-  { value: 9, name: 'October' },
-  { value: 10, name: 'November' },
-  { value: 11, name: 'December' },
+  { value: 1, name: 'January' },
+  { value: 2, name: 'February' },
+  { value: 3, name: 'March' },
+  { value: 4, name: 'April' },
+  { value: 5, name: 'May' },
+  { value: 6, name: 'June' },
+  { value: 7, name: 'July' },
+  { value: 8, name: 'August' },
+  { value: 9, name: 'September' },
+  { value: 10, name: 'October' },
+  { value: 11, name: 'November' },
+  { value: 12, name: 'December' },
 ];
 const year = [
   { value: '2020' },
@@ -24,54 +26,47 @@ const year = [
   { value: '2016' },
 ];
 
-class ChartSelection extends Component {
-  state = {
-    month: '',
-    year: '',
-  };
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
+const ChartSelection = ({ onChange }) => (
+  <>
+    <section className={styles.Section}>
+      <select
+        name="month"
+        className={styles.Select}
+        defaultValue="Month"
+        onChange={onChange}
+      >
+        <option>Month</option>
+        {month.map(({ value, name }) => (
+          <option key={value} value={value}>
+            {name}
+          </option>
+        ))}
+      </select>
+      <select
+        name="year"
+        className={styles.Select}
+        defaultValue="Year"
+        onChange={onChange}
+      >
+        <option>Year</option>
+        {year.map(({ value }) => (
+          <option key={value} value={value}>
+            {value}
+          </option>
+        ))}
+      </select>
+    </section>
+  </>
+);
 
-  updateDiagram = () => {
-    this.props.updateDiagram({ ...this.state });
-  };
+ChartSelection.propTypes = {
+  onChange: T.func.isRequired,
+};
 
-  render() {
-    return (
-      <>
-        <section className={styles.Section}>
-          <select
-            name="month"
-            className={styles.Select}
-            defaultValue="Month"
-            onChange={this.handleChange}
-          >
-            <option>Month</option>
-            {month.map(({ value, name }) => (
-              <option key={value} value={value}>
-                {name}
-              </option>
-            ))}
-          </select>
-          <select
-            name="year"
-            className={styles.Select}
-            defaultValue="Year"
-            onChange={this.handleChange}
-          >
-            <option>Year</option>
-            {year.map(({ value }) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
-        </section>
-        <UpdateChartBtn updateDiagram={this.updateDiagram} />
-      </>
-    );
-  }
-}
-
-export default ChartSelection;
+const mapDispatchToProps = dispatch => ({
+  onChange: event =>
+    dispatch(
+      changeFilter({ [event.currentTarget.name]: +event.currentTarget.value }),
+    ),
+});
+export default connect(null, mapDispatchToProps)(ChartSelection);

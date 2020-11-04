@@ -10,6 +10,7 @@ import {
   addIncomeRequest,
   addIncomeSuccess,
   getError,
+  changeFilter,
 } from './finance-action';
 import { authActions } from '../auth';
 
@@ -48,9 +49,15 @@ const isLoading = createReducer(false, {
   [addCostSuccess]: () => false,
 });
 
+const filter = createReducer([], {
+  [changeFilter]: (state, { payload }) =>
+    Object.assign({ ...state }, { ...payload }),
+});
+
 export default combineReducers({
   totalBalance,
   transactionHistory,
   isLoading,
   error,
+  filter,
 });
