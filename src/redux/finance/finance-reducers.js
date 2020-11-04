@@ -15,11 +15,11 @@ const totalBalance = createReducer(0, {
   [getCurrentUserSuccess]: (_, { payload }) => payload.balance,
 });
 
-const transactionHistory = createReducer([], {
-  [getFinanceSuccess]: (_, { payload }) => [...payload.data],
-  [addTransactionSuccess]: (_, { payload }) => [...payload.data],
-  [logoutSuccess]: () => [],
-  [getCurrentUserSuccess]: (_, { payload }) => [...payload.data],
+const transactionHistory = createReducer(null, {
+  [getFinanceSuccess]: (_, { payload }) => payload.data,
+  [addTransactionSuccess]: (_, { payload }) => payload.data,
+  [logoutSuccess]: () => null,
+  [getCurrentUserSuccess]: (_, { payload }) => payload.data,
 });
 
 const setError = (_, { payload }) => payload.message;

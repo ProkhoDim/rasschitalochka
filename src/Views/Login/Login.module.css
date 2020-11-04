@@ -277,25 +277,26 @@
     margin-bottom: 50px;
   }
   .appDescription {
+    position: absolute;
     display: block;
     color: #fff;
-    font-family: var(--bold-ff);
-    font-size: 30px;
+    font-family: var(--black-ff);
+    font-size: 25px;
+    top: 40vh;
+    left: 28vw;
   }
   .appDescription span {
-    position: absolute;
-  }
-  .appDescription span:first-child {
-    top: 40%;
-    left: 28%;
-  }
-  .appDescription span:last-child {
-    top: 45%;
-    left: 30%;
+    display: block;
+    text-align: center;
   }
   .desktopImage__phone {
     height: 80vh;
     margin-top: 10vh;
-    margin-left: 3vw;
+    margin-left: 2vw;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .appDescription {
+    font-size: 30px;
   }
 }

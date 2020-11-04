@@ -129,7 +129,8 @@ export default function Login() {
       </div>
 
       <p className={styles.appDescription}>
-        <span>Manage your budget</span> <span>with finance app</span>
+        <span>Manage your budget</span>
+        <span>with finance app</span>
       </p>
       <ToastContainer />
     </div>
