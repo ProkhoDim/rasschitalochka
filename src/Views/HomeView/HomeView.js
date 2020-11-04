@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Media from '../../common/Media';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import { Media, Notification } from '../../common';
 import {
   CurrencyExchange,
   ModalBtn,
@@ -8,42 +9,41 @@ import {
   TransferMobile,
   TransferPcTablet,
 } from '../../components';
-import { financeOperation, financeSelectors } from '../../redux/finance';
+import { financeOperation } from '../../redux/finance';
 
-class HomeView extends Component {
-  componentDidMount() {
-    const { transactionHistory } = this.props;
-    // const isTransactionHistoryExist = transactionHistory.length > 0;
+export default function HomeView() {
+  const dispatch = useDispatch();
+  const { transactionHistory } = useSelector(state => state.finance) || [];
+
+  useEffect(() => {
     if (!transactionHistory) {
-      this.props.getFinance();
+      dispatch(financeOperation.getFinance());
     }
-  }
-  render() {
-    return (
-      <>
-        <div className="main_container main_container__table">
-          <Media children={<TotalBalance />} device="mobile" />
+  }, [transactionHistory, dispatch]);
 
-          <ModalBtn />
-          <Media device="mobile">
-            <TransferMobile />
-          </Media>
-          <Media device="fromTablet">
-            <TransferPcTablet />
-          </Media>
-        </div>
-        <Media children={<CurrencyExchange />} device="onlyTablet" />
-      </>
-    );
-  }
+  const { token } = useSelector(state => state.auth);
+
+  useEffect(() => {
+    if (token) {
+      Notification('success', 'You were successfully logged in!', 2000);
+    }
+  }, [token]);
+
+  return (
+    <>
+      <div className="main_container main_container__table">
+        <Media children={<TotalBalance />} device="mobile" />
+
+        <ModalBtn />
+        <Media device="mobile">
+          <TransferMobile />
+        </Media>
+        <Media device="fromTablet">
+          <TransferPcTablet />
+        </Media>
+      </div>
+      <Media children={<CurrencyExchange />} device="onlyTablet" />
+      <ToastContainer />
+    </>
+  );
 }
-
-const mapStateToProps = state => ({
-  transactionHistory: financeSelectors.getTransactionHistory(state),
-});
-
-const mapDispatchToProps = dispatch => ({
-  getFinance: () => dispatch(financeOperation.getFinance()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeView);
