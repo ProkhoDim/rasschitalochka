@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { financeOperation } from '../finance';
 import {
   getError,
   registerRequest,
@@ -41,7 +42,9 @@ const login = userData => async dispatch => {
     const res = await axios.post('api/login', userData);
     token.set(res.data.token);
     dispatch(loginSuccess(res.data));
+    dispatch(financeOperation.getFinance());
   } catch (error) {
+    console.dir(error);
     dispatch(getError(error.response.data));
   }
 };

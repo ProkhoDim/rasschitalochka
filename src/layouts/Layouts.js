@@ -1,12 +1,10 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Media } from '../common';
 import {
   AddTransactionMobile,
   AppBar,
-  // CostMobile,
   CurrencyExchange,
-  // IncomeMobile,
   NavBar,
   TotalBalance,
 } from '../components';
@@ -54,7 +52,6 @@ const Layouts = ({ children }) => {
         <div className="page_wrap">
           <NavBar children={<TotalBalance />} />
           {children}
-          <Redirect to={routes.HOME} />
         </div>
       </Media>
       <Media device="desktop">
@@ -68,7 +65,6 @@ const Layouts = ({ children }) => {
             <CurrencyExchange />
           </div>
           {children}
-          <Redirect to={routes.HOME} />
         </div>
       </Media>
     </>

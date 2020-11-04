@@ -48,19 +48,17 @@ const App = () => {
           />
           <Layouts>
             <PrivateRoute
-              path={routes.STATISTICS}
-              redirectTo={routes.LOGIN}
-              component={StatPage}
-            />
-
-            <PrivateRoute
               path={routes.HOME}
               exact
               redirectTo={routes.LOGIN}
               component={HomePage}
             />
+            <PrivateRoute
+              path={routes.STATISTICS}
+              redirectTo={routes.LOGIN}
+              component={StatPage}
+            />
           </Layouts>
-
           <ErrorPage />
         </Switch>
       </Suspense>

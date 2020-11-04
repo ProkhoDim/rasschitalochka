@@ -15,10 +15,10 @@ const totalBalance = createReducer(0, {
   [getCurrentUserSuccess]: (_, { payload }) => payload.balance,
 });
 
-const transactionHistory = createReducer(null, {
+const transactionHistory = createReducer([], {
   [getFinanceSuccess]: (_, { payload }) => payload.data,
   [addTransactionSuccess]: (_, { payload }) => payload.data,
-  [logoutSuccess]: () => null,
+  [logoutSuccess]: () => [],
   [getCurrentUserSuccess]: (_, { payload }) => payload.data,
 });
 

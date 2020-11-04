@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { authOperations } from '../../redux/auth';
+import { authOperations, authSelectors } from '../../redux/auth';
 import { Notification, Media } from '../../common';
 import * as routes from '../../constants/routes';
 import emailValidate from '../../services/emailValidate';
@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import styles from './Login.module.css';
 
 import phone from '../../assets/images/phone-mock-up.png';
+import { clearError } from '../../redux/auth/auth-actions';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -42,11 +43,12 @@ export default function Login() {
     }
   };
 
-  const { error } = useSelector(state => state.auth);
+  const error = useSelector(authSelectors.getError);
 
   useEffect(() => {
     Notification('error', error, 2000);
-  }, [error]);
+    if (error) dispatch(clearError());
+  }, [error, dispatch]);
 
   const onSubmitHandler = useCallback(
     event => {
@@ -57,7 +59,7 @@ export default function Login() {
     [dispatch, email, password],
   );
 
-  const { isLoading } = useSelector(state => state.auth);
+  const isLoading = useSelector(authSelectors.getIsLoading);
 
   const isBtnNotDisabled = isValidEmail && password.length > 4;
 
@@ -130,7 +132,7 @@ export default function Login() {
 
       <p className={styles.appDescription}>
         <span>Manage your budget</span>
-        <span>with finance app</span>
+        <span> with finance app</span>
       </p>
       <ToastContainer />
     </div>

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { Media, Notification } from '../../common';
+import { Media } from '../../common';
 import {
   CurrencyExchange,
   ModalBtn,
@@ -9,25 +9,20 @@ import {
   TransferMobile,
   TransferPcTablet,
 } from '../../components';
-import { financeOperation } from '../../redux/finance';
+// import { financeOperation, financeSelectors } from '../../redux/finance';
 
 export default function HomeView() {
-  const dispatch = useDispatch();
-  const { transactionHistory } = useSelector(state => state.finance) || [];
+  // const dispatch = useDispatch();
+  // const transactionHistory = useSelector(
+  //   financeSelectors.getTransactionHistory,
+  // );
+  // const transactionHistoryExist = transactionHistory.length > 0;
 
-  useEffect(() => {
-    if (!transactionHistory) {
-      dispatch(financeOperation.getFinance());
-    }
-  }, [transactionHistory, dispatch]);
-
-  const { token } = useSelector(state => state.auth);
-
-  useEffect(() => {
-    if (token) {
-      Notification('success', 'You were successfully logged in!', 2000);
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (!transactionHistoryExist) {
+  //     dispatch(financeOperation.getFinance());
+  //   }
+  // }, [transactionHistoryExist, dispatch]);
 
   return (
     <>

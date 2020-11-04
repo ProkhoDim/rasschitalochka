@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { authOperations } from '../../redux/auth';
+import { authOperations, authSelectors } from '../../redux/auth';
 import * as routes from '../../constants/routes';
 import { Media, Notification } from '../../common';
 import emailValidate from '../../services/emailValidate';
@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './Registration.module.css';
 import icon from '../../assets/icons/logo.svg';
+import { clearError } from '../../redux/auth/auth-actions';
 
 export default function Registration() {
   const dispatch = useDispatch();
@@ -67,12 +68,13 @@ export default function Registration() {
     confirmPassword.current.value = '';
   };
 
-  const { error } = useSelector(state => state.auth);
-  const { token } = useSelector(state => state.auth);
+  const error = useSelector(authSelectors.getError);
+  const token = useSelector(authSelectors.getToken);
 
   useEffect(() => {
     Notification('error', error, 2000);
-  }, [error]);
+    if (error) dispatch(clearError());
+  }, [error, dispatch]);
 
   useEffect(() => {
     if (token) {

@@ -1,57 +1,51 @@
-import React, { Component, createRef } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import styles from './Modal.module.css';
 
 const MODAL_ROOT = document.getElementById('modal_root');
 
-class Modal extends Component {
-  modalRef = createRef();
+const Modal = ({ title, children, onClose }) => {
+  const handleKeyPress = useCallback(
+    e => {
+      if (e.code !== 'Escape') {
+        return;
+      }
+      onClose();
+    },
+    [onClose],
+  );
 
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyPress);
-  }
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [handleKeyPress]);
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyPress);
-  }
-
-  handleKeyPress = e => {
-    if (e.code !== 'Escape') {
+  const handleBackdropClick = e => {
+    if (e.target !== e.currentTarget) {
       return;
     }
-    this.props.onClose();
+    onClose();
   };
 
-  handleBackdropClick = e => {
-    if (this.modalRef.current && e.target !== this.modalRef.current) {
-      return;
-    }
-    this.props.onClose();
-  };
-  render() {
-    const { children, title, onClose } = this.props;
-    return createPortal(
-      <div
-        className={styles.modal_wrapper}
-        ref={this.modalRef}
-        onClick={this.handleBackdropClick}
-      >
-        <div className={styles.modal_content}>
-          <div className={styles.heading_wrapper}>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={onClose}
-            ></button>
-            <h2 className={styles.modal_title}>{title}</h2>
-          </div>
-          {children}
+  return createPortal(
+    <div className={styles.modal_wrapper} onClick={handleBackdropClick}>
+      <div className={styles.modal_content}>
+        <div className={styles.heading_wrapper}>
+          <button
+            className={styles.button}
+            type="button"
+            onClick={onClose}
+          ></button>
+          <h2 className={styles.modal_title}>{title}</h2>
         </div>
-      </div>,
-      MODAL_ROOT,
-    );
-  }
-}
+        {children}
+      </div>
+    </div>,
+    MODAL_ROOT,
+  );
+};
 
 export default Modal;
