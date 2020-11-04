@@ -1,202 +1,217 @@
-import React, { Component, createRef } from 'react';
-import PasswordStrengthBar from 'react-password-strength-bar';
-import * as EmailValidator from 'email-validator';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { authOperations, authSelectors } from '../../redux/auth';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-import s from './Registration.module.css';
-import icon from '../../assets/icons/logo.svg';
 import * as routes from '../../constants/routes';
 import { Media, Notification } from '../../common';
+import emailValidate from '../../services/emailValidate';
+import PasswordStrengthBar from 'react-password-strength-bar';
+import { ToastContainer } from 'react-toastify';
 
-const initialState = {
-  user: {
-    name: '',
-    email: '',
-    password: '',
-  },
-  isValidEmail: '',
-  isEqualPassword: '',
-  isPasswordStrong: false,
-};
+import 'react-toastify/dist/ReactToastify.css';
+import styles from './Registration.module.css';
+import icon from '../../assets/icons/logo.svg';
+import { clearError } from '../../redux/auth/auth-actions';
 
-class Registration extends Component {
-  state = initialState;
-  confirmPassword = createRef();
+export default function Registration() {
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  onChangeHandler = ({ currentTarget: { name, value } }) => {
-    this.setState(prevState => ({
-      user: {
-        ...prevState.user,
-        [name]: value,
-      },
-    }));
-  };
+  const [isValidEmail, setIsValidEmail] = useState('');
+  const [isEqualPassword, setIsEqualPassword] = useState('');
+  const [isPasswordStrong, setIsPasswordStrong] = useState(false);
+  const confirmPassword = useRef('');
 
-  onBlurEmailHandler = e => {
-    if (EmailValidator.validate(this.state.user.email) === true) {
-      this.setState({ isValidEmail: true });
+  const onChangeHandler = useCallback(({ currentTarget: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+
+      default:
+        console.log(new Error());
+        break;
+    }
+  }, []);
+
+  const onBlurEmailHandler = e => {
+    if (emailValidate(email)) {
+      setIsValidEmail(true);
     } else {
-      this.setState({ isValidEmail: false });
+      setIsValidEmail(false);
     }
   };
 
-  onChangeConfrimPassHandler = e => {
-    if (this.confirmPassword.current.value === this.state.user.password) {
-      this.setState({ isEqualPassword: true });
+  const onChangeConfrimPassHandler = e => {
+    if (confirmPassword.current.value === password) {
+      setIsEqualPassword(true);
     } else {
-      this.setState({ isEqualPassword: false });
+      setIsEqualPassword(false);
     }
   };
 
-  onSubmitHandler = async e => {
+  const resetInput = () => {
+    setName('');
+    setEmail('');
+    setPassword('');
+    setIsValidEmail('');
+    setIsEqualPassword('');
+    setIsPasswordStrong(false);
+    confirmPassword.current.value = '';
+  };
+
+  const error = useSelector(authSelectors.getError);
+  const token = useSelector(authSelectors.getToken);
+
+  useEffect(() => {
+    Notification('error', error, 2000);
+    if (error) dispatch(clearError());
+  }, [error, dispatch]);
+
+  useEffect(() => {
+    if (token) {
+      Notification('success', 'Registration successful!', 2000);
+    }
+  }, [token]);
+
+  const onSubmitHandler = async e => {
     e.preventDefault();
-    const { onRegister } = this.props;
-    if (
-      this.state.isValidEmail === true &&
-      this.state.isEqualPassword === true
-    ) {
-      const response = await onRegister(this.state.user);
-      if (response)
-        return Notification('success', 'Registration successful!', 2000);
-      const { error } = this.props;
-      if (error) return Notification('error', error, 2000);
-      this.setState(initialState);
-      this.confirmPassword.current.value = '';
+    if (isValidEmail && isEqualPassword) {
+      const response = await dispatch(
+        authOperations.register({ name, email, password }),
+      );
+      resetInput();
+      if (response) {
+        dispatch(authOperations.login({ email, password }));
+      }
     }
   };
 
-  CheckStrenthPass = score => {
+  const CheckStrenthPass = score => {
     if (score > 0) {
-      this.setState({ isPasswordStrong: true });
-    } else this.setState({ isPasswordStrong: false });
+      setIsPasswordStrong(true);
+    } else {
+      setIsPasswordStrong(false);
+    }
   };
 
-  render() {
-    const { name, email, password } = this.state.user;
-    const { isValidEmail, isEqualPassword, isPasswordStrong } = this.state;
-    const isBtnNotDisable =
-      isValidEmail && isEqualPassword && name && isPasswordStrong;
-    return (
-      <div className={s.pageWrap}>
-        <Media device="desktop">
-          <div className={s.leftSide}>
-            <div className={s.appNameContainer}>
-              <svg className={s.icon}>
-                <use href={`${icon}#logo`}></use>
-              </svg>
-              <span className={s.projectName}>Raschitalochka</span>
-            </div>
-            <h2 className={s.losung}>
-              <span>Create your own</span>
-              <span>categories of costs</span>
-            </h2>
-          </div>
-        </Media>
-        <div className={s.registerWrap}>
-          <div className={s.registerBlock}>
-            <div className={s.container}>
-              <Media device="mobile">
-                <div className={s.logo}></div>
-                <span className={s.projectName}>Raschitalochka</span>
-              </Media>
+  const isBtnNotDisable =
+    isValidEmail && isEqualPassword && name && isPasswordStrong;
 
-              <Media device="fromTablet">
-                <h2 className={s.title}>Registration</h2>
-              </Media>
-              <form
-                className={s.registerForm}
-                onSubmit={this.onSubmitHandler}
-                autoComplete="off"
-              >
-                <label>
-                  <input
-                    className={s.input + ' ' + s.emailInput}
-                    type="email"
-                    name="email"
-                    value={email}
-                    autoComplete="off"
-                    placeholder="E-mail as Login"
-                    onChange={this.onChangeHandler}
-                    onBlur={this.onBlurEmailHandler}
-                  />
-                </label>
-                {this.state.isValidEmail === false && (
-                  <div className={s.warningText}>
-                    <span>Please enter valid email address!</span>
-                  </div>
-                )}
-                <label>
-                  <input
-                    className={s.input + ' ' + s.passwordInput}
-                    type="password"
-                    name="password"
-                    value={password}
-                    placeholder="Password"
-                    onChange={this.onChangeHandler}
-                    onBlur={this.onChangeConfrimPassHandler}
-                  />
-                </label>
-                <label>
-                  <input
-                    className={s.input + ' ' + s.passwordInput}
-                    type="password"
-                    name="password confirmation"
-                    placeholder="Password Confirmation"
-                    onChange={this.onChangeConfrimPassHandler}
-                    onBlur={this.onChangeConfrimPassHandler}
-                    ref={this.confirmPassword}
-                  />
-                </label>
-                {this.state.isEqualPassword === false && (
-                  <div className={s.warningText}>
-                    <span>Password doesn't match!</span>
-                  </div>
-                )}
-                <PasswordStrengthBar
-                  password={password}
-                  minLength="5"
-                  onChangeScore={score => this.CheckStrenthPass(score)}
+  return (
+    <div className={styles.pageWrap}>
+      <Media device="desktop">
+        <div className={styles.leftSide}>
+          <div className={styles.appNameContainer}>
+            <svg className={styles.icon}>
+              <use href={`${icon}#logo`}></use>
+            </svg>
+            <span className={styles.projectName}>Raschitalochka</span>
+          </div>
+          <h2 className={styles.losung}>
+            <span>Create your own</span>
+            <span>categories of costs</span>
+          </h2>
+        </div>
+      </Media>
+      <div className={styles.registerWrap}>
+        <div className={styles.registerBlock}>
+          <div className={styles.container}>
+            <Media device="mobile">
+              <div className={styles.logo}></div>
+              <span className={styles.projectName}>Raschitalochka</span>
+            </Media>
+
+            <Media device="fromTablet">
+              <h2 className={styles.title}>Registration</h2>
+            </Media>
+            <form
+              className={styles.registerForm}
+              onSubmit={onSubmitHandler}
+              autoComplete="off"
+            >
+              <label>
+                <input
+                  className={styles.input + ' ' + styles.emailInput}
+                  type="email"
+                  name="email"
+                  value={email}
+                  autoComplete="off"
+                  placeholder="E-mail as Login"
+                  onChange={onChangeHandler}
+                  onBlur={onBlurEmailHandler}
                 />
-                <label>
-                  <input
-                    className={s.input + ' ' + s.nameInput}
-                    type="name"
-                    name="name"
-                    value={name}
-                    placeholder="Your Name"
-                    onChange={this.onChangeHandler}
-                  />
-                </label>
-                <button
-                  className={s.btnRegister}
-                  type="submit"
-                  disabled={!isBtnNotDisable}
-                >
-                  Register
-                </button>
-              </form>
-              <NavLink className={s.loginLink} exact to={routes.LOGIN}>
-                Login
-              </NavLink>
-            </div>
+              </label>
+              {isValidEmail === false && (
+                <div className={styles.warningText}>
+                  <span>Please enter valid email address!</span>
+                </div>
+              )}
+              <label>
+                <input
+                  className={styles.input + ' ' + styles.passwordInput}
+                  type="password"
+                  name="password"
+                  value={password}
+                  placeholder="Password"
+                  onChange={onChangeHandler}
+                  onBlur={onChangeConfrimPassHandler}
+                />
+              </label>
+              <label>
+                <input
+                  className={styles.input + ' ' + styles.passwordInput}
+                  type="password"
+                  name="password confirmation"
+                  placeholder="Password Confirmation"
+                  onChange={onChangeConfrimPassHandler}
+                  onBlur={onChangeConfrimPassHandler}
+                  ref={confirmPassword}
+                />
+              </label>
+              {isEqualPassword === false && (
+                <div className={styles.warningText}>
+                  <span>Password doesn't match!</span>
+                </div>
+              )}
+              <PasswordStrengthBar
+                password={password}
+                minLength="5"
+                onChangeScore={score => CheckStrenthPass(score)}
+              />
+              <label>
+                <input
+                  className={styles.input + ' ' + styles.nameInput}
+                  type="name"
+                  name="name"
+                  value={name}
+                  placeholder="Your Name"
+                  onChange={onChangeHandler}
+                />
+              </label>
+              <button
+                className={styles.btnRegister}
+                type="submit"
+                disabled={!isBtnNotDisable}
+              >
+                Register
+              </button>
+            </form>
+            <NavLink className={styles.loginLink} exact to={routes.LOGIN}>
+              Login
+            </NavLink>
           </div>
         </div>
-        <ToastContainer />
       </div>
-    );
-  }
+      <ToastContainer />
+    </div>
+  );
 }
-
-const mapStateToProps = state => ({
-  error: authSelectors.getError(state),
-});
-
-const mapDispatchToProps = dispatch => ({
-  onRegister: data => dispatch(authOperations.register(data)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Registration);

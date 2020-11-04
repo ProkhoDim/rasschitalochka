@@ -1,16 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { income } from '../../constants/CategoryValues';
 import * as routes from '../../constants/routes';
 import { financeOperation } from '../../redux/finance';
 import AddTransaction from '../AddTransaction';
 import styles from './AddTransactionMobile.module.css';
 
-const IncomeMobile = props => {
+const AddTransactionMobile = ({ props, radioButtonData, type }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = userData =>
-    dispatch(financeOperation.addIncome(userData));
+    dispatch(financeOperation.addTransaction(userData));
 
   const handleGoBack = () => {
     const { state } = props.location;
@@ -21,7 +20,6 @@ const IncomeMobile = props => {
 
     props.history.push(routes.HOME);
   };
-
   return (
     <div className={styles.mobile_wrapper}>
       <div className={styles.mobile_header}>
@@ -29,15 +27,17 @@ const IncomeMobile = props => {
           className={styles.mobile_button}
           onClick={handleGoBack}
         ></button>
-        <h2 className={styles.mobile_heading}>Add Income</h2>
+        <h2 className={styles.mobile_heading}>Add Cost</h2>
       </div>
+
       <AddTransaction
-        radioButtonData={income}
+        radioButtonData={radioButtonData}
         onSubmit={handleSubmit}
         onCloseModal={handleGoBack}
+        type={type}
       />
     </div>
   );
 };
 
-export default IncomeMobile;
+export default AddTransactionMobile;

@@ -4,6 +4,11 @@
   justify-content: space-between;
 }
 
+.logo {
+  padding: 0;
+  margin: 0 12px 0 0;
+}
+
 @media (min-width: 320px) and (max-width: 767px) {
   .header {
     padding: 10px 0;
@@ -13,6 +18,10 @@
   .container {
     width: 310px;
     margin: 0 auto;
+  }
+
+  .appName {
+    display: none;
   }
 }
 
@@ -24,6 +33,13 @@
   }
   .headerNameBox {
     display: flex;
+  }
+
+  .appName {
+    padding-top: 7px;
+    color: var(--main-dark-color);
+    font-family: var(--bold-ff);
+    font-size: 20px;
   }
 }
 

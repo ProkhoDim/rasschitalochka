@@ -1,5 +1,16 @@
 import axios from 'axios';
-import authActions from './auth-actions';
+import { financeOperation } from '../finance';
+import {
+  getError,
+  registerRequest,
+  registerSuccess,
+  loginRequest,
+  loginSuccess,
+  logoutSuccess,
+  logoutRequest,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
+} from './auth-actions';
 
 axios.defaults.baseURL = 'https://raschitalochka.goit.co.ua/';
 
@@ -13,42 +24,39 @@ export const token = {
 };
 
 const register = userData => async dispatch => {
-  dispatch(authActions.registerRequest());
+  dispatch(registerRequest());
 
   try {
-    const {
-      data: { success },
-    } = await axios.post('api/register', userData);
-    dispatch(authActions.registerSuccess());
-    if (success) {
-      window.location.assign(window.location.origin + '/login');
-    }
+    await axios.post('api/register', userData);
+    dispatch(registerSuccess());
     return true;
   } catch (error) {
-    dispatch(authActions.registerError(error.response.data));
+    dispatch(getError(error.response.data));
   }
 };
 
 const login = userData => async dispatch => {
-  dispatch(authActions.loginRequest());
+  dispatch(loginRequest());
 
   try {
     const res = await axios.post('api/login', userData);
     token.set(res.data.token);
-    dispatch(authActions.loginSuccess(res.data));
+    dispatch(loginSuccess(res.data));
+    dispatch(financeOperation.getFinance());
   } catch (error) {
-    dispatch(authActions.loginError(error.response.data));
+    console.dir(error);
+    dispatch(getError(error.response.data));
   }
 };
 
 const logOut = () => async dispatch => {
-  dispatch(authActions.logoutRequest());
+  dispatch(logoutRequest());
 
   try {
     token.unset();
-    dispatch(authActions.logoutSuccess());
+    dispatch(logoutSuccess());
   } catch (error) {
-    dispatch(authActions.logoutError(error));
+    dispatch(getError(error));
   }
 };
 
@@ -64,15 +72,15 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
   token.set(persistedToken);
   try {
-    dispatch(authActions.getCurrentUserRequest());
+    dispatch(getCurrentUserRequest());
     const {
       data: {
         finance: { totalBalance: balance, data },
       },
     } = await axios.get(`api/finance/${id}`);
-    dispatch(authActions.getCurrentUserSuccess({ balance, data }));
+    dispatch(getCurrentUserSuccess({ balance, data }));
   } catch (error) {
-    dispatch(authActions.getCurrentUserError(error.response.data));
+    dispatch(getError(error.response.data));
   }
 };
 

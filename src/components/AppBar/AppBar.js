@@ -1,10 +1,9 @@
 import React from 'react';
-import Logo from '../Logo';
-import AppName from '../AppName';
 import UserMenu from '../UserMenu';
 import styles from './AppBar.module.css';
 import { NavLink } from 'react-router-dom';
 import * as routes from '../../constants/routes';
+import logo from '../../assets/icons/logo.svg';
 
 const AppBar = () => (
   <header className={styles.header}>
@@ -12,9 +11,9 @@ const AppBar = () => (
       <div className={styles.container}>
         <div className={styles.headerNameBox}>
           <NavLink exact to={routes.HOME}>
-            <Logo />
+            <img src={logo} alt="logo" width="50" className={styles.logo} />
           </NavLink>
-          <AppName />
+          <h1 className={styles.appName}>Rasschitalochka</h1>
         </div>
         <UserMenu />
       </div>
