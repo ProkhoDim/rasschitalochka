@@ -68,10 +68,17 @@ export default function Registration() {
   };
 
   const { error } = useSelector(state => state.auth);
+  const { token } = useSelector(state => state.auth);
 
   useEffect(() => {
     Notification('error', error, 2000);
   }, [error]);
+
+  useEffect(() => {
+    if (token) {
+      Notification('success', 'Registration successful!', 2000);
+    }
+  }, [token]);
 
   const onSubmitHandler = async e => {
     e.preventDefault();
